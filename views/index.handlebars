@@ -1,97 +1,94 @@
 {{!--  --}}
-          <!-- Main Body Content -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide " data-ride="carousel">
-        <div class="form-group">
-            <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
-                <!-- First Card for Travel Details -->
-                <div class="card">
-                    <h5 class="card-header text-center shadow-md logoFont">WHAT<span style="font-size: 50px">2</span>DO
-                    </h5>
-                    <div class="card-body">
-                        <!-- Single Row for all the Search COLUMNS Dynamic to Screen Size -->
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="startDate">Start Date</span>
-                                    </div>
-                                    <input type="date" id="start" class="form-control" aria-label="small"
-                                        aria-describedby="startDate">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="endDate">End Date</span>
-                                    </div>
-                                    <input type="date" id="end" class="form-control" placeholder="" aria-label="endDate"
-                                        aria-describedby="endDate">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="destination">Destination</span>
-                                    </div>
-                                    <!-- Google Autocomplete Fillin Box -->
-                                    <input type="text" class="form-control" id="locationAutocomplete"
-                                        name=trip-destination />
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="input-group input-group-sm mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="tripRadius">Search Radius</span>
-                                    </div>
-                                    <input type="number" id="radius" class="form-control" placeholder=""
-                                        aria-label="tripRadius" aria-describedby="tripRadius" min="10" max="100"
-                                        step="10" value="10">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Search Button for Travel Details-->
-                        <div class="row">
-                            <div class="col-6 text-left">
-                                <a id="errorNoScroll" href="#anchor">
-                                    <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-                                </a>
-                                <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results. Please
-                                    try again.</h6>
-                            </div>
-                            <div class="col-6">
-                                <div class="text-left float-right mt-1" id="insertButton"></div>
-                            </div>
-                        </div>
-                    </div>
+<!-- Main Body Content -->
+<div id="carouselExampleSlidesOnly" class="carousel slide " data-ride="carousel">
+  <div class="form-group">
+    <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+      <!-- First Card for Travel Details -->
+      <div class="card">
+        <h5 class="card-header text-center shadow-md logoFont">WHAT<span style="font-size: 50px">2</span>DO
+        </h5>
+        <div class="card-body">
+          <!-- Single Row for all the Search COLUMNS Dynamic to Screen Size -->
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="startDate">Start Date</span>
                 </div>
+                <input type="date" id="start" class="form-control" aria-label="small" aria-describedby="startDate">
+              </div>
             </div>
+            <div class="col-12 col-md-6">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="endDate">End Date</span>
+                </div>
+                <input type="date" id="end" class="form-control" placeholder="" aria-label="endDate"
+                  aria-describedby="endDate">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="destination">Destination</span>
+                </div>
+                <!-- Google Autocomplete Fillin Box -->
+                <input type="text" class="form-control" id="locationAutocomplete" name=trip-destination />
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="tripRadius">Search Radius</span>
+                </div>
+                <input type="number" id="radius" class="form-control" placeholder="" aria-label="tripRadius"
+                  aria-describedby="tripRadius" min="10" max="100" step="10" value="10">
+              </div>
+            </div>
+          </div>
+          <!-- Search Button for Travel Details-->
+          <div class="row">
+            <div class="col-6 text-left">
+              <a id="errorNoScroll" href="#anchor">
+                <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
+              </a>
+              <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results. Please
+                try again.</h6>
+            </div>
+            <div class="col-6">
+              <div class="text-left float-right mt-1" id="insertButton"></div>
+            </div>
+          </div>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/COACHELLA2017-WP176-1920x537.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/banner2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/banner3.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/16180627890_fc94e87002_o.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/487479607_c383e2f1ca_o.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/7219659586_3df661e7a6_o.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="images/venice.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
+      </div>
     </div>
-          {{!--  --}}
-<div id="home">
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/COACHELLA2017-WP176-1920x537.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/banner2.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/banner3.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/16180627890_fc94e87002_o.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/487479607_c383e2f1ca_o.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/7219659586_3df661e7a6_o.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/venice.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+</div>
+{{!--  --}}
+{{!-- <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
@@ -100,16 +97,18 @@
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+              placeholder="Enter Example Text">
           </div>
-          
+
           <div class="form-group">
             <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description"
+              placeholder="Enter Example Description"></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        
+
         <h3>Examples:</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
@@ -119,10 +118,22 @@
           </li>
           {{/each}}
         </ul>
+       
       </div>
     </div>
   </div>
+</div> --}}
+<div id="loader-wrapper">
+  <div id="loader"></div>
+
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
 </div>
 
+
+<div id="content">
+  <h2>This is our page title</h2>
+  <p>Lorem ipsum dolor sit amet.</p>
+</div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

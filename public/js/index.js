@@ -99,4 +99,4 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 //  Loading Page
-$("#Search").on("click");
+

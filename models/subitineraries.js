@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var SubItineraries = sequelize.define("SubItineraries", {
-    subitinerary_id: {
+    subitineraryId: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },

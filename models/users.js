@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },
-    firebase_id: DataTypes.STRING
+    firebaseId: DataTypes.STRING
   });
   return Users;
 };

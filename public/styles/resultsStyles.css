@@ -1,3 +1,10 @@
+body {
+    /* background-image: url("/images/events-management-3.jpg"); */
+    background-image: url("/images/resultsBG_spain.jpg");
+    background-repeat: no-repeat;
+    background-position: -50px;
+    
+}
 div.results-form-group {
     z-index: 1;
     top: 100px;
@@ -7,7 +14,23 @@ div.results-form-group {
     right: 0;
     bottom: auto;
   }
+.results-card{
+    margin-top: 25px;
+    height: 500px;
+}
 
+.cardFont {
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Permanent Marker', cursive;
+    font-size: 25px;
+  }
+.tabFont {
+    font-size: 20px;
+    font-family: 'Kalam', cursive;
+}
+.card-header {
+    padding: 0px;
+}
 /* ************************************************************* */
 /* Loading Page */
 #loader-wrapper {

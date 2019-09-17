@@ -1,4 +1,4 @@
-var database = firebase.database();
+//var database = firebase.database();
 /// Javascript Code Below
 
 var clockRunning = false;
@@ -8,10 +8,12 @@ function start() {
     clockRunning = true;
   }
 }
+
 function stop() {
   clearInterval(intervalId);
   clockRunning = false;
 }
+
 function count() {
   displayFixes();
 }
@@ -560,23 +562,23 @@ function renderZomatoGeocode(queryData) {
   }
 }
 
-$(document).on("click", "#login", function() {
-  ui.start("#firebaseui-auth-container", uiConfig);
-});
+// $(document).on("click", "#login", function() {
+//   ui.start("#firebaseui-auth-container", uiConfig);
+// });
 
-$(document).on("click", "#signOut", function() {
-  firebase
-    .auth()
-    .signOut()
-    .then(
-      function() {
-        console.log("Travis Hates This Function");
-      },
-      function(error) {
-        console.error("Sign Out Error", error);
-      }
-    );
-});
+// $(document).on("click", "#signOut", function() {
+//   firebase
+//     .auth()
+//     .signOut()
+//     .then(
+//       function() {
+//         console.log("Travis Hates This Function");
+//       },
+//       function(error) {
+//         console.error("Sign Out Error", error);
+//       }
+//     );
+// });
 
 $(document).on("click", ".fa-heart", function() {
   //console.log(this)
@@ -624,11 +626,11 @@ function ComeONMan() {
   }
 }
 
-$(function() {
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-  $("#contentDetails").hide();
-  that.where2Application.setDateValues();
-});
+// $(function() {
+//   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+//   $("#contentDetails").hide();
+//   that.where2Application.setDateValues();
+// });
 
 function openNav() {
   document.getElementById("mySidebar").style.width = "250px";
@@ -663,108 +665,108 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-// Firebase UI variable being created with specific configuration
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-var uiConfig = {
-  callbacks: {
-    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      return false;
-    },
-    uiShown: function() {
-      // The widget is rendered.
-      // Hide the loader.
-      document.getElementById("loader").style.display = "none";
-    }
-  },
-  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  signInFlow: "popup",
-  signInOptions: [
-    // Leave the lines as is for the providers you want to offer your users.
-    firebase.auth.EmailAuthProvider.PROVIDER_ID
-  ],
-  // Terms of service url.
-  tosUrl: "tos.html",
-  // Privacy policy url.
-  privacyPolicyUrl: "privacy.html"
-};
+// // Firebase UI variable being created with specific configuration
+// var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// var uiConfig = {
+//   callbacks: {
+//     signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+//       // User successfully signed in.
+//       // Return type determines whether we continue the redirect automatically
+//       // or whether we leave that to developer to handle.
+//       return false;
+//     },
+//     uiShown: function() {
+//       // The widget is rendered.
+//       // Hide the loader.
+//       document.getElementById("loader").style.display = "none";
+//     }
+//   },
+//   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+//   signInFlow: "popup",
+//   signInOptions: [
+//     // Leave the lines as is for the providers you want to offer your users.
+//     firebase.auth.EmailAuthProvider.PROVIDER_ID
+//   ],
+//   // Terms of service url.
+//   tosUrl: "tos.html",
+//   // Privacy policy url.
+//   privacyPolicyUrl: "privacy.html"
+// };
 
 // Used to set Auth to Local Storage so Persistent on machine
 
 //function Monitors for Auth Change via FirebaseAUth
-firebase.auth().onAuthStateChanged(function(user) {
-  $("#insertButton").empty();
-  var mainButtonCode = $("<btn>");
-  mainButtonCode.attr("class", "btn btn-secondary");
-  var buttonMsg = $("<span>");
-  if (user) {
-    // User is signed in.
-    // User info if we need it
-    that.where2Application.userDetails = {
-      displayName: user.displayName,
-      email: user.email,
-      emailverified: user.emailVerified,
-      photoURL: user.photoURL,
-      isAnonymous: user.isAnonymous,
-      uid: user.uid,
-      providerData: user.providerData,
-      isAuthenticated: true
-    };
-    addUsertoDatabase(that.where2Application.userDetails.uid);
-    $("#firebaseAuthModal").modal("hide");
-    mainButtonCode.attr("id", "signOut");
-    buttonMsg.text("Sign Out...");
-    // ...
-  } else {
-    that.where2Application.userDetails = {
-      displayName: "",
-      email: "",
-      emailverified: "",
-      photoURL: "",
-      isAnonymous: "",
-      uid: "",
-      providerData: "",
-      isAuthenticated: false
-    };
-    mainButtonCode.attr("id", "login");
-    mainButtonCode.attr("data-toggle", "modal");
-    mainButtonCode.attr("data-target", "#firebaseAuthModal");
-    buttonMsg.text("Login...");
-  }
-  mainButtonCode.append(buttonMsg);
-  $("#insertButton").append(mainButtonCode);
-});
+// firebase.auth().onAuthStateChanged(function(user) {
+//   $("#insertButton").empty();
+//   var mainButtonCode = $("<btn>");
+//   mainButtonCode.attr("class", "btn btn-secondary");
+//   var buttonMsg = $("<span>");
+//   if (user) {
+//     // User is signed in.
+//     // User info if we need it
+//     that.where2Application.userDetails = {
+//       displayName: user.displayName,
+//       email: user.email,
+//       emailverified: user.emailVerified,
+//       photoURL: user.photoURL,
+//       isAnonymous: user.isAnonymous,
+//       uid: user.uid,
+//       providerData: user.providerData,
+//       isAuthenticated: true
+//     };
+//     addUsertoDatabase(that.where2Application.userDetails.uid);
+//     $("#firebaseAuthModal").modal("hide");
+//     mainButtonCode.attr("id", "signOut");
+//     buttonMsg.text("Sign Out...");
+//     // ...
+//   } else {
+//     that.where2Application.userDetails = {
+//       displayName: "",
+//       email: "",
+//       emailverified: "",
+//       photoURL: "",
+//       isAnonymous: "",
+//       uid: "",
+//       providerData: "",
+//       isAuthenticated: false
+//     };
+//     mainButtonCode.attr("id", "login");
+//     mainButtonCode.attr("data-toggle", "modal");
+//     mainButtonCode.attr("data-target", "#firebaseAuthModal");
+//     buttonMsg.text("Login...");
+//   }
+//   mainButtonCode.append(buttonMsg);
+//   $("#insertButton").append(mainButtonCode);
+// });
 
-function addUsertoDatabase(userId, name, email) {
-  firebase
-    .database()
-    .ref("/users/" + userId)
-    .once("value")
-    .then(function(snapshot) {
-      var username = snapshot.val() && snapshot.val().username;
-      //If user is not in DB we add them.
-      if (!username) {
-        firebase
-          .database()
-          .ref("users/" + userId)
-          .set({
-            username: that.where2Application.userDetails.displayName,
-            email: that.where2Application.userDetails.email
-          });
-      } else {
-        console.log("Travis Hates This Function");
-      }
-    });
-}
+// function addUsertoDatabase(userId, name, email) {
+//   firebase
+//     .database()
+//     .ref("/users/" + userId)
+//     .once("value")
+//     .then(function(snapshot) {
+//       var username = snapshot.val() && snapshot.val().username;
+//       //If user is not in DB we add them.
+//       if (!username) {
+//         firebase
+//           .database()
+//           .ref("users/" + userId)
+//           .set({
+//             username: that.where2Application.userDetails.displayName,
+//             email: that.where2Application.userDetails.email
+//           });
+//       } else {
+//         console.log("Travis Hates This Function");
+//       }
+//     });
+// }
 
-function writeUserData(userId, name, email) {
-  firebase
-    .database()
-    .ref("users/" + userId)
-    .set({
-      username: name,
-      email: email
-    });
-}
+// function writeUserData(userId, name, email) {
+//   firebase
+//     .database()
+//     .ref("users/" + userId)
+//     .set({
+//       username: name,
+//       email: email
+//     });
+// }

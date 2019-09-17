@@ -7,7 +7,6 @@ $(document).ready(function() {
   }, 3000);
 });
 $("#favoritesBtn").click(function() {
-  
   $("#favorites-container").toggle();
 });
 $("#resultsBtn").click(function() {

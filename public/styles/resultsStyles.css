@@ -86,7 +86,7 @@ div.results-form-group {
     right: 15px;
     bottom: 15px;
     border: 3px solid transparent;
-    border-top-color: lightsteelblue;
+    border-top-color: white;
     border-radius: 50%;
   
     -webkit-animation: spin 1.5s linear infinite;

@@ -58,9 +58,9 @@
             <div class="col-6">
               <div class="text-left float-right mt-1" id="insertButton">
                 {{#if user}}
-                  <btn class="btn btn-secondary" id="signOut"><span>Sign Out...</span></btn>
+                  <a href="/logout" class="btn btn-secondary">Sign Out...</a>
                 {{else}}
-                  <btn class="btn btn-secondary" id="Login"><span>Login...</span></btn>
+                  <a href="/login" class="btn btn-secondary" id="login">Login...</a>
                 {{/if}}
               </div>
             </div>

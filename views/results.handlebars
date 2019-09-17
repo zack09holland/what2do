@@ -11,20 +11,25 @@
     <p>Lorem ipsum dolor sit amet.</p> --}}
     <div class="container">
         <div class="">
-
             <div class="results-form-group">
-
                 <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
                     <div class="card">
                         <div class="btn-group btn-group-toggle card-header">
-                            <a class="btn btn-primary tabFont" data-toggle="collapse" href="#resultsContent"
-                                role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Results</a>
-                            <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
-                                data-target="#favoritesContent" aria-expanded="false"
-                                aria-controls="multiCollapseExample2">Favorites</button>
-                            <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
-                                data-target="#multiCollapseExample2" aria-expanded="false"
-                                aria-controls="multiCollapseExample2">Itineraries</button>
+                             <label class="btn btn-primary active tabFont" type="button" data-toggle="collapse"
+                                data-target=".results-card" aria-expanded="false"
+                                aria-controls="resultsContent">
+                                <input type="radio" name="options" id="resultsBtn" autocomplete="off" checked> Results
+                            </label>
+                             <label class="btn btn-primary active tabFont" type="button" data-toggle="collapse"
+                                data-target=".favorites-card" aria-expanded="false"
+                                aria-controls="resultsContent">
+                                <input type="radio" name="options" id="favoritesBtn" autocomplete="off" checked> Favorites
+                            </label>
+                             <label class="btn btn-primary active tabFont" type="button" data-toggle="collapse"
+                                data-target="#resultsContent" aria-expanded="false"
+                                aria-controls="resultsContent">
+                                <input type="radio" name="options" id="itinerariesBtn" autocomplete="off" checked> Itineraries
+                            </label>
                         </div>
                     </div>
                     <!-- First Card for Travel Details -->
@@ -97,41 +102,88 @@
 </div>
 {{!-- Results Content Tab --}}
 <div id="content">
-    <div class="container">
+    <div id="results-container" class="container">
         <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
-            <div id="accordion">
+            {{!-- <div id="accordion"> --}}
                 <div class="results-card card">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <a class="btn btn-primary tabFont" data-toggle="collapse" href="#collapseOne" role="button"
-                            aria-expanded="false" aria-controls="collapseOne">Events</a>
-                        <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
+                    {{!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active tabFont" type="button" data-toggle="collapse"
                             data-target="#collapseTwo" aria-expanded="false"
-                            aria-controls="collapseTwo">Restaurants</button>
-                    </div>
-                    <div class="row">
+                            aria-controls="collapseTwo">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Events
+                        </label>
+                        <label class="btn btn-secondary tabFont" data-toggle="collapse" href="#collapseOne" role="button"
+                            aria-expanded="false" aria-controls="collapseOne">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Restaurants
+                        </label>
+                      
+                    </div> --}}
+                    {{!-- <div class="row">
                         <div class="col-12">
-                            <div class="collapse " id="collapseOne" data-parent="#accordion">
+                            <div class="collapse " id="collapseOne" >
                                 <div class="card card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad
                                     squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
                                     sapiente ea proident.
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="collapse " id="collapseTwo" data-parent="#accordion">
+                            <div class="collapse " id="collapseTwo">
                                 <div class="card card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad
                                     squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
                                     sapiente ea proident.
                                 </div>
                             </div>
+                        </div>
+                    </div> --}}
+                </div>{{!-- Results end --}}
+                
+            {{!-- </div> --}}
+        </div>
+    </div>
+
+    {{!-- <div id="favorites-container" class="container">
+        <div class="favorites-card card">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active tabFont" type="button" data-toggle="collapse"
+                    data-target="#collapseTwo" aria-expanded="false"
+                    aria-controls="collapseTwo">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Events
+                </label>
+                <label class="btn btn-secondary tabFont" data-toggle="collapse" href="#collapseOne" role="button"
+                    aria-expanded="false" aria-controls="collapseOne">
+                    <input type="radio" name="options" id="option2" autocomplete="off"> Restaurants
+                </label>
+                
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="collapse " id="collapseOne" data-parent="#accordion">
+                        <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                            richardson ad
+                            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                            sapiente ea proident.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="collapse " id="collapseTwo" data-parent="#accordion">
+                        <div class="card card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                            richardson ad
+                            squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                            sapiente ea proident.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div> {{!-- Content end --}}
 {{!-- <div class="container" id="contentDetails">
         <div class="row">

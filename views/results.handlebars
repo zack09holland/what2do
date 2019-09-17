@@ -7,6 +7,183 @@
 
 
 <div id="content">
-    <h2>This is our page title</h2>
-    <p>Lorem ipsum dolor sit amet.</p>
+    {{!-- <h2>This is our page title</h2>
+    <p>Lorem ipsum dolor sit amet.</p> --}}
+    <div class="container">
+        <div class="">
+
+            <div class="results-form-group">
+
+                <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+                    <div class="card">
+                        <div class="btn-group btn-group-toggle card-header">
+                            <a class="btn btn-primary tabFont" data-toggle="collapse" href="#resultsContent"
+                                role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Results</a>
+                            <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
+                                data-target="#favoritesContent" aria-expanded="false"
+                                aria-controls="multiCollapseExample2">Favorites</button>
+                            <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
+                                data-target="#multiCollapseExample2" aria-expanded="false"
+                                aria-controls="multiCollapseExample2">Itineraries</button>
+                        </div>
+                    </div>
+                    <!-- First Card for Travel Details -->
+                    <div class="card">
+                        <h5 class="card-header text-center shadow-md logoFont">WHERE<span
+                                style="font-size: 25px">2</span>
+                        </h5>
+                        <div class="card-body">
+                            <!-- Single Row for all the Search COLUMNS Dynamic to Screen Size -->
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="startDate">Start Date</span>
+                                        </div>
+                                        <input type="date" id="start" class="form-control" aria-label="small"
+                                            aria-describedby="startDate">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="endDate">End Date</span>
+                                        </div>
+                                        <input type="date" id="end" class="form-control" placeholder=""
+                                            aria-label="endDate" aria-describedby="endDate">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="destination">Destination</span>
+                                        </div>
+                                        <!-- Google Autocomplete Fillin Box -->
+                                        <input type="text" class="form-control" id="locationAutocomplete"
+                                            name=trip-destination />
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="tripRadius">Search Radius</span>
+                                        </div>
+                                        <input type="number" id="radius" class="form-control" placeholder=""
+                                            aria-label="tripRadius" aria-describedby="tripRadius" min="10" max="100"
+                                            step="10" value="10">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Search Button for Travel Details-->
+                            <div class="row">
+                                <div class="col-6 text-left">
+                                    <a id="errorNoScroll" href="/results">
+                                        <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
+                                    </a>
+                                    <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
+                                        Please
+                                        try again.</h6>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-left float-right mt-1" id="insertButton"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>{{!-- End of Where2 Form --}}
+        </div>
+    </div>
 </div>
+{{!-- Results Content Tab --}}
+<div id="content">
+    <div class="container">
+        <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+            <div id="accordion">
+                <div class="results-card card">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <a class="btn btn-primary tabFont" data-toggle="collapse" href="#collapseOne" role="button"
+                            aria-expanded="false" aria-controls="collapseOne">Events</a>
+                        <button class="btn btn-primary tabFont" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">Restaurants</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="collapse " id="collapseOne" data-parent="#accordion">
+                                <div class="card card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                    squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                    sapiente ea proident.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="collapse " id="collapseTwo" data-parent="#accordion">
+                                <div class="card card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                    squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                    sapiente ea proident.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> {{!-- Content end --}}
+{{!-- <div class="container" id="contentDetails">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="accordion" id="accordionExample">
+                            <!-- Card for Event Results -->
+                            <div class="card shadow-md" id="event-results-card">
+                                <!-- Card Header is also a Button to Collapse the Card -->
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0 text-center">
+                                        <button class="btn btn-link cardFont" type="button" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Events
+                                        </button>
+                                    </h2>
+                                </div>
+                                <!-- This is the Collapse Content that is Hidden -->
+                                <div id="collapseOne" class="collapse scrollable" aria-labelledby="headingOne"
+                                    data-parent="#accordionExample">
+
+                                </div>
+                            </div>
+                            <!-- Card for Restaurant Results -->
+                            <div class="card shadow-md" id="restaurants-results-card">
+                                <!-- Card Header is also a Button to Collapse the Card -->
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0 text-center">
+                                        <button class="btn btn-link collapsed cardFont" type="button"
+                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            Restaurants
+                                        </button>
+                                    </h2>
+                                </div>
+                                <!-- This is the Collapse Content that is Hidden -->
+                                <div id="collapseTwo" class="collapse scrollable" aria-labelledby="headingTwo"
+                                    data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div id="yelp-data-wrapper"></div>
+                                        <div id="geocode-location-details"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/results.js"></script>

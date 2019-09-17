@@ -7,11 +7,9 @@ $(document).ready(function() {
   }, 3000);
 });
 $("#favoritesBtn").click(function() {
-  console.log("here we are favorites");
   $("#favorites-container").toggle();
 });
 $("#resultsBtn").click(function() {
-  console.log("here we are results");
   $("#results-container").toggle();
   // if($("#accordion").is(':visible')){
   //   $("#accordion").hide("slow")

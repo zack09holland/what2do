@@ -56,7 +56,13 @@
                 try again.</h6>
             </div>
             <div class="col-6">
-              <div class="text-left float-right mt-1" id="insertButton"></div>
+              <div class="text-left float-right mt-1" id="insertButton">
+                {{#if user}}
+                  <btn class="btn btn-secondary" id="signOut"><span>Sign Out...</span></btn>
+                {{else}}
+                  <btn class="btn btn-secondary" id="Login"><span>Login...</span></btn>
+                {{/if}}
+              </div>
             </div>
           </div>
         </div>

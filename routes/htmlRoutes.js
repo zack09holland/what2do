@@ -9,9 +9,10 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      console.log(req.user);
+      res.render("index", { user: true });
+    } else {
+      res.render("index", { user: false });
     }
-    res.render("index");
     //res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 

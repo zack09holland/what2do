@@ -1,4 +1,13 @@
 $(document).ready(function() {
+  if (
+    document.cookie.split(";").filter(function(item) {
+      return item.trim().indexOf("userSession=") === 0;
+    }).length
+  ) {
+    // eslint-disable-next-line prettier/prettier
+    console.log("The cookie \"userSession\" exists");
+  }
+
   // Getting references to our form and inputs
   var loginForm = $("form.login");
   var emailInput = $("input#email-input");
@@ -28,8 +37,10 @@ $(document).ready(function() {
       email: email,
       password: password
     })
-      .then(function() {
-        window.location.replace("/members");
+      .then(function(res) {
+        var sessionCookie = "userID=" + res.id + "; userEmail=" + res.email;
+        document.cookie = sessionCookie;
+        window.location.replace("/");
         // If there's an error, log the error
       })
       .catch(function(err) {

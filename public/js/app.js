@@ -420,25 +420,25 @@ var where2Application = {
     $("#" + location).append(divContainerFluid);
   }
 };
-$("#Search").on("click", function() {
-  if (that.where2Application.searchParams.valid) {
-    $("#contentDetails").hide();
-    that.where2Application.searchParams.start = $("#start")
-      .val()
-      .trim();
-    that.where2Application.searchParams.end = $("#end")
-      .val()
-      .trim();
-    that.where2Application.searchParams.radius = $("#radius")
-      .val()
-      .trim();
-    that.where2Application.zomatoApis.queryZomatoCities();
-    that.where2Application.eventbriteAPI.queryEventbrite();
-    that.where2Application.yelpAPI.queryYelp();
-    displayFixes();
-    document.getElementById("filler").style.height = "200px";
-  }
-});
+// $("#Search").on("click", function() {
+//   if (that.where2Application.searchParams.valid) {
+//     $("#contentDetails").hide();
+//     that.where2Application.searchParams.start = $("#start")
+//       .val()
+//       .trim();
+//     that.where2Application.searchParams.end = $("#end")
+//       .val()
+//       .trim();
+//     that.where2Application.searchParams.radius = $("#radius")
+//       .val()
+//       .trim();
+//     that.where2Application.zomatoApis.queryZomatoCities();
+//     that.where2Application.eventbriteAPI.queryEventbrite();
+//     that.where2Application.yelpAPI.queryYelp();
+//     displayFixes();
+//     document.getElementById("filler").style.height = "200px";
+//   }
+// });
 function renderEvent(queryData) {
   $("#collapseOne").empty();
   //$("#gifContainer").empty();

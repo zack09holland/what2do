@@ -47,6 +47,12 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/search", function(req, res) {
+    var searchParams = req.query;
+    console.log(searchParams);
+    res.send(searchParams);
+  });
+
   // Get all examples
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {

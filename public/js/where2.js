@@ -110,13 +110,13 @@ $("#Search").on("click", function() {
 });
 
 function userSearch(searchParams) {
-  console.log('We are About to Search');
+  console.log("We are About to Search");
   console.log(searchParams);
   $.get("/api/search", searchParams)
     .then(function(data) {
       console.log(data.city);
       if (data) {
-        console.log('OMG the Server Returned Something:')
+        console.log("OMG the Server Returned Something:");
         console.log(data);
       }
       //window.location.replace("/results");

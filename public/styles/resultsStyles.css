@@ -1,9 +1,19 @@
-body {
-    /* background-image: url("/images/events-management-3.jpg"); */
-    background-image: url("/images/resultsBG_spain.jpg");
-    background-repeat: no-repeat;
-    background-position: -50px;
-    
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
 }
 div.results-form-group {
     z-index: 1;
@@ -15,7 +25,15 @@ div.results-form-group {
     bottom: auto;
   }
 .results-card{
-    margin-top: 25px;
+    
+    height: 500px;
+}
+.favorites-card{
+    
+    height: 500px;
+}
+.itineraries-card{
+    
     height: 500px;
 }
 
@@ -41,7 +59,7 @@ div.results-form-group {
     height: 100%;
     z-index: 1000;
   
-    /* visibility: hidden; */
+    visibility: hidden;
   }
   
   #loader {
@@ -140,7 +158,7 @@ div.results-form-group {
     height: 100%;
     background: #222222;
     z-index: 1000;
-    /* visibility: hidden; */
+    visibility: hidden;
   }
   
   #loader-wrapper .loader-section.section-left {

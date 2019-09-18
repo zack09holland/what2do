@@ -7,16 +7,17 @@ $(document).ready(function() {
   }, 3000);
 });
 $("#favoritesBtn").click(function() {
-  $("#favorites-container").toggle();
+  $("#itineraries-container").hide();
+  $("#results-container").hide();
+  $("#favorites-container").slideToggle();
 });
 $("#resultsBtn").click(function() {
-  $("#results-container").toggle();
-  // if($("#accordion").is(':visible')){
-  //   $("#accordion").hide("slow")
-  // }
-  // if($("#accordion").is(':hidden')){
-  //   $("#accordion").show("slow")
-  // }
-  // $(".results-card").is(':visible')
-  // $(selector).css("propertyName", "value");
+  $("#itineraries-container").hide();
+  $("#favorites-container").hide();
+  $("#results-container").slideToggle();
+});
+$("#itinerariesBtn").click(function() {
+  $("#results-container").hide();
+  $("#favorites-container").hide();
+  $("#itineraries-container").slideToggle();
 });

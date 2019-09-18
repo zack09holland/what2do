@@ -7,12 +7,12 @@ $(document).ready(function() {
   }, 3000);
 });
 $("#favoritesBtn").click(function() {
-  $("#itineraries-container").hide()
+  $("#itineraries-container").hide();
   $("#results-container").hide();
   $("#favorites-container").slideToggle();
 });
 $("#resultsBtn").click(function() {
-  $("#itineraries-container").hide()
+  $("#itineraries-container").hide();
   $("#favorites-container").hide();
   $("#results-container").slideToggle();
 });

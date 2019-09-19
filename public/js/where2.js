@@ -114,7 +114,6 @@ function userSearch(searchParams) {
   console.log(searchParams);
   $.get("/api/search", searchParams)
     .then(function(data) {
-      console.log(data.city);
       if (data) {
         console.log("OMG the Server Returned Something:");
         console.log(data);

@@ -1,12 +1,12 @@
 var db = require("../models");
 var passport = require("../config/passport");
+var zomatoAPI = require("../config/zomatoAPI");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    console.log(req.user);
     res.json(req.user);
   });
 
@@ -49,8 +49,34 @@ module.exports = function(app) {
 
   app.get("/api/search", function(req, res) {
     var searchParams = req.query;
-    console.log(searchParams);
-    res.send(searchParams);
+    //console.log(searchParams);
+    //console.log(zomatoAPI);
+    zomatoAPI.queryZomatoCities(
+      searchParams.destination,
+      searchParams.lat,
+      searchParams.lng,
+      function(response) {
+        zomatoAPI.queryZomatoGeocode(
+          searchParams.lat,
+          searchParams.lng,
+          function(response) {
+            console.log(response);
+            res.send(response.data);
+          }
+        );
+      },
+      function(error) {
+        console.log(error);
+        res.send(error);
+      }
+    );
+    //zomatoAPI.queryZomatoGeocode(searchParams.lat, searchParams.lng);
+
+    // if (!zomatoResults) {
+    //   res.json(false);
+    // } else {
+    //   res.send(zomatoResults);
+    // }
   });
 
   // Get all examples

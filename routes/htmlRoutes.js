@@ -16,11 +16,17 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
+    var returnUrl = req.headers.referer;
+    var options = {
+      headers: {
+        redirectUrl: returnUrl
+      }
+    };
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"), options);
   });
 
   app.get("/signup", function(req, res) {

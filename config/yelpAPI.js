@@ -2,8 +2,7 @@ var axios = require("axios");
 
 module.exports = {
   searchParams: {
-    url:
-      "https://api.yelp.com/v3/businesses/search?",
+    url: "https://api.yelp.com/v3/businesses/search?",
     count: 10
   },
   queryYelp: function(destination, prevResults, success, failure) {

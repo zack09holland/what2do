@@ -12,7 +12,15 @@ module.exports = {
     pageCount: 0,
     previousResult: ""
   },
-  queryEventbrite: function(destination,radius,startDate,endDate,prevResults,success,failure) {
+  queryEventbrite: function(
+    destination,
+    radius,
+    startDate,
+    endDate,
+    prevResults,
+    success,
+    failure
+  ) {
     if (this.searchResults.previousResult) {
       //console.log("EventContentExist")
     }

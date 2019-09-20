@@ -9,7 +9,7 @@ var passport = require("../config/passport");
 // app.get('/auth/google/return', passport.authenticate('google'), function(req, res) {
 //   res.redirect(req.session.returnTo || '/');
 //   delete req.session.returnTo;
-// }); 
+// });
 module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
@@ -21,7 +21,6 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
-    
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/");
@@ -29,7 +28,7 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
-  
+
   app.get("/signup", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {

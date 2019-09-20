@@ -22,4 +22,3 @@ $("#itinerariesBtn").click(function() {
   $("#favorites-container").hide();
   $("#itineraries-container").slideToggle();
 });
-

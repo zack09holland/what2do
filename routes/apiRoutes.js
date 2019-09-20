@@ -1,6 +1,8 @@
 var db = require("../models");
 var passport = require("../config/passport");
 var zomatoAPI = require("../config/zomatoAPI");
+var yelpAPI = require("../config/yelpAPI");
+var eventBrite = require("../config/eventBrite");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -60,8 +62,41 @@ module.exports = function(app) {
           searchParams.lat,
           searchParams.lng,
           function(response) {
-            console.log(response);
-            res.send(response.data);
+            var zomResults = {
+              zomatoAPIData: response.data
+            };
+            yelpAPI.queryYelp(
+              searchParams.destination,
+              zomResults,
+              function(response, prevResults) {
+                var results = prevResults;
+                results.yelpAPIData = response;
+                eventBrite.queryEventbrite(
+                  searchParams.destination,
+                  searchParams.radius,
+                  searchParams.start,
+                  searchParams.end,
+                  results,
+                  function(response, prevResults) {
+                    var results = prevResults;
+                    results.eventBriteAPI = response;
+                    res.send(results);
+                  },
+                  function(error) {
+                    console.log(error);
+                    res.send(error);
+                  }
+                );
+              },
+              function(error) {
+                console.log(error);
+                res.send(error);
+              }
+            );
+          },
+          function(error) {
+            console.log(error);
+            res.send(error);
           }
         );
       },

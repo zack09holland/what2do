@@ -12,9 +12,11 @@ $(document).ready(function() {
   var loginForm = $("form.login");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
+  var redirect = getUrlVars().referrer;
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function(event) {
+    console.log(redirect);
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -25,28 +27,55 @@ $(document).ready(function() {
       return;
     }
 
+    if (redirect) {
+      loginUser(userData.email, userData.password, redirect);
+    } else {
+      loginUser(userData.email, userData.password);
+    }
+
     // If we have an email and password we run the loginUser function and clear the form
-    loginUser(userData.email, userData.password);
+
     emailInput.val("");
     passwordInput.val("");
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-  function loginUser(email, password) {
+  function loginUser(email, password, redirect) {
+    console.log(redirect);
     $.post("/api/login", {
       email: email,
       password: password
     })
       .then(function(res) {
+        console.log(redirect);
         var sessionCookie = "userID=" + res.id + "; userEmail=" + res.email;
         document.cookie = sessionCookie;
         //res.redirect(req.session.returnTo);
-        // window.location.replace("/");
-        window.history.back();
+        if (redirect) {
+          if (redirect === "home") {
+            window.location.replace("/");
+          } else {
+            window.location.replace("/" + redirect);
+          }
+        } else {
+          window.location.replace("/");
+        }
+        //window.history.back();
         // If there's an error, log the error
       })
       .catch(function(err) {
         console.log(err);
       });
+  }
+
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(
+      /[?&]+([^=&]+)=([^&]*)/gi,
+      function(m, key, value) {
+        vars[key] = value;
+      }
+    );
+    return vars;
   }
 });

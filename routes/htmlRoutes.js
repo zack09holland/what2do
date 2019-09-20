@@ -4,7 +4,12 @@ var path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+var passport = require("../config/passport");
 
+// app.get('/auth/google/return', passport.authenticate('google'), function(req, res) {
+//   res.redirect(req.session.returnTo || '/');
+//   delete req.session.returnTo;
+// });
 module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
@@ -25,6 +30,7 @@ module.exports = function(app) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/");
+      //res.redirect(req.session.returnTo || '/');
     }
     res.sendFile(path.join(__dirname, "../public/login.html"), options);
   });
@@ -52,16 +58,16 @@ module.exports = function(app) {
   //   //   });
   //   // });
   // });
-
-  // app.get("/results", function(req, res) {
-  //   db.Example.findAll({}).then(function(dbExamples) {
-  //     res.render("results", {
-  //       //examples: dbExamples
-  //     });
-  //   });
-  // });
   app.get("/results", function(req, res) {
-    res.render("results");
+    if (req.user) {
+      res.render("results", { user: true });
+    } else {
+      res.render("results", { user: false });
+    }
+    // res.render("results", {
+    //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
+    //   eventName : "Hello World"
+    // });
   });
 
   // // Load example page and pass in an example by id

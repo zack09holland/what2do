@@ -6,6 +6,7 @@ $(document).ready(function() {
     $("h1").css("color", "#222222");
   }, 3000);
 });
+
 $("#favoritesBtn").click(function() {
   $("#itineraries-container").hide();
   $("#results-container").hide();

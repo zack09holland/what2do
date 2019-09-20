@@ -53,10 +53,9 @@ module.exports = function(app) {
     res.send(searchParams);
   });
 
-  app.post("/api/results"),
-    function(req, res) {
-      res.json(req.user);
-    };
+  app.post("/api/results", function(req, res) {
+    res.json(req.user);
+  });
   // Get all examples
   // app.get("/api/examples", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {

@@ -26,15 +26,15 @@ div.results-form-group {
   }
 .results-card{
     
-    height: 500px;
+    height: 600px;
 }
 .favorites-card{
     
-    height: 500px;
+    height: 600px;
 }
 .itineraries-card{
     
-    height: 500px;
+    height: 600px;
 }
 
 .cardFont {
@@ -48,6 +48,10 @@ div.results-form-group {
 }
 .card-header {
     padding: 0px;
+}
+.scrollable{
+  max-height: 500px;
+  overflow-y: auto;
 }
 /* ************************************************************* */
 /* Loading Page */

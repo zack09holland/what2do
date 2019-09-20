@@ -40,7 +40,9 @@ $(document).ready(function() {
       .then(function(res) {
         var sessionCookie = "userID=" + res.id + "; userEmail=" + res.email;
         document.cookie = sessionCookie;
-        window.location.replace("/");
+        //res.redirect(req.session.returnTo);
+        // window.location.replace("/");
+        window.history.back();
         // If there's an error, log the error
       })
       .catch(function(err) {

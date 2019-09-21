@@ -17,7 +17,6 @@ module.exports = {
     radius,
     startDate,
     endDate,
-    prevResults,
     success,
     failure
   ) {
@@ -51,7 +50,7 @@ module.exports = {
       .then(function(response) {
         var eventBriteAPIData = response.data.events;
         //console.log(eventBriteAPIData);
-        success(eventBriteAPIData, prevResults);
+        success(eventBriteAPIData);
       })
       .catch(function(error) {
         failure(error);

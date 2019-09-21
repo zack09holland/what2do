@@ -51,61 +51,7 @@ module.exports = function(app) {
 
   app.get("/api/search", function(req, res) {
     var searchParams = req.query;
-    zomatoAPI.queryZomatoCities(
-      searchParams.destination,
-      searchParams.lat,
-      searchParams.lng,
-      function(response) {
-        zomatoAPI.queryZomatoGeocode(
-          searchParams.lat,
-          searchParams.lng,
-          function(response) {
-            var zomResults = {
-              zomatoAPIData: response.data.nearby_restaurants
-            };
-            yelpAPI.queryYelp(
-              searchParams.destination,
-              //zomResults,
-              function(response) {
-                var results = {
-                  yelpAPIData: response
-                };
-                eventBrite.queryEventbrite(
-                  searchParams.destination,
-                  searchParams.radius,
-                  searchParams.start,
-                  searchParams.end,
-                  function(response) {
-                    var results = {
-                      eventBriteAPI: response
-                    };
-                    res.send(results);
-                  },
-                  function(error) {
-                    console.log(error);
-                    res.send(error);
-                  }
-                );
-              },
-              function(error) {
-                console.log(error);
-                res.send(error);
-              }
-            );
-          },
-          function(error) {
-            console.log(error);
-            res.send(error);
-          }
-        );
-      },
-      function(error) {
-        console.log(error);
-        res.send(error);
-      }
-    );
     var zomatoPromise = new Promise(function(resolve, reject) {
-      console.log("zomatoPromise");
       zomatoAPI.queryZomatoCities(
         searchParams.destination,
         searchParams.lat,
@@ -115,7 +61,6 @@ module.exports = function(app) {
             searchParams.lat,
             searchParams.lng,
             function(response) {
-              console.log("zomatoPromiseResponse");
               var results = {
                 zomatoAPIData: response.data.nearby_restaurants
               };
@@ -133,16 +78,11 @@ module.exports = function(app) {
         }
       );
     });
-    zomatoPromise.then(function(value) {
-      console.log(value);
-    });
 
     var yelpPromise = new Promise(function(resolve, reject) {
-      console.log("yelpPromise");
       yelpAPI.queryYelp(
         searchParams.destination,
         function(response) {
-          console.log("yelpPromiseResponse");
           var results = {
             yelpAPIData: response
           };
@@ -155,11 +95,7 @@ module.exports = function(app) {
       );
     });
 
-    yelpPromise.then(function(value) {
-      //console.log(value);
-    });
     var eventBritePromise = new Promise(function(resolve, reject) {
-      console.log("eventBritePromise");
       eventBrite.queryEventbrite(
         searchParams.destination,
         searchParams.radius,
@@ -181,16 +117,23 @@ module.exports = function(app) {
     Promise.all([zomatoPromise, yelpPromise, eventBritePromise]).then(function(
       allTheValues
     ) {
-      console.log(allTheValues);
-    });
-    eventBritePromise.then(function(value) {
-      //console.log(value);
+      res.send(allTheValues);
     });
   });
 
-  app.post("/api/results", function(req, res) {
-    res.json(req.user);
+  app.get("/api/favorites", function(req, res) {
+    var query = {};
+    if (req.user.id) {
+      query.favoritesId = req.user.id;
+    }
+    console.log(query);
+    db.Favorites.findAll({
+      where: query
+    }).then(function(dbFavs) {
+      res.json(dbFavs);
+    });
   });
+
   app.post("/api/favorites", function(req, res) {
     res.json(req.user);
   });

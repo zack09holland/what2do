@@ -176,8 +176,8 @@ module.exports = function(app) {
       }
     }
   });
-  app.get("/favorites", function(req, res) {
-    res.render("favorites", apiResults);
+  app.get("/favorites", isAuthenticated, function(req, res) {
+    res.render("favorites");
   });
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {

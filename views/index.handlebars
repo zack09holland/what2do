@@ -1,72 +1,74 @@
 {{!--  --}}
 <!-- Main Body Content -->
-<div id="carouselExampleSlidesOnly" class="carousel slide " data-ride="carousel" id="bg">
-  <div class="form-group">
-    <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
-      <!-- First Card for Travel Details -->
-      <div class="card">
-        <h5 class="card-header text-center shadow-md logoFont">WHERE<span style="font-size: 25px">2</span>
-        </h5>
-        <div class="card-body">
-          <!-- Single Row for all the Search COLUMNS Dynamic to Screen Size -->
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="startDate">Start Date</span>
+<div id="carouselExampleSlidesOnly" class="carousel slide " data-ride="carousel">
+  <form>
+    <div class="form-group">
+      <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+        <!-- First Card for Travel Details -->
+        <div class="card">
+          <h5 class="card-header text-center shadow-md logoFont">WHERE<span style="font-size: 25px">2</span>
+          </h5>
+          <div class="card-body">
+            <!-- Single Row for all the Search COLUMNS Dynamic to Screen Size -->
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="startDate">Start Date</span>
+                  </div>
+                  <input type="date" id="start" class="form-control" aria-label="small" aria-describedby="startDate" name="start">
                 </div>
-                <input type="date" id="start" class="form-control" aria-label="small" aria-describedby="startDate">
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="endDate">End Date</span>
+                  </div>
+                  <input type="date" id="end" class="form-control" placeholder="" aria-label="endDate"
+                    aria-describedby="endDate" name="end">
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="destination">Destination</span>
+                  </div>
+                  <!-- Google Autocomplete Fillin Box -->
+                  <input type="text" class="form-control" id="locationAutocomplete" name="destination" />
+                </div>
+              </div>
+              <div class="col-12 col-md-4">
+                <div class="input-group input-group-sm mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="tripRadius">Search Radius</span>
+                  </div>
+                  <input type="number" id="radius" class="form-control" placeholder="" aria-label="tripRadius"
+                    aria-describedby="tripRadius" min="10" max="100" step="10" value="10" name="radius">
+                </div>
               </div>
             </div>
-            <div class="col-12 col-md-6">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="endDate">End Date</span>
-                </div>
-                <input type="date" id="end" class="form-control" placeholder="" aria-label="endDate"
-                  aria-describedby="endDate">
+            <!-- Search Button for Travel Details-->
+            <div class="row">
+              <div class="col-6 text-left">
+                <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
+                <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results. Please
+                  try again.</h6>
               </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="destination">Destination</span>
+              <div class="col-6">
+                <div class="text-left float-right mt-1" id="insertButton">
+                  {{#if user}}
+                  <a href="/logout" class="btn btn-secondary">Sign Out...</a>
+                  {{else}}
+                  <a href="/login?referrer=home" class="btn btn-secondary" id="login">Login...</a>
+                  {{/if}}
                 </div>
-                <!-- Google Autocomplete Fillin Box -->
-                <input type="text" class="form-control" id="locationAutocomplete" name=trip-destination />
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="input-group input-group-sm mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="tripRadius">Search Radius</span>
-                </div>
-                <input type="number" id="radius" class="form-control" placeholder="" aria-label="tripRadius"
-                  aria-describedby="tripRadius" min="10" max="100" step="10" value="10">
-              </div>
-            </div>
-          </div>
-          <!-- Search Button for Travel Details-->
-          <div class="row">
-            <div class="col-6 text-left">
-              <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-              <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results. Please
-                try again.</h6>
-            </div>
-            <div class="col-6">
-              <div class="text-left float-right mt-1" id="insertButton">
-                {{#if user}}
-                <a href="/logout" class="btn btn-secondary">Sign Out...</a>
-                {{else}}
-                <a href="/login?referrer=home" class="btn btn-secondary" id="login">Login...</a>
-                {{/if}}
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="images/COACHELLA2017-WP176-1920x537.jpg" class="d-block w-100" alt="...">

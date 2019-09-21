@@ -22,3 +22,7 @@ $("#itinerariesBtn").click(function() {
   $("#favorites-container").hide();
   $("#itineraries-container").slideToggle();
 });
+
+// $("#Search").clikc(function() {
+
+// })

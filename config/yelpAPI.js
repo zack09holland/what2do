@@ -5,7 +5,7 @@ module.exports = {
     url: "https://api.yelp.com/v3/businesses/search?",
     count: 10
   },
-  queryYelp: function(destination, prevResults, success, failure) {
+  queryYelp: function(destination, success, failure) {
     console.log("yelp");
     queryUrl = this.searchParams.url + "location=" + destination;
     axios({
@@ -19,7 +19,7 @@ module.exports = {
       .then(function(response) {
         var yelpBusinesses = response.data.businesses;
         //console.log(yelpBusinesses);
-        success(yelpBusinesses, prevResults);
+        success(yelpBusinesses);
       })
       .catch(function(error) {
         failure(error);

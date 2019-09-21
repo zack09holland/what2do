@@ -63,7 +63,7 @@ div.results-form-group {
     height: 100%;
     z-index: 1000;
   
-    visibility: hidden;
+    /* visibility: hidden; */
   }
   
   #loader {
@@ -162,7 +162,7 @@ div.results-form-group {
     height: 100%;
     background: #222222;
     z-index: 1000;
-    visibility: hidden;
+    /* visibility: hidden; */
   }
   
   #loader-wrapper .loader-section.section-left {

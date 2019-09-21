@@ -99,5 +99,5 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 //  Loading Page
-var height = $(window).height();  //getting windows height
-jQuery('.carousel-item').css('height',height+'px');   //and setting height of carousel
+var height = $(window).height(); //getting windows height
+jQuery(".carousel-item").css("height", height + "px"); //and setting height of carousel

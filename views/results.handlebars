@@ -107,7 +107,8 @@
                                 <div class="col-6 text-left">
                                     <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
                                     <btn class="btn btn-primary" id="Console"><span>Console...</span></btn>
-                                    <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results. Please
+                                    <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
+                                        Please
                                         try again.</h6>
                                 </div>
                                 <div class="col-6">
@@ -115,7 +116,8 @@
                                         {{#if user}}
                                         <a href="/logout" class="btn btn-secondary">Sign Out...</a>
                                         {{else}}
-                                        <a href="/login?referrer=results" class="btn btn-secondary" id="login">Login...</a>
+                                        <a href="/login?referrer=results" class="btn btn-secondary"
+                                            id="login">Login...</a>
                                         {{/if}}
                                     </div>
                                 </div>
@@ -137,107 +139,42 @@
                     </h5>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary active tabFont" type="button" data-toggle="collapse"
-                            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <input type="radio" name="options" id="option1" autocomplete="off" checked> Events
                         </label>
                         <label class="btn btn-secondary tabFont" data-toggle="collapse" href="#collapseTwo"
-                            role="button" aria-expanded="false" aria-controls="collapseTwo">
+                            role="button" aria-expanded="true" aria-controls="collapseTwo">
                             <input type="radio" name="options" id="option2" autocomplete="off"> Restaurants
                         </label>
 
                     </div>
-                    <div class="row">
 
+                    <div class="row">
+                    
                         <div class="col-12">
-                            <div class="collapse scrollable" id="collapseOne" data-parent="#accordion">
-                                {{#if apiResults}}
-                                {{apiResults}}
-                                {{/if}}
-                                {{!-- {{#each events}} --}}
+                            <div class="collapse scrollable show" id="collapseOne" data-parent="#accordion">
+                                {{#each apiResults.eventBriteAPI}}
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
                                                     <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto" src={{{eventImg}}}>
+                                                            class="img-responsive m-auto" src={{{logo.url}}}>
                                                     </div>
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong>{{eventName}}</strong></p>
+                                                                <strong>{{name.text}}</strong></p>
                                                             <p class="card-text card-line">
-                                                                <small>{{eventAddress}}</small></p>
-                                                            <p class="card-text card-line">{{eventDate}}</p>
+                                                                <small>{{venue.address.address_1}},
+                                                                    {{venue.address.localized_area_display}}</small></p>
+                                                            <p class="card-text card-line">{{start.local}}</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{eventURL}}} target="_blank">Results from
-                                                            EventBrite</a></span>
-                                                    <span class="float-right"><i class="fas fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{!-- {{/each}} --}}
-                                {{!-- Card Example without handlebars --}}
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <div class="card shadow-lg">
-                                                <div class="row m-0">
-                                                    <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto"
-                                                            src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c">
-                                                    </div>
-                                                    <div class="col-6 col-md-8">
-                                                        <div class="card-body">
-                                                            <p class="card-text card-line"><strong>2019 UW Medical
-                                                                    Center CNA/MA Job Fair &amp; Open House</strong></p>
-                                                            <p class="card-text card-line"><small>1601 Northeast
-                                                                    Columbia Road, Seattle, WA</small></p>
-                                                            <p class="card-text card-line">2019-09-21T10:00:00</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer"><span><a class="card-text card-line"
-                                                            href="https://www.eventbrite.com/e/2019-uw-medical-center-cnama-job-fair-open-house-tickets-56937561780?aff=ebapi"
-                                                            target="_blank">Results from EventBrite</a></span><span
-                                                        class="float-right"><i class="fas fa-heart"
-                                                            aria-hidden="true"></i></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="collapse" id="collapseTwo" data-parent="#accordion">
-                                {{!-- {{#each events}} --}}
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <div class="card shadow-lg">
-                                                <div class="row m-0">
-                                                    <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto" src={{{eventImg}}}>
-                                                    </div>
-                                                    <div class="col-6 col-md-8">
-                                                        <div class="card-body">
-                                                            <p class="card-text card-line">
-                                                                <strong>{{eventName}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                <small>{{eventAddress}}</small></p>
-                                                            <p class="card-text card-line">{{eventDate}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{eventURL}}}s target="_blank">Results from
+                                                            href={{{resource_uri}}} target="_blank">Results from
                                                             EventBrite</a></span>
                                                     <button class="float-right">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
@@ -247,33 +184,40 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{!-- {{/each}} --}}
+                                {{/each}}
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="collapse scrollable" id="collapseTwo" data-parent="#accordion">
+                                {{#each apiResults.yelpAPIData}}
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
                                                     <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto"
-                                                            src="https://s3-media3.fl.yelpcdn.com/bphoto/ijju-wYoRAxWjHPTCxyQGQ/o.jpg">
+                                                            class="img-responsive m-auto" src={{{image_url}}}>
                                                     </div>
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
-                                                            <p class="card-text card-line"><strong>Pike Place
-                                                                    Chowder</strong></p>
-                                                            <p class="card-text card-line"><small>1530 Post Aly Ste 11 ;
-                                                                    Seattle, WA, US, 98101</small></p>
-                                                            <p class="card-text card-line">(206) 267-2537</p>
-                                                            <p class="card-text card-line">Price: $$</p>
-                                                            <p class="card-text card-line">Rating: 4.5</p>
-                                                            <p class="card-text card-line">Review Count: 6982</p>
+                                                            <p class="card-text card-line">
+                                                                <strong>{{name}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                <small>{{location.address1}} {{location.address2}},
+                                                                    {{location.city}}, {{location.state}}</small></p>
+                                                            <p class="card-text card-line"><br>Categories:
+                                                                {{#each categories}}
+                                                                | {{title}}
+                                                                {{/each}}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer"><span><a class="card-text card-line"
-                                                            href="https://www.yelp.com/biz/pike-place-chowder-seattle?adjust_creative=a-3qMSAYr-UOyyiwumVX_A&amp;utm_campaign=yelp_api_v3&amp;utm_medium=api_v3_business_search&amp;utm_source=a-3qMSAYr-UOyyiwumVX_A"
-                                                            target="_blank">Results from Yelp</a></span>
-                                                   <button class="float-right">
+                                                            href={{{url}}} target="_blank">Results from
+                                                            Yelp</a></span>
+                                                    <button class="float-right">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
@@ -281,9 +225,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{/each}}
+
                             </div>
                         </div>
                     </div>
+
                 </div>{{!-- Results end --}}
             </div>
         </div>
@@ -330,55 +277,6 @@
         </div>
     </div>
 </div> {{!-- Content end --}}
-{{!-- <div class="container" id="contentDetails">
-        <div class="row">
-            <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <div class="accordion" id="accordionExample">
-                            <!-- Card for Event Results -->
-                            <div class="card shadow-md" id="event-results-card">
-                                <!-- Card Header is also a Button to Collapse the Card -->
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="mb-0 text-center">
-                                        <button class="btn btn-link cardFont" type="button" data-toggle="collapse"
-                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Events
-                                        </button>
-                                    </h2>
-                                </div>
-                                <!-- This is the Collapse Content that is Hidden -->
-                                <div id="collapseOne" class="collapse scrollable" aria-labelledby="headingOne"
-                                    data-parent="#accordionExample">
-
-                                </div>
-                            </div>
-                            <!-- Card for Restaurant Results -->
-                            <div class="card shadow-md" id="restaurants-results-card">
-                                <!-- Card Header is also a Button to Collapse the Card -->
-                                <div class="card-header" id="headingTwo">
-                                    <h2 class="mb-0 text-center">
-                                        <button class="btn btn-link collapsed cardFont" type="button"
-                                            data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                            aria-controls="collapseTwo">
-                                            Restaurants
-                                        </button>
-                                    </h2>
-                                </div>
-                                <!-- This is the Collapse Content that is Hidden -->
-                                <div id="collapseTwo" class="collapse scrollable" aria-labelledby="headingTwo"
-                                    data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div id="yelp-data-wrapper"></div>
-                                        <div id="geocode-location-details"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
 
 
 

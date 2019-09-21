@@ -55,13 +55,17 @@ html {
 div.form-group {
   position: absolute;
   z-index: 1;
-  top: 100px;
+  /* top: 100px; */
   /* change to whatever you want */
   max-width: 960px;
-  margin: 0 auto;
+  /* margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: auto;
+  bottom: auto; */
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 /* The sidebar menu */

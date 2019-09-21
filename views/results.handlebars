@@ -160,12 +160,12 @@
                                                 <div class="card shadow-lg">
                                                     <div class="row m-0">
                                                         <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" src={{{logo.url}}}>
+                                                                class="img-responsive m-auto" id="eventImg{{@index}}" src={{{logo.url}}}>
                                                         </div>
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong id="eventName">{{name.text}}</strong></p>
+                                                                    <strong id="eventName{{@index}}">{{name.text}}</strong></p>
                                                                 <p class="card-text card-line" >
                                                                     <small id="eventAddress">{{venue.address.address_1}},
                                                                         {{venue.address.localized_area_display}}</small></p>
@@ -173,11 +173,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a id="eventURL" class="card-text card-line"
+                                                    <div class="card-footer"><span><a id="eventURL{{@index}}" class="card-text card-line"
                                                                 href={{{resource_uri}}} target="_blank">Results from
                                                                 EventBrite</a></span>
                                                     
-                                                        <button class="float-right theFavorites" id="favoriteBtn">
+                                                        <button class="float-right theFavorites" id="favoriteBtn{{@index}}" find="{{@index}}">
                                                             <i class="fas fa-heart" aria-hidden="true"></i>
                                                         </button>
                                                         
@@ -236,7 +236,7 @@
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong>{{name}}</strong></p>
+                                                                <strong id="foodName{{@index}}">{{name}}</strong></p>
                                                             <p class="card-text card-line">
                                                                 Address: {{location.address1}} {{location.address2}},
                                                                     {{location.city}}, {{location.state}}</p>
@@ -259,7 +259,7 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right theFavorites" id="favoriteBtn">
+                                                    <button class="float-right theFavorites" id="favoriteBtn{{@index}}"  find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
@@ -304,7 +304,7 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right theFavorites" id="favoriteBtn">
+                                                    <button class="float-right theFavorites" id="favoriteBtn" value="favoriteBtn{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>

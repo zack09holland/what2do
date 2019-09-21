@@ -124,7 +124,7 @@ module.exports = function(app) {
   app.get("/api/favorites", function(req, res) {
     var query = {};
     if (req.user.id) {
-      query.favoritesId = req.user.id;
+      query.UserId = req.user.id;
     }
     console.log(query);
     db.Favorites.findAll({
@@ -139,7 +139,7 @@ module.exports = function(app) {
     console.log(req.user);
     var object = {
       favoriteTitle: req.body.favoriteTitle,
-      favoriteURL: req.body.favortieUrl,
+      favoriteUrl: req.body.favoriteUrl,
       favoriteImg: req.body.favoriteImg,
       favoriteStartDate: req.body.favoriteStartDate,
       favoriteStartDate: req.body.favoriteEndDate,

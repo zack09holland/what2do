@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  if (decodeURIComponent(getUrlVars().destination)) {
+    var destination = decodeURIComponent(getUrlVars().destination)
+    $("#locationAutocomplete").attr("value", destination);
+  }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
   // setTimeout(function() {
@@ -26,3 +30,15 @@ $("#favoriteBtn").click(function() {
   // Create a new entry in the db with the contents of the obj
   //...hard time figuring out how to pass the object values into this
 });
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    m,
+    key,
+    value
+  ) {
+    vars[key] = value;
+  });
+  return vars;
+}

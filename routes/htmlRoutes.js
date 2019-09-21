@@ -92,13 +92,13 @@ module.exports = function(app) {
                 },
                 function(error) {
                   console.log(error);
-                  res.send(error);
+                  reject(error);
                 }
               );
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              reject(error);
             }
           );
         });
@@ -116,7 +116,7 @@ module.exports = function(app) {
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              reject(error);
             }
           );
         });

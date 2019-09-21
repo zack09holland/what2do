@@ -27,7 +27,42 @@
                     </div>
                     <div class="favorites-card card">
                             <h5 class="card-header text-center shadow-md logoFont">Favorites<span style="font-size: 25px"></span>
-                        <div class="favorites">
+                        <div class="favorites scrollable">
+
+                            {{#each favoriteEntries}}
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="card shadow-lg">
+                                                <div class="row m-0">
+                                                    <div class="col-6 col-md-4 m-auto"><img id="eventImg" class="img-responsive m-auto"
+                                                            src={{{favoriteImg}}}>
+                                                    </div>
+                                                    <div class="col-6 col-md-8">
+                                                        <div class="card-body">
+                                                            <p class="card-text card-line">
+                                                                <strong id="eventName">{{favoriteTitle}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                <small id="eventAddress">During Trip From {{favoriteStart}} To
+                                                                    {{favoriteEndDate}}</small></p>
+                                                            <p class="card-text card-line">{{favoriteUrl}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{!-- <div class="card-footer"><span><a id="eventURL" class="card-text card-line" href={{{resource_uri}}}
+                                                            target="_blank">Results from
+                                                            EventBrite</a></span>
+
+                                                    <button class="float-right theFavorites" id="favoriteBtn">
+                                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                                    </button>
+
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
 
                         </div>
                     </div>

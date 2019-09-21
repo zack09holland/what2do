@@ -17,14 +17,16 @@ $(".theFavorites").click(function() {
   var end = decodeURIComponent(getUrlVars().end);
   var radius = decodeURIComponent(getUrlVars().end);
   var eventName = $("#eventName").text();
+  var eventImg = $("#eventImg").attr('src');
+  var eventURL = $("#eventURL").attr('href');
 
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,
     favoriteEndDate: end,
     favoriteRadius: radius,
-    favoriteImg: "dead",
-    favoriteUrl: "dead",
+    favoriteImg: eventImg,
+    favoriteUrl: eventURL,
     favoriteTitle: eventName
   };
   console.log(object);

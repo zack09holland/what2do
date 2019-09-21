@@ -25,5 +25,4 @@ $("#itinerariesBtn").click(function() {
 $("#favoriteBtn").click(function() {
   // Create a new entry in the db with the contents of the obj
   //...hard time figuring out how to pass the object values into this
-  
-})
+});

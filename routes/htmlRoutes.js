@@ -84,7 +84,7 @@ module.exports = function(app) {
               searchParams.lng,
               function(response) {
                 var zomResults = {
-                  zomatoAPIData: response.data
+                  zomatoAPIData: response.data.nearby_restaurants
                 };
                 yelpAPI.queryYelp(
                   searchParams.destination,

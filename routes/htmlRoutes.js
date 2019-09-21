@@ -63,7 +63,7 @@ module.exports = function(app) {
   // });
   app.get("/results", function(req, res) {
     if (req.query) {
-      console.log(req.query)
+      console.log(req.query);
       if (
         req.query.destination &&
         req.query.start &&
@@ -102,9 +102,15 @@ module.exports = function(app) {
                         var results = prevResults;
                         results.eventBriteAPI = response;
                         if (req.user) {
-                          res.render("results", { user: true, apiResults: results });
+                          res.render("results", {
+                            user: true,
+                            apiResults: results
+                          });
                         } else {
-                          res.render("results", { user: false, apiResults: results });
+                          res.render("results", {
+                            user: false,
+                            apiResults: results
+                          });
                         }
                       },
                       function(error) {
@@ -138,7 +144,7 @@ module.exports = function(app) {
         res.render("results", { user: false });
       }
     }
-    
+
     // res.render("results", {
     //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
     //   eventName : "Hello World"

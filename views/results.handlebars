@@ -35,7 +35,7 @@
                                     Results
                                 </label> --}}
                                 {{#if user}}
-                                <a href="/favorites?user={{user.id}}" class="btn btn-primary tabFont">Favorites</a>
+                                <a href="/favorites" class="btn btn-primary tabFont">Favorites</a>
                                 {{!-- <label class="btn btn-primary active tabFont" type="button"
                                     data-target="#resultsContent" aria-expanded="false" aria-controls="resultsContent">
                                     <input type="radio" name="options" id="itinerariesBtn" autocomplete="off" checked>
@@ -165,19 +165,19 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong>{{name.text}}</strong></p>
-                                                                <p class="card-text card-line">
-                                                                    <small>{{venue.address.address_1}},
+                                                                    <strong id="eventName">{{name.text}}</strong></p>
+                                                                <p class="card-text card-line" >
+                                                                    <small id="eventAddress">{{venue.address.address_1}},
                                                                         {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment start.local format="llll"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                    <div class="card-footer"><span><a id="eventURL" class="card-text card-line"
                                                                 href={{{resource_uri}}} target="_blank">Results from
                                                                 EventBrite</a></span>
                                                     
-                                                        <button class="float-right" id="favoriteBtn">
+                                                        <button class="float-right theFavorites" id="favoriteBtn">
                                                             <i class="fas fa-heart" aria-hidden="true"></i>
                                                         </button>
                                                         
@@ -200,15 +200,15 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong>{{name.text}}</strong></p>
-                                                                <p class="card-text card-line">
-                                                                    <small>{{venue.address.address_1}},
+                                                                    <strong id="eventName">{{name.text}}</strong></p>
+                                                                <p class="card-text card-line" >
+                                                                    <small id="eventAddress">{{venue.address.address_1}},
                                                                         {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment start.local format="llll"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                    <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
                                                                 href={{{resource_uri}}} target="_blank">Results from
                                                                 EventBrite</a></span>
                                                     </div>
@@ -259,7 +259,7 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right" id="favoriteBtn">
+                                                    <button class="float-right theFavorites" id="favoriteBtn">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
@@ -304,7 +304,7 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right" id="favoriteBtn">
+                                                    <button class="float-right theFavorites" id="favoriteBtn">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>

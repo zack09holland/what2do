@@ -90,6 +90,7 @@ $(function() {
 
 $("#Search").on("click", function() {
   if (that.where2Application.searchParams.valid) {
+    userSearch(that.where2Application.searchParams);
     $("#loader-wrapper").css("visibility", "visible");
     $("#loader-wrapper .loader-section").css("visibility", "visible");
 
@@ -108,7 +109,7 @@ $("#Search").on("click", function() {
     // that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
-    //userSearch(that.where2Application.searchParams);
+
     window.location.replace(
       "/results?destination=" +
         that.where2Application.searchParams.destination +
@@ -162,4 +163,16 @@ function userSearch(searchParams) {
     .catch(function(err) {
       console.log(err);
     });
+}
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    m,
+    key,
+    value
+  ) {
+    vars[key] = value;
+  });
+  return vars;
 }

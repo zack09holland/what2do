@@ -92,13 +92,13 @@ module.exports = function(app) {
                 },
                 function(error) {
                   console.log(error);
-                  res.send(error);
+                  reject(error);
                 }
               );
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              reject(error);
             }
           );
         });
@@ -116,7 +116,7 @@ module.exports = function(app) {
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              reject(error);
             }
           );
         });
@@ -136,37 +136,30 @@ module.exports = function(app) {
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              re(error);
             }
           );
         });
 
-        Promise.all([zomatoPromise, yelpPromise, eventBritePromise]).then(
-          function(allTheValues) {
-            if (req.user) {
-              console.log("user");
-              res.render("results", {
-                user: true,
-                zomatoData: allTheValues[0],
-                yelpData: allTheValues[1],
-                eventBriteData: allTheValues[2]
-              });
-            } else {
-              console.log("noUser");
-              res.render("results", {
-                user: false,
-                zomatoData: allTheValues[0],
-                yelpData: allTheValues[1],
-                eventBriteData: allTheValues[2]
-              });
-            }
+        Promise.all([yelpPromise, eventBritePromise]).then(function(
+          allTheValues
+        ) {
+          if (req.user) {
+            console.log("user");
+            res.render("results", {
+              user: true,
+              yelpData: allTheValues[0],
+              eventBriteData: allTheValues[1]
+            });
+          } else {
+            console.log("noUser");
+            res.render("results", {
+              user: false,
+              yelpData: allTheValues[0],
+              eventBriteData: allTheValues[1]
+            });
           }
-        );
-
-        // res.render("results", {
-        //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
-        //   eventName : "Hello World"
-        // });
+        });
       } else {
         if (req.user) {
           res.render("results", { user: true });
@@ -176,8 +169,8 @@ module.exports = function(app) {
       }
     }
   });
-  app.get("/favorites", function(req, res) {
-    res.render("favorites", apiResults);
+  app.get("/favorites", isAuthenticated, function(req, res) {
+    res.render("favorites");
   });
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {

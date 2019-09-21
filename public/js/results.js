@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  if (decodeURIComponent(getUrlVars().destination)) {
+    var destination = decodeURIComponent(getUrlVars().destination);
+    $("#locationAutocomplete").attr("value", destination);
+  }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
   // setTimeout(function() {
@@ -6,23 +10,42 @@ $(document).ready(function() {
   //   $("h1").css("color", "#222222");
   // }, 2000);
 });
-$("#favoritesBtn").click(function() {
-  $("#itineraries-container").hide();
-  $("#results-container").hide();
-  $("#favorites-container").slideToggle();
-});
-$("#resultsBtn").click(function() {
-  $("#itineraries-container").hide();
-  $("#favorites-container").hide();
-  $("#results-container").slideToggle();
-});
-$("#itinerariesBtn").click(function() {
-  $("#results-container").hide();
-  $("#favorites-container").hide();
-  $("#itineraries-container").slideToggle();
-});
 
-$("#favoriteBtn").click(function() {
+$(".theFavorites").click(function() {
+  var destination = decodeURIComponent(getUrlVars().destination);
+  var start = decodeURIComponent(getUrlVars().start);
+  var end = decodeURIComponent(getUrlVars().end);
+  var radius = decodeURIComponent(getUrlVars().end);
+  var eventName = $("#eventName").text();
+
+  var object = {
+    favoriteDestination: destination,
+    favoriteStartDate: start,
+    favoriteEndDate: end,
+    favoriteRadius: radius,
+    favoriteImg: "dead",
+    favoriteUrl: "dead",
+    favoriteTitle: eventName
+  };
+  console.log(object);
+  $.post("/api/favorites", object).then(function(data) {
+    if (data) {
+      console.log("OMG the Server Returned Something:");
+      console.log(data);
+    }
+  });
   // Create a new entry in the db with the contents of the obj
   //...hard time figuring out how to pass the object values into this
 });
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    m,
+    key,
+    value
+  ) {
+    vars[key] = value;
+  });
+  return vars;
+}

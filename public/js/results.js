@@ -16,15 +16,19 @@ $(".theFavorites").click(function() {
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var radius = decodeURIComponent(getUrlVars().end);
-  var eventName = $("#eventName").text();
-
+  console.log();
+  var find = $(this).attr("find");
+  console.log(find);
+  var eventName = $("#eventName" + find).text();
+  var eventImg = $("#eventImg" + find).attr("src");
+  var eventURL = $("#eventURL" + find).attr("href");
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,
     favoriteEndDate: end,
     favoriteRadius: radius,
-    favoriteImg: "dead",
-    favoriteUrl: "dead",
+    favoriteImg: eventImg,
+    favoriteUrl: eventURL,
     favoriteTitle: eventName
   };
   console.log(object);

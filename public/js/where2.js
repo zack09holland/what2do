@@ -105,6 +105,41 @@ $("#Search").on("click", function() {
     // that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
+    //userSearch(that.where2Application.searchParams);
+    window.location.replace(
+      "/results?destination=" +
+        that.where2Application.searchParams.destination +
+        "&start=" +
+        that.where2Application.searchParams.start +
+        "&end=" +
+        that.where2Application.searchParams.end +
+        "&lat=" +
+        that.where2Application.searchParams.lat +
+        "&lng=" +
+        that.where2Application.searchParams.lng +
+        "&radius=" +
+        that.where2Application.searchParams.radius
+    );
+  }
+});
+
+$("#Console").on("click", function() {
+  if (that.where2Application.searchParams.valid) {
+    $("#contentDetails").hide();
+    that.where2Application.searchParams.start = $("#start")
+      .val()
+      .trim();
+    that.where2Application.searchParams.end = $("#end")
+      .val()
+      .trim();
+    that.where2Application.searchParams.radius = $("#radius")
+      .val()
+      .trim();
+    // that.where2Application.zomatoApis.queryZomatoCities();
+    // that.where2Application.eventbriteAPI.queryEventbrite();
+    // that.where2Application.yelpAPI.queryYelp();
+    // displayFixes();
+    // document.getElementById("filler").style.height = "200px";
     userSearch(that.where2Application.searchParams);
   }
 });

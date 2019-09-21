@@ -50,7 +50,7 @@ module.exports = {
     })
       .then(function(response) {
         var eventBriteAPIData = response.data.events;
-        console.log(eventBriteAPIData);
+        //console.log(eventBriteAPIData);
         success(eventBriteAPIData, prevResults);
       })
       .catch(function(error) {

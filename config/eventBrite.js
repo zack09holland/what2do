@@ -44,7 +44,7 @@ module.exports = {
       method: "get",
       url: queryUrl,
       headers: {
-        Authorization: "Bearer 66AKEOSDCRZBQ2RSCGXN"
+        Authorization: "Bearer MK5SWZBFFNZBEO6AZWHM"
       }
     })
       .then(function(response) {

@@ -176,15 +176,3 @@ function getUrlVars() {
   });
   return vars;
 }
-
-$("#favoriteBtn").click(function() {
-  URLObj = getUrlVars();
-  console.log(getUrlVars());
-  console.log(URLObj.destination.replace(/%20/g, " "));
-  var eventName = $("#eventName").text();
-  var eventAddress = $("#eventAddress").text();
-  var eventDate = $("#eventDate").text();
-  console.log(eventDate);
-  // Create a new entry in the db with the contents of the obj
-  //...hard time figuring out how to pass the object values into this
-});

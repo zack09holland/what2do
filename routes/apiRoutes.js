@@ -135,7 +135,20 @@ module.exports = function(app) {
   });
 
   app.post("/api/favorites", function(req, res) {
-    res.json(req.user);
+    console.log(req.body);
+    console.log(req.user);
+    var object = {
+      favoriteTitle: req.body.favoriteTitle,
+      favoriteURL: req.body.favortieUrl,
+      favoriteImg: req.body.favoriteImg,
+      favoriteStartDate: req.body.favoriteStartDate,
+      favoriteStartDate: req.body.favoriteEndDate,
+      favoriteDestination: req.body.favoriteDestination,
+      UserId: req.user.id
+    };
+    db.Favorites.create(object).then(function(data) {
+      res.json(data);
+    });
   });
   // Get all examples
   // app.get("/api/examples", function(req, res) {

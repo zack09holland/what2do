@@ -136,32 +136,30 @@ module.exports = function(app) {
             },
             function(error) {
               console.log(error);
-              res.send(error);
+              re(error);
             }
           );
         });
 
-        Promise.all([zomatoPromise, yelpPromise, eventBritePromise]).then(
-          function(allTheValues) {
-            if (req.user) {
-              console.log("user");
-              res.render("results", {
-                user: true,
-                zomatoData: allTheValues[0],
-                yelpData: allTheValues[1],
-                eventBriteData: allTheValues[2]
-              });
-            } else {
-              console.log("noUser");
-              res.render("results", {
-                user: false,
-                zomatoData: allTheValues[0],
-                yelpData: allTheValues[1],
-                eventBriteData: allTheValues[2]
-              });
-            }
+        Promise.all([yelpPromise, eventBritePromise]).then(function(
+          allTheValues
+        ) {
+          if (req.user) {
+            console.log("user");
+            res.render("results", {
+              user: true,
+              yelpData: allTheValues[0],
+              eventBriteData: allTheValues[1]
+            });
+          } else {
+            console.log("noUser");
+            res.render("results", {
+              user: false,
+              yelpData: allTheValues[0],
+              eventBriteData: allTheValues[1]
+            });
           }
-        );
+        });
       } else {
         if (req.user) {
           res.render("results", { user: true });

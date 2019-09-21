@@ -14,7 +14,6 @@ var eventBrite = require("../config/eventBrite");
 //   delete req.session.returnTo;
 // });
 module.exports = function(app) {
-  
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -163,8 +162,6 @@ module.exports = function(app) {
             }
           }
         );
-
-       
       } else {
         if (req.user) {
           res.render("results", { user: true });

@@ -109,7 +109,7 @@ $("#Search").on("click", function() {
     // that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
-    
+
     window.location.replace(
       "/results?destination=" +
         that.where2Application.searchParams.destination +
@@ -167,23 +167,24 @@ function userSearch(searchParams) {
 
 function getUrlVars() {
   var vars = {};
-  var parts = window.location.href.replace(
-    /[?&]+([^=&]+)=([^&]*)/gi,
-    function(m, key, value) {
-      vars[key] = value;
-    }
-  );
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+    m,
+    key,
+    value
+  ) {
+    vars[key] = value;
+  });
   return vars;
 }
 
 $("#favoriteBtn").click(function() {
   URLObj = getUrlVars();
-  console.log(getUrlVars())
-  console.log(URLObj.destination.replace(/%20/g," ") )
-  var eventName = $('#eventName').text()
-  var eventAddress = $('#eventAddress').text()
-  var eventDate = $('#eventDate').text()
-  console.log(eventDate)
+  console.log(getUrlVars());
+  console.log(URLObj.destination.replace(/%20/g, " "));
+  var eventName = $("#eventName").text();
+  var eventAddress = $("#eventAddress").text();
+  var eventDate = $("#eventDate").text();
+  console.log(eventDate);
   // Create a new entry in the db with the contents of the obj
   //...hard time figuring out how to pass the object values into this
 });

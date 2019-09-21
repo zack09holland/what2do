@@ -51,8 +51,6 @@ module.exports = function(app) {
 
   app.get("/api/search", function(req, res) {
     var searchParams = req.query;
-    //console.log(searchParams);
-    //console.log(zomatoAPI);
     zomatoAPI.queryZomatoCities(
       searchParams.destination,
       searchParams.lat,
@@ -67,19 +65,20 @@ module.exports = function(app) {
             };
             yelpAPI.queryYelp(
               searchParams.destination,
-              zomResults,
-              function(response, prevResults) {
-                var results = prevResults;
-                results.yelpAPIData = response;
+              //zomResults,
+              function(response) {
+                var results = {
+                  yelpAPIData: response
+                };
                 eventBrite.queryEventbrite(
                   searchParams.destination,
                   searchParams.radius,
                   searchParams.start,
                   searchParams.end,
-                  results,
-                  function(response, prevResults) {
-                    var results = prevResults;
-                    results.eventBriteAPI = response;
+                  function(response) {
+                    var results = {
+                      eventBriteAPI: response
+                    };
                     res.send(results);
                   },
                   function(error) {
@@ -105,16 +104,94 @@ module.exports = function(app) {
         res.send(error);
       }
     );
-    //zomatoAPI.queryZomatoGeocode(searchParams.lat, searchParams.lng);
+    var zomatoPromise = new Promise(function(resolve, reject) {
+      console.log("zomatoPromise");
+      zomatoAPI.queryZomatoCities(
+        searchParams.destination,
+        searchParams.lat,
+        searchParams.lng,
+        function(response) {
+          zomatoAPI.queryZomatoGeocode(
+            searchParams.lat,
+            searchParams.lng,
+            function(response) {
+              console.log("zomatoPromiseResponse");
+              var results = {
+                zomatoAPIData: response.data.nearby_restaurants
+              };
+              resolve(results);
+            },
+            function(error) {
+              console.log(error);
+              res.send(error);
+            }
+          );
+        },
+        function(error) {
+          console.log(error);
+          res.send(error);
+        }
+      );
+    });
+    zomatoPromise.then(function(value) {
+      console.log(value);
+    });
 
-    // if (!zomatoResults) {
-    //   res.json(false);
-    // } else {
-    //   res.send(zomatoResults);
-    // }
+    var yelpPromise = new Promise(function(resolve, reject) {
+      console.log("yelpPromise");
+      yelpAPI.queryYelp(
+        searchParams.destination,
+        function(response) {
+          console.log("yelpPromiseResponse");
+          var results = {
+            yelpAPIData: response
+          };
+          resolve(results);
+        },
+        function(error) {
+          console.log(error);
+          res.send(error);
+        }
+      );
+    });
+
+    yelpPromise.then(function(value) {
+      //console.log(value);
+    });
+    var eventBritePromise = new Promise(function(resolve, reject) {
+      console.log("eventBritePromise");
+      eventBrite.queryEventbrite(
+        searchParams.destination,
+        searchParams.radius,
+        searchParams.start,
+        searchParams.end,
+        function(response, prevResults) {
+          var results = {
+            eventBriteAPI: response
+          };
+          resolve(results);
+        },
+        function(error) {
+          console.log(error);
+          res.send(error);
+        }
+      );
+    });
+
+    Promise.all([zomatoPromise, yelpPromise, eventBritePromise]).then(function(
+      allTheValues
+    ) {
+      console.log(allTheValues);
+    });
+    eventBritePromise.then(function(value) {
+      //console.log(value);
+    });
   });
 
   app.post("/api/results", function(req, res) {
+    res.json(req.user);
+  });
+  app.post("/api/favorites", function(req, res) {
     res.json(req.user);
   });
   // Get all examples

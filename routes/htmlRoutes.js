@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
+      console.log(req.user);
       res.render("index", { user: true });
     } else {
       res.render("index", { user: false });
@@ -32,6 +33,7 @@ module.exports = function(app) {
     };
     // If the user already has an account send them to the members page
     if (req.user) {
+      console.log(req.user);
       res.redirect("/");
       //res.redirect(req.session.returnTo || '/');
     }
@@ -72,85 +74,111 @@ module.exports = function(app) {
         req.query.lng &&
         req.query.radius
       ) {
-        console.log("son of a bitch");
         var searchParams = req.query;
-        zomatoAPI.queryZomatoCities(
-          searchParams.destination,
-          searchParams.lat,
-          searchParams.lng,
-          function(response) {
-            zomatoAPI.queryZomatoGeocode(
-              searchParams.lat,
-              searchParams.lng,
-              function(response) {
-                var zomResults = {
-                  zomatoAPIData: response.data.nearby_restaurants
-                };
-                yelpAPI.queryYelp(
-                  searchParams.destination,
-                  zomResults,
-                  function(response, prevResults) {
-                    var results = prevResults;
-                    results.yelpAPIData = response;
-                    eventBrite.queryEventbrite(
-                      searchParams.destination,
-                      searchParams.radius,
-                      searchParams.start,
-                      searchParams.end,
-                      results,
-                      function(response, prevResults) {
-                        var results = prevResults;
-                        results.eventBriteAPI = response;
-                        if (req.user) {
-                          res.render("results", {
-                            user: true,
-                            apiResults: results
-                          });
-                        } else {
-                          res.render("results", {
-                            user: false,
-                            apiResults: results
-                          });
-                        }
-                      },
-                      function(error) {
-                        console.log(error);
-                        res.send(error);
-                      }
-                    );
-                  },
-                  function(error) {
-                    console.log(error);
-                    res.send(error);
-                  }
-                );
-              },
-              function(error) {
-                console.log(error);
-                res.send(error);
-              }
-            );
-          },
-          function(error) {
-            console.log(error);
-            res.send(error);
+        var zomatoPromise = new Promise(function(resolve, reject) {
+          zomatoAPI.queryZomatoCities(
+            searchParams.destination,
+            searchParams.lat,
+            searchParams.lng,
+            function(response) {
+              zomatoAPI.queryZomatoGeocode(
+                searchParams.lat,
+                searchParams.lng,
+                function(response) {
+                  var results = {
+                    zomatoAPIData: response.data.nearby_restaurants
+                  };
+                  resolve(results);
+                },
+                function(error) {
+                  console.log(error);
+                  res.send(error);
+                }
+              );
+            },
+            function(error) {
+              console.log(error);
+              res.send(error);
+            }
+          );
+        });
+
+        var yelpPromise = new Promise(function(resolve, reject) {
+          console.log("yelpPromise");
+          yelpAPI.queryYelp(
+            searchParams.destination,
+            function(response) {
+              console.log("yelpPromiseResponse");
+              var results = {
+                yelpAPIData: response
+              };
+              resolve(results);
+            },
+            function(error) {
+              console.log(error);
+              res.send(error);
+            }
+          );
+        });
+
+        var eventBritePromise = new Promise(function(resolve, reject) {
+          console.log("eventBritePromise");
+          eventBrite.queryEventbrite(
+            searchParams.destination,
+            searchParams.radius,
+            searchParams.start,
+            searchParams.end,
+            function(response, prevResults) {
+              var results = {
+                eventBriteAPI: response
+              };
+              resolve(results);
+            },
+            function(error) {
+              console.log(error);
+              res.send(error);
+            }
+          );
+        });
+
+        Promise.all([zomatoPromise, yelpPromise, eventBritePromise]).then(
+          function(allTheValues) {
+            if (req.user) {
+              console.log("user");
+              res.render("results", {
+                user: true,
+                zomatoData: allTheValues[0],
+                yelpData: allTheValues[1],
+                eventBriteData: allTheValues[2]
+              });
+            } else {
+              console.log("noUser");
+              res.render("results", {
+                user: false,
+                zomatoData: allTheValues[0],
+                yelpData: allTheValues[1],
+                eventBriteData: allTheValues[2]
+              });
+            }
           }
         );
-      }
-    } else {
-      if (req.user) {
-        res.render("results", { user: true });
+
+        // res.render("results", {
+        //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
+        //   eventName : "Hello World"
+        // });
       } else {
-        res.render("results", { user: false });
+        if (req.user) {
+          res.render("results", { user: true });
+        } else {
+          res.render("results", { user: false });
+        }
       }
     }
-
-    // res.render("results", {
-    //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
-    //   eventName : "Hello World"
-    // });
   });
-
+  app.get("/favorites", function(req, res) {
+    res.render("favorites", apiResults);
+  });
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(

@@ -1,5 +1,5 @@
 <div id="bg">
-    <img src="/images/resultsBG_spain.jpg" alt="">
+    <img src="images/resultsBG_Spain.jpg" alt="">
 </div>
 
 <div id="loader-wrapper">
@@ -27,22 +27,20 @@
                         </a>
                         <div class="card">
                             <div class="btn-group btn-group-toggle">
-                                <label class="btn btn-primary active tabFont" type="button" data-target=".results-card"
+                                <button class="btn btn-primary tabFont" type="button" data-target=".results-card"
+                                    aria-expanded="false" aria-controls="resultsContent"> Results</button>
+                                {{!-- <label class="btn btn-primary active tabFont" type="button" data-target=".results-card"
                                     aria-expanded="false" aria-controls="resultsContent">
                                     <input type="radio" name="options" id="resultsBtn" autocomplete="off" checked>
                                     Results
-                                </label>
+                                </label> --}}
                                 {{#if user}}
-                                <label class="btn btn-primary active tabFont " type="button"
-                                    data-target=".favorites-card" aria-expanded="false" aria-controls="resultsContent">
-                                    <input type="radio" name="options" id="favoritesBtn" autocomplete="off" checked>
-                                    Favorites
-                                </label>
-                                <label class="btn btn-primary active tabFont" type="button"
+                                <a href="/favorites?user={{user.id}}" class="btn btn-primary tabFont">Favorites</a>
+                                {{!-- <label class="btn btn-primary active tabFont" type="button"
                                     data-target="#resultsContent" aria-expanded="false" aria-controls="resultsContent">
                                     <input type="radio" name="options" id="itinerariesBtn" autocomplete="off" checked>
                                     Itineraries
-                                </label>
+                                </label> --}}
                                 {{else}}
                                 <label class="btn btn-primary active tabFont disabled" type="button"
                                     data-target=".favorites-card" aria-expanded="false" aria-controls="resultsContent"
@@ -50,12 +48,13 @@
                                     <input type="radio" name="options" id="favoritesBtn" autocomplete="off" checked>
                                     Favorites
                                 </label>
-                                <label class="btn btn-primary active tabFont disabled" type="button"
+                              
+                                {{!-- <label class="btn btn-primary active tabFont disabled" type="button"
                                     data-target="#resultsContent" aria-expanded="false" aria-controls="resultsContent"
                                     style="visibility: hidden">
                                     <input type="radio" name="options" id="itinerariesBtn" autocomplete="off" checked>
                                     Itineraries
-                                </label>
+                                </label> --}}
                                 {{/if}}
                             </div>
                         </div>
@@ -137,8 +136,8 @@
                 <div class="results-card card">
                     <h5 class="card-header text-center shadow-md logoFont">Results<span style="font-size: 25px"></span>
                     </h5>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary active tabFont" type="button" data-toggle="collapse"
+                    <div class="btn-group active btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary tabFont" type="button" data-toggle="collapse"
                             data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <input type="radio" name="options" id="option1" autocomplete="off" checked> Events
                         </label>
@@ -150,33 +149,117 @@
                     </div>
 
                     <div class="row">
-                    
+                    {{!-- eventBriteAPI Cards --}}
                         <div class="col-12">
                             <div class="collapse scrollable show" id="collapseOne" data-parent="#accordion">
-                                {{#each apiResults.eventBriteAPI}}
+                                {{#if user}}
+                                {{#each eventBriteData.eventBriteAPI}}
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <div class="card shadow-lg">
+                                                    <div class="row m-0">
+                                                        <div class="col-6 col-md-4 m-auto"><img
+                                                                class="img-responsive m-auto" src={{{logo.url}}}>
+                                                        </div>
+                                                        <div class="col-6 col-md-8">
+                                                            <div class="card-body">
+                                                                <p class="card-text card-line">
+                                                                    <strong>{{name.text}}</strong></p>
+                                                                <p class="card-text card-line">
+                                                                    <small>{{venue.address.address_1}},
+                                                                        {{venue.address.localized_area_display}}</small></p>
+                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                                href={{{resource_uri}}} target="_blank">Results from
+                                                                EventBrite</a></span>
+                                                    
+                                                        <button class="float-right" id="favoriteBtn">
+                                                            <i class="fas fa-heart" aria-hidden="true"></i>
+                                                        </button>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                                {{else}}
+                                {{#each eventBriteData.eventBriteAPI}}
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <div class="card shadow-lg">
+                                                    <div class="row m-0">
+                                                        <div class="col-6 col-md-4 m-auto"><img
+                                                                class="img-responsive m-auto" src={{{logo.url}}}>
+                                                        </div>
+                                                        <div class="col-6 col-md-8">
+                                                            <div class="card-body">
+                                                                <p class="card-text card-line">
+                                                                    <strong>{{name.text}}</strong></p>
+                                                                <p class="card-text card-line">
+                                                                    <small>{{venue.address.address_1}},
+                                                                        {{venue.address.localized_area_display}}</small></p>
+                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                                href={{{resource_uri}}} target="_blank">Results from
+                                                                EventBrite</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{!-- yelpAPIData Cards --}}
+                        <div class="col-12">
+                            <div class="collapse scrollable" id="collapseTwo" data-parent="#accordion">
+                                {{#if user}}
+                                {{#each yelpData.yelpAPIData}}
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
                                                     <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto" src={{{logo.url}}}>
+                                                            class="img-responsive m-auto" src={{{image_url}}}>
                                                     </div>
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong>{{name.text}}</strong></p>
+                                                                <strong>{{name}}</strong></p>
                                                             <p class="card-text card-line">
-                                                                <small>{{venue.address.address_1}},
-                                                                    {{venue.address.localized_area_display}}</small></p>
-                                                            <p class="card-text card-line">{{start.local}}</p>
+                                                                Address: {{location.address1}} {{location.address2}},
+                                                                    {{location.city}}, {{location.state}}</p>
+                                                            <p class="card-text card-line">
+                                                                Phone: {{display_phone}} </p>
+                                                            <p class="card-text card-line">
+                                                                Price: {{price}} </p>
+                                                            <p class="card-text card-line">
+                                                                Rating: {{rating}} </p>
+                                                            <p class="card-text card-line">
+                                                                Number of reviews: {{review_count}} </p>
+                                                            <p class="card-text card-line"><br>Categories:
+                                                                {{#each categories}}
+                                                                | {{title}}
+                                                                {{/each}}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{resource_uri}}} target="_blank">Results from
-                                                            EventBrite</a></span>
-                                                    <button class="float-right">
+                                                            href={{{url}}} target="_blank">Results from
+                                                            Yelp</a></span>
+                                                    <button class="float-right" id="favoriteBtn">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
@@ -185,12 +268,8 @@
                                     </div>
                                 </div>
                                 {{/each}}
-
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="collapse scrollable" id="collapseTwo" data-parent="#accordion">
-                                {{#each apiResults.yelpAPIData}}
+                                {{else}}
+                                {{#each yelpData.yelpAPIData}}
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-12 mt-3">
@@ -198,6 +277,56 @@
                                                 <div class="row m-0">
                                                     <div class="col-6 col-md-4 m-auto"><img
                                                             class="img-responsive m-auto" src={{{image_url}}}>
+                                                    </div>
+                                                    <div class="col-6 col-md-8">
+                                                        <div class="card-body">
+                                                            <p class="card-text card-line">
+                                                                <strong>{{name}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                Address: {{location.address1}} {{location.address2}},
+                                                                    {{location.city}}, {{location.state}}</p>
+                                                            <p class="card-text card-line">
+                                                                Phone: {{display_phone}} </p>
+                                                            <p class="card-text card-line">
+                                                                Price: {{price}} </p>
+                                                            <p class="card-text card-line">
+                                                                Rating: {{rating}} </p>
+                                                            <p class="card-text card-line">
+                                                                Number of reviews: {{review_count}} </p>
+                                                            <p class="card-text card-line"><br>Categories:
+                                                                {{#each categories}}
+                                                                | {{title}}
+                                                                {{/each}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer"><span><a class="card-text card-line"
+                                                            href={{{url}}} target="_blank">Results from
+                                                            Yelp</a></span>
+                                                    <button class="float-right" id="favoriteBtn">
+                                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{/if}}
+                            </div>
+                        </div>
+                        {{!-- zomatoAPIData Cards --}}
+                        {{!-- <div class="col-12">
+                            <div class="collapse scrollable" id="collapseTwo" data-parent="#accordion">
+                                {{#each apiResults.zomatoAPIData}}
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="card shadow-lg">
+                                                <div class="row m-0">
+                                                    <div class="col-6 col-md-4 m-auto"><img
+                                                            class="img-responsive m-auto" src={{{restaurant.featured_image}}}>
                                                     </div>
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
@@ -228,7 +357,7 @@
                                 {{/each}}
 
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>{{!-- Results end --}}
@@ -244,26 +373,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="collapse " id="favoritesContent" data-parent="#accordion">
-                            <div class="card card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                richardson ad
-                                squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                sapiente ea proident.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="itineraries-container" class="container">
-        <div class="col-md-10 offset-md-1 col-xl-12 offset-xl-0">
-            <div class="favorites-card card">
-                <h5 class="card-header text-center shadow-md logoFont">Itineraries<span style="font-size: 25px"></span>
-                </h5>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="collapse " id="itinerariesContent" data-parent="#accordion">
                             <div class="card card-body">
                                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
                                 richardson ad

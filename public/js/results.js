@@ -1,12 +1,11 @@
 $(document).ready(function() {
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
-  setTimeout(function() {
-    $("body").addClass("loaded");
-    $("h1").css("color", "#222222");
-  }, 3000);
+  // setTimeout(function() {
+  //   $("body").addClass("loaded");
+  //   $("h1").css("color", "#222222");
+  // }, 2000);
 });
-
 $("#favoritesBtn").click(function() {
   $("#itineraries-container").hide();
   $("#results-container").hide();
@@ -23,6 +22,7 @@ $("#itinerariesBtn").click(function() {
   $("#itineraries-container").slideToggle();
 });
 
-// $("#Search").clikc(function() {
-
-// })
+$("#favoriteBtn").click(function() {
+  // Create a new entry in the db with the contents of the obj
+  //...hard time figuring out how to pass the object values into this
+});

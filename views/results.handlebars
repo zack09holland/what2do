@@ -165,15 +165,15 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong>{{log name.text}}</strong></p>
-                                                                <p class="card-text card-line">
-                                                                    <small>{{venue.address.address_1}},
+                                                                    <strong id="eventName">{{name.text}}</strong></p>
+                                                                <p class="card-text card-line" >
+                                                                    <small id="eventAddress">{{venue.address.address_1}},
                                                                         {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment start.local format="llll"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                    <div class="card-footer"><span><a id="eventURL" class="card-text card-line"
                                                                 href={{{resource_uri}}} target="_blank">Results from
                                                                 EventBrite</a></span>
                                                     
@@ -200,15 +200,15 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong>{{name.text}}</strong></p>
-                                                                <p class="card-text card-line">
-                                                                    <small>{{venue.address.address_1}},
+                                                                    <strong id="eventName">{{name.text}}</strong></p>
+                                                                <p class="card-text card-line" >
+                                                                    <small id="eventAddress">{{venue.address.address_1}},
                                                                         {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment start.local format="llll"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                    <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
                                                                 href={{{resource_uri}}} target="_blank">Results from
                                                                 EventBrite</a></span>
                                                     </div>

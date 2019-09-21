@@ -5,6 +5,9 @@ var path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 var passport = require("../config/passport");
+var zomatoAPI = require("../config/zomatoAPI");
+var yelpAPI = require("../config/yelpAPI");
+var eventBrite = require("../config/eventBrite");
 
 // app.get('/auth/google/return', passport.authenticate('google'), function(req, res) {
 //   res.redirect(req.session.returnTo || '/');
@@ -59,11 +62,89 @@ module.exports = function(app) {
   //   // });
   // });
   app.get("/results", function(req, res) {
-    if (req.user) {
-      res.render("results", { user: true });
+    if (req.query) {
+      console.log(req.query);
+      if (
+        req.query.destination &&
+        req.query.start &&
+        req.query.end &&
+        req.query.lat &&
+        req.query.lng &&
+        req.query.radius
+      ) {
+        console.log("son of a bitch");
+        var searchParams = req.query;
+        zomatoAPI.queryZomatoCities(
+          searchParams.destination,
+          searchParams.lat,
+          searchParams.lng,
+          function(response) {
+            zomatoAPI.queryZomatoGeocode(
+              searchParams.lat,
+              searchParams.lng,
+              function(response) {
+                var zomResults = {
+                  zomatoAPIData: response.data
+                };
+                yelpAPI.queryYelp(
+                  searchParams.destination,
+                  zomResults,
+                  function(response, prevResults) {
+                    var results = prevResults;
+                    results.yelpAPIData = response;
+                    eventBrite.queryEventbrite(
+                      searchParams.destination,
+                      searchParams.radius,
+                      searchParams.start,
+                      searchParams.end,
+                      results,
+                      function(response, prevResults) {
+                        var results = prevResults;
+                        results.eventBriteAPI = response;
+                        if (req.user) {
+                          res.render("results", {
+                            user: true,
+                            apiResults: results
+                          });
+                        } else {
+                          res.render("results", {
+                            user: false,
+                            apiResults: results
+                          });
+                        }
+                      },
+                      function(error) {
+                        console.log(error);
+                        res.send(error);
+                      }
+                    );
+                  },
+                  function(error) {
+                    console.log(error);
+                    res.send(error);
+                  }
+                );
+              },
+              function(error) {
+                console.log(error);
+                res.send(error);
+              }
+            );
+          },
+          function(error) {
+            console.log(error);
+            res.send(error);
+          }
+        );
+      }
     } else {
-      res.render("results", { user: false });
+      if (req.user) {
+        res.render("results", { user: true });
+      } else {
+        res.render("results", { user: false });
+      }
     }
+
     // res.render("results", {
     //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
     //   eventName : "Hello World"

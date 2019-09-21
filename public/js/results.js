@@ -4,7 +4,7 @@ $(document).ready(function() {
   setTimeout(function() {
     $("body").addClass("loaded");
     $("h1").css("color", "#222222");
-  }, 3000);
+  }, 2000);
 });
 
 $("#favoritesBtn").click(function() {
@@ -23,6 +23,8 @@ $("#itinerariesBtn").click(function() {
   $("#itineraries-container").slideToggle();
 });
 
-// $("#Search").clikc(function() {
-
-// })
+$("#favoriteBtn").click(function() {
+  // Create a new entry in the db with the contents of the obj
+  //...hard time figuring out how to pass the object values into this
+  
+})

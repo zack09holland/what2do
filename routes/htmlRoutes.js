@@ -17,6 +17,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
+      console.log(req.user)
       res.render("index", { user: true });
     } else {
       res.render("index", { user: false });
@@ -32,6 +33,7 @@ module.exports = function(app) {
     };
     // If the user already has an account send them to the members page
     if (req.user) {
+      console.log(req.user)
       res.redirect("/");
       //res.redirect(req.session.returnTo || '/');
     }
@@ -150,7 +152,9 @@ module.exports = function(app) {
     //   eventName : "Hello World"
     // });
   });
-
+  app.get("/favorites", function(req, res) {
+    res.render("favorites",req.user);
+  });
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {
   //   db.Example.findOne({ where: { id: req.params.id } }).then(function(

@@ -152,44 +152,78 @@
                     {{!-- eventBriteAPI Cards --}}
                         <div class="col-12">
                             <div class="collapse scrollable show" id="collapseOne" data-parent="#accordion">
+                                {{#if user}}
                                 {{#each apiResults.eventBriteAPI}}
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <div class="card shadow-lg">
-                                                <div class="row m-0">
-                                                    <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto" src={{{logo.url}}}>
-                                                    </div>
-                                                    <div class="col-6 col-md-8">
-                                                        <div class="card-body">
-                                                            <p class="card-text card-line">
-                                                                <strong>{{name.text}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                <small>{{venue.address.address_1}},
-                                                                    {{venue.address.localized_area_display}}</small></p>
-                                                            <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <div class="card shadow-lg">
+                                                    <div class="row m-0">
+                                                        <div class="col-6 col-md-4 m-auto"><img
+                                                                class="img-responsive m-auto" src={{{logo.url}}}>
+                                                        </div>
+                                                        <div class="col-6 col-md-8">
+                                                            <div class="card-body">
+                                                                <p class="card-text card-line">
+                                                                    <strong>{{name.text}}</strong></p>
+                                                                <p class="card-text card-line">
+                                                                    <small>{{venue.address.address_1}},
+                                                                        {{venue.address.localized_area_display}}</small></p>
+                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{resource_uri}}} target="_blank">Results from
-                                                            EventBrite</a></span>
-                                                    <button class="float-right" id="favoriteBtn">
-                                                        <i class="fas fa-heart" aria-hidden="true"></i>
-                                                    </button>
+                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                                href={{{resource_uri}}} target="_blank">Results from
+                                                                EventBrite</a></span>
+                                                    
+                                                        <button class="float-right" id="favoriteBtn">
+                                                            <i class="fas fa-heart" aria-hidden="true"></i>
+                                                        </button>
+                                                        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 {{/each}}
-
+                                {{else}}
+                                {{#each apiResults.eventBriteAPI}}
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <div class="card shadow-lg">
+                                                    <div class="row m-0">
+                                                        <div class="col-6 col-md-4 m-auto"><img
+                                                                class="img-responsive m-auto" src={{{logo.url}}}>
+                                                        </div>
+                                                        <div class="col-6 col-md-8">
+                                                            <div class="card-body">
+                                                                <p class="card-text card-line">
+                                                                    <strong>{{name.text}}</strong></p>
+                                                                <p class="card-text card-line">
+                                                                    <small>{{venue.address.address_1}},
+                                                                        {{venue.address.localized_area_display}}</small></p>
+                                                                <p class="card-text card-line">{{moment start.local format="llll"}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer"><span><a class="card-text card-line"
+                                                                href={{{resource_uri}}} target="_blank">Results from
+                                                                EventBrite</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                                {{/if}}
                             </div>
                         </div>
                         {{!-- yelpAPIData Cards --}}
                         <div class="col-12">
                             <div class="collapse scrollable" id="collapseTwo" data-parent="#accordion">
+                                {{#if user}}
                                 {{#each apiResults.yelpAPIData}}
                                 <div class="container-fluid">
                                     <div class="row">
@@ -234,7 +268,52 @@
                                     </div>
                                 </div>
                                 {{/each}}
-
+                                {{else}}
+                                {{#each apiResults.yelpAPIData}}
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="card shadow-lg">
+                                                <div class="row m-0">
+                                                    <div class="col-6 col-md-4 m-auto"><img
+                                                            class="img-responsive m-auto" src={{{image_url}}}>
+                                                    </div>
+                                                    <div class="col-6 col-md-8">
+                                                        <div class="card-body">
+                                                            <p class="card-text card-line">
+                                                                <strong>{{name}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                Address: {{location.address1}} {{location.address2}},
+                                                                    {{location.city}}, {{location.state}}</p>
+                                                            <p class="card-text card-line">
+                                                                Phone: {{display_phone}} </p>
+                                                            <p class="card-text card-line">
+                                                                Price: {{price}} </p>
+                                                            <p class="card-text card-line">
+                                                                Rating: {{rating}} </p>
+                                                            <p class="card-text card-line">
+                                                                Number of reviews: {{review_count}} </p>
+                                                            <p class="card-text card-line"><br>Categories:
+                                                                {{#each categories}}
+                                                                | {{title}}
+                                                                {{/each}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer"><span><a class="card-text card-line"
+                                                            href={{{url}}} target="_blank">Results from
+                                                            Yelp</a></span>
+                                                    <button class="float-right" id="favoriteBtn">
+                                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{/if}}
                             </div>
                         </div>
                         {{!-- zomatoAPIData Cards --}}

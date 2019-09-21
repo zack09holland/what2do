@@ -90,6 +90,9 @@ $(function() {
 
 $("#Search").on("click", function() {
   if (that.where2Application.searchParams.valid) {
+    $("#loader-wrapper").css("visibility","visible")
+    $("#loader-wrapper .loader-section").css("visibility","visible")
+    
     $("#contentDetails").hide();
     that.where2Application.searchParams.start = $("#start")
       .val()

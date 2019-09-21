@@ -1,12 +1,11 @@
 $(document).ready(function() {
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
-  setTimeout(function() {
-    $("body").addClass("loaded");
-    $("h1").css("color", "#222222");
-  }, 2000);
+  // setTimeout(function() {
+  //   $("body").addClass("loaded");
+  //   $("h1").css("color", "#222222");
+  // }, 2000);
 });
-
 $("#favoritesBtn").click(function() {
   $("#itineraries-container").hide();
   $("#results-container").hide();

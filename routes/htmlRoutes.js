@@ -14,6 +14,7 @@ var eventBrite = require("../config/eventBrite");
 //   delete req.session.returnTo;
 // });
 module.exports = function(app) {
+  
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -163,10 +164,7 @@ module.exports = function(app) {
           }
         );
 
-        // res.render("results", {
-        //   eventImg : "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F57073564%2F189433837126%2F1%2Foriginal.jpg?h=200&amp;w=450&amp;auto=compress&amp;rect=0%2C208%2C2400%2C1200&amp;s=6fe732e2018657615ca37e702b14378c",
-        //   eventName : "Hello World"
-        // });
+       
       } else {
         if (req.user) {
           res.render("results", { user: true });

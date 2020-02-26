@@ -437,6 +437,7 @@ var where2Application = {
 //   }
 // });
 function renderEvent(queryData) {
+  console.log(queryData)
   $("#collapseOne").empty();
   //$("#gifContainer").empty();
 

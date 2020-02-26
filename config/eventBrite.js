@@ -50,7 +50,7 @@ module.exports = {
 
       
     axios({
-      url: queryURL,
+      url: queryUrl,
       type: "get",
       async:true,
       dataType: "json",

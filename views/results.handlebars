@@ -195,16 +195,16 @@
                                                 <div class="card shadow-lg">
                                                     <div class="row m-0">
                                                         <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" src={{{images.url}}}>
+                                                                class="img-responsive m-auto" src={{{images.0.url}}}>
                                                         </div>
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
                                                                     <strong id="eventName">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
-                                                                    <small id="eventAddress">{{_embedded.venues.name}}, 
-                                                                        {{_embedded.venues.address.line1}}{{_embedded.venues.city.name}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="LT"}}</p>
+                                                                    <small id="eventAddress">{{_embedded.venues.0.name}}, 
+                                                                        {{_embedded.venues.0.address.line1}}{{_embedded.venues.0.city.name}}</small></p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="hh:mm:ss a"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -93,7 +93,7 @@ $(function() {
 
 $("#Search").on("click", function() {
   if (that.where2Application.searchParams.valid) {
-    userSearch(that.where2Application.searchParams);
+    
     $("#loader-wrapper").css("visibility", "visible");
     $("#loader-wrapper .loader-section").css("visibility", "visible");
 
@@ -113,6 +113,7 @@ $("#Search").on("click", function() {
     // that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
+    userSearch(that.where2Application.searchParams);
     console.log(that.where2Application.searchParams.start)
     window.location.replace(
       "/results?destination=" +
@@ -136,10 +137,10 @@ $("#Console").on("click", function() {
     $("#contentDetails").hide();
     that.where2Application.searchParams.start = $("#start")
       .val()
-      .trim();
-    that.where2Application.searchParams.end = $("#end")
+      .trim()+"T00:00:01Z";
+      that.where2Application.searchParams.end = $("#end")
       .val()
-      .trim();
+      .trim()+"T00:00:01Z";
     that.where2Application.searchParams.radius = $("#radius")
       .val()
       .trim();

@@ -158,7 +158,6 @@ function userSearch(searchParams) {
       if (data) {
         console.log("OMG the Server Returned Something:");
         console.log(data);
-        console.log(response);
       }
       //window.location.replace("/results");
       // If there's an error, handle it by throwing up a bootstrap alert

@@ -44,7 +44,9 @@ var where2Application = {
     }
     $("#end").attr("value", yyyy + "-" + mm + "-" + dd);
     $("#end").attr("max", yyyy + 1 + "-" + mm + "-" + dd);
+
     console.log(startDate)
+    
   }
 };
 
@@ -111,7 +113,7 @@ $("#Search").on("click", function() {
     // that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
-
+    console.log(start)
     window.location.replace(
       "/results?destination=" +
         that.where2Application.searchParams.destination +

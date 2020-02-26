@@ -93,7 +93,6 @@ $(function() {
 
 $("#Search").on("click", function() {
   if (that.where2Application.searchParams.valid) {
-    console.log(that.where2Application.searchParams.start)
     userSearch(that.where2Application.searchParams);
     $("#loader-wrapper").css("visibility", "visible");
     $("#loader-wrapper .loader-section").css("visibility", "visible");
@@ -101,11 +100,11 @@ $("#Search").on("click", function() {
     $("#contentDetails").hide();
     that.where2Application.searchParams.start = $("#start")
       .val()
-      .trim();
+      .trim()+"T00:00:01Z";
     console.log($("#start").val().trim())
     that.where2Application.searchParams.end = $("#end")
       .val()
-      .trim();
+      .trim()+"T00:00:01Z";
     that.where2Application.searchParams.radius = $("#radius")
       .val()
       .trim();

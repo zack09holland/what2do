@@ -104,9 +104,9 @@ $("#Search").on("click", function() {
     that.where2Application.searchParams.radius = $("#radius")
       .val()
       .trim();
-    // that.where2Application.zomatoApis.queryZomatoCities();
-    // that.where2Application.eventbriteAPI.queryEventbrite();
-    // that.where2Application.yelpAPI.queryYelp();
+    that.where2Application.zomatoApis.queryZomatoCities();
+    that.where2Application.eventbriteAPI.queryEventbrite();
+    that.where2Application.yelpAPI.queryYelp();
     // displayFixes();
     // document.getElementById("filler").style.height = "200px";
 

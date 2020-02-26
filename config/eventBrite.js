@@ -57,9 +57,8 @@ module.exports = {
     })
       .then(function(response) {
         var eventBriteAPIData = response.data._embedded.events;
-        console.log(response)
-        console.log(eventBriteAPIData)
-        //console.log(eventBriteAPIData);
+        console.log(response);
+        console.log(eventBriteAPIData);
         success(eventBriteAPIData);
       })
       .catch(function(error) {

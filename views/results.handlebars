@@ -154,28 +154,28 @@
                             <div class="collapse scrollable show" id="collapseOne" data-parent="#accordion">
                                 {{#if user}}
                                 {{#each eventBriteData.eventBriteAPI._embedded.events}}
-                                    <div class="container-fluid">
+                                   <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-12 mt-3">
                                                 <div class="card shadow-lg">
                                                     <div class="row m-0">
                                                         <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" id="eventImg{{@index}}" src={{{logo.url}}}>
+                                                                class="img-responsive m-auto" src={{{images.url}}}>
                                                         </div>
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong id="eventName{{@index}}">{{name.text}}</strong></p>
+                                                                    <strong id="eventName">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
-                                                                    <small id="eventAddress">{{venue.address.address_1}},
-                                                                        {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment start.local format="llll"}}</p>
+                                                                    <small id="eventAddress">{{_embedded.venues.name}}, 
+                                                                        {{_embedded.venues.address.line1}}{{_embedded.venues.city.name}}</small></p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="LT"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span><a id="eventURL{{@index}}" class="card-text card-line"
-                                                                href={{{resource_uri}}} target="_blank">Results from
-                                                                EventBrite</a></span>
+                                                    <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
+                                                                href={{{url}}} target="_blank">Results from
+                                                                Ticketmaster</a></span>
                                                     
                                                         <button class="float-right theFavorites" id="favoriteBtn{{@index}}" find="{{@index}}">
                                                             <i class="fas fa-heart" aria-hidden="true"></i>
@@ -195,16 +195,16 @@
                                                 <div class="card shadow-lg">
                                                     <div class="row m-0">
                                                         <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" src={{{images}}}>
+                                                                class="img-responsive m-auto" src={{{images.url}}}>
                                                         </div>
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
                                                                     <strong id="eventName">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
-                                                                    <small id="eventAddress">{{_embedded.venues.name}},
-                                                                        {{venue.address.localized_area_display}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.dateTime format="llll"}}</p>
+                                                                    <small id="eventAddress">{{_embedded.venues.name}}, 
+                                                                        {{_embedded.venues.address.line1}}{{_embedded.venues.city.name}}</small></p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="LT"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -2,8 +2,8 @@ var axios = require("axios");
 var moment = require("moment");
 
 module.exports = {
-  searchParams: {
-    url: "https://www.eventbriteapi.com/v3/events/search"
+  searchParams : {
+    url: "https://app.ticketmaster.com/discovery/v2/events?"
   },
   searchResults: {
     count: 10,
@@ -25,30 +25,38 @@ module.exports = {
     }
     var queryUrl =
       this.searchParams.url +
-      "/?q=" +
-      "&location.address=" +
-      destination +
-      "&location.within=" +
-      radius +
-      "mi" +
-      "&expand=venue" +
-      "&start_date.range_start=" +
-      moment(startDate).format("YYYY-MM-DD") +
-      "T00:00:01Z" +
-      "&start_date.range_end=" +
-      moment(endDate).format("YYYY-MM-DD") +
-      "T00:00:01Z" +
-      "&page=" +
-      (this.searchResults.pageNumber + 1);
+      "apikey=XewKqGsweKUVu1zlnx5SxwWMAtmoWvfS"+
+                "&radius="+ radius+
+                "&locale=*"+
+                "&startDateTime="+moment(startDate).format('YYYY-MM-DD')+"T00:00:01Z"+
+                "&endDateTime="+moment(endDate).format('YYYY-MM-DD')+"T00:00:01Z"+
+                "&page="+(this.searchResults.pageNumber + 1) +
+                "&city="+destination;
+      // "/?q=" +
+      // "&location.address=" +
+      // destination +
+      // "&location.within=" +
+      // radius +
+      // "mi" +
+      // "&expand=venue" +
+      // "&start_date.range_start=" +
+      // moment(startDate).format("YYYY-MM-DD") +
+      // "T00:00:01Z" +
+      // "&start_date.range_end=" +
+      // moment(endDate).format("YYYY-MM-DD") +
+      // "T00:00:01Z" +
+      // "&page=" +
+      // (this.searchResults.pageNumber + 1);
+
+      
     axios({
-      method: "get",
-      url: queryUrl,
-      headers: {
-        Authorization: "Bearer MK5SWZBFFNZBEO6AZWHM"
-      }
+      url: queryURL,
+      type: "get",
+      async:true,
+      dataType: "json",
     })
       .then(function(response) {
-        var eventBriteAPIData = response.data.events;
+        var eventBriteAPIData = response.data._embedded.events;
         //console.log(eventBriteAPIData);
         success(eventBriteAPIData);
       })

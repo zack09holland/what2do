@@ -225,8 +225,8 @@ var where2Application = {
       eventDate: "",
       eventTicketLink: ""
     },
-    searchParams: {
-      url: "https://www.eventbriteapi.com/v3/events/search"
+    searchParams : {
+      url: "https://app.ticketmaster.com/discovery/v2/events?"
     },
     searchResults: {
       count: 10,
@@ -239,42 +239,38 @@ var where2Application = {
       if (this.searchResults.previousResult) {
         //console.log("EventContentExist")
       }
-      var queryURL =
-        this.searchParams.url +
-        "/?q=" +
-        "&location.address=" +
-        that.where2Application.searchParams.destination +
-        "&location.within=" +
-        that.where2Application.searchParams.radius +
-        "mi" +
-        "&expand=venue" +
-        "&start_date.range_start=" +
-        moment(that.where2Application.searchParams.start).format("YYYY-MM-DD") +
-        "T00:00:01Z" +
-        "&start_date.range_end=" +
-        moment(that.where2Application.searchParams.end).format("YYYY-MM-DD") +
-        "T00:00:01Z" +
-        "&page=" +
-        (this.searchResults.pageNumber + 1);
+      var queryURL = this.searchParams.url +
+      "apikey=XewKqGsweKUVu1zlnx5SxwWMAtmoWvfS"+
+      "&radius="+that.where2Application.searchParams.radius+
+      "&locale=*"+
+      "&startDateTime="+moment(that.where2Application.searchParams.start).format('YYYY-MM-DD')+"T00:00:01Z"+
+      "&endDateTime="+moment(that.where2Application.searchParams.end).format('YYYY-MM-DD')+"T00:00:01Z"+
+      "&page="+(this.searchResults.pageNumber + 1) +
+      "&city="+that.where2Application.searchParams.destination;
+              // "/?q=" + "&location.address="+that.where2Application.searchParams.destination +
+              // "&location.within="+that.where2Application.searchParams.radius+"mi"+"&expand=venue"+
+              // "&start_date.range_start="+ moment(that.where2Application.searchParams.start).format('YYYY-MM-DD')+"T00:00:01Z"+
+              // "&start_date.range_end="+moment(that.where2Application.searchParams.end).format('YYYY-MM-DD')+"T00:00:01Z"+
+              // "&page="+(this.searchResults.pageNumber + 1)
+              console.log(queryURL)
       $.ajax({
-        headers: {
-          Authorization: "Bearer 66AKEOSDCRZBQ2RSCGXN"
-        },
         url: queryURL,
-        method: "get"
+                type: "get",
+                async:true,
+                dataType: "json",
         // Evenbrite query success
       }).then(
         function(data) {
           that.where2Application.searchResults.eventbriteResults = true;
           that.where2Application.searchResults.eventbriteComplete = true;
-          that.where2Application.eventbriteAPI.searchResults.previousResult = data;
-          that.where2Application.eventbriteAPI.searchResults.perPage =
-            data.pagination.page_size;
-          that.where2Application.eventbriteAPI.searchResults.pageNumber =
-            data.pagination.page_number;
-          that.where2Application.eventbriteAPI.searchResults.pageCount =
-            data.pagination.page_count;
-          renderEvent(data.events);
+          // that.where2Application.eventbriteAPI.searchResults.previousResult = data;
+          // that.where2Application.eventbriteAPI.searchResults.perPage =
+          //   data.pagination.page_size;
+          // that.where2Application.eventbriteAPI.searchResults.pageNumber =
+          //   data.pagination.page_number;
+          // that.where2Application.eventbriteAPI.searchResults.pageCount =
+          //   data.pagination.page_count;
+          renderEvent(data._embedded.events);
         },
         function() {
           that.where2Application.searchResults.eventbriteResults = false;

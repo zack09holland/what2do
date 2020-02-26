@@ -56,7 +56,7 @@ module.exports = {
       dataType: "json",
     })
       .then(function(response) {
-        var eventBriteAPIData = response.data._embedded.events;
+        var eventBriteAPIData = response.data;
         console.log(response);
         console.log(eventBriteAPIData);
         success(eventBriteAPIData);

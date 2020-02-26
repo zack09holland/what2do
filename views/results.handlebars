@@ -168,14 +168,13 @@
                                                                     <strong id="eventName">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
                                                                     <small id="eventAddress">{{_embedded.venues.0.name}}, 
-                                                                        {{_embedded.venues.0.address.line1}}{{_embedded.venues.0.city.name}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="hh:mm:ss a"}}</p>
+                                                                        {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</small></p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="HH:mm:ss"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
-                                                                href={{{url}}} target="_blank">Results from
-                                                                Ticketmaster</a></span>
+                                                                href={{{url}}} target="_blank">Get tickets here</a></span>
                                                     
                                                         <button class="float-right theFavorites" id="favoriteBtn{{@index}}" find="{{@index}}">
                                                             <i class="fas fa-heart" aria-hidden="true"></i>
@@ -203,14 +202,13 @@
                                                                     <strong id="eventName">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
                                                                     <small id="eventAddress">{{_embedded.venues.0.name}}, 
-                                                                        {{_embedded.venues.0.address.line1}}{{_embedded.venues.0.city.name}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="hh:mm:ss a"}}</p>
+                                                                        {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</small></p>
+                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{moment dates.start.localTime format="HH:mm:ss"}}</p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
-                                                                href={{{url}}} target="_blank">Results from
-                                                                Ticketmaster</a></span>
+                                                                href={{{url}}} target="_blank">Get tickets here</a></span>
                                                     </div>
                                                 </div>
                                             </div>

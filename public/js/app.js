@@ -263,6 +263,7 @@ var where2Application = {
         function(data) {
           that.where2Application.searchResults.eventbriteResults = true;
           that.where2Application.searchResults.eventbriteComplete = true;
+          console.log(data._embedded.events)
           // that.where2Application.eventbriteAPI.searchResults.previousResult = data;
           // that.where2Application.eventbriteAPI.searchResults.perPage =
           //   data.pagination.page_size;

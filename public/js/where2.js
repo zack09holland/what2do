@@ -90,7 +90,7 @@ $(function() {
 
 $("#Search").on("click", function() {
   if (that.where2Application.searchParams.valid) {
-    console.log(that.where2Application.start)
+    console.log(that.where2Application.startDate)
     userSearch(that.where2Application.searchParams);
     $("#loader-wrapper").css("visibility", "visible");
     $("#loader-wrapper .loader-section").css("visibility", "visible");

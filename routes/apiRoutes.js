@@ -150,8 +150,8 @@ module.exports = function(app) {
     // db.Favorites.create(object).then(function(data) {
     //   res.json(data);
     // });
-    db.favorites.findorCreate({object}).spread(function(user, created) {
-      console.log(user.get({
+    db.favorites.findorCreate({object}).spread(function(db, created) {
+      console.log(db.get({
         plain: true
       }))
       console.log(created)

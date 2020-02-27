@@ -147,9 +147,9 @@ module.exports = function(app) {
       UserId: req.user.id
     };
 
-    db.Favorites.create(object).then(function(data) {
-      res.json(data);
-    });
+    // db.Favorites.create(object).then(function(data) {
+    //   res.json(data);
+    // });
 
     db.Favorites.findOrCreate({where: {favoriteTitle: req.body.favoriteTitle}}).then(function(data) {
       res.json(data)

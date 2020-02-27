@@ -19,7 +19,7 @@ $(".theFavorites").click(function() {
   console.log();
   var find = $(this).attr("find");
   console.log(find);
-  var eventName = $("#eventName" + find).text();
+  var eventName = $("#eventName").text();
   var eventImg = $("#eventImg" + find).attr("src");
   var eventURL = $("#eventURL" + find).attr("href");
   var object = {

@@ -151,10 +151,10 @@ module.exports = function(app) {
       res.json(data);
     });
 
-    // db.Favorites.findOrCreate({where: {object:object}}).then(function(data) {
-    //   res.json(data)
-    //   console.log(data)
-    // });
+    db.Favorites.findOrCreate({where: {favoriteTitle: req.body.favoriteTitle}}).then(function(data) {
+      res.json(data)
+      console.log(data)
+    });
   });
   // Get all examples
   // app.get("/api/examples", function(req, res) {

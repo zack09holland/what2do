@@ -146,9 +146,16 @@ module.exports = function(app) {
       favoriteDestination: req.body.favoriteDestination,
       UserId: req.user.id
     };
-    db.Favorites.create(object).then(function(data) {
-      res.json(data);
-    });
+    // if(db.Favorites.findOne({ where: {tit}}))
+    // db.Favorites.create(object).then(function(data) {
+    //   res.json(data);
+    // });
+    db.favorites.findorCreate({object}).spread(function(user, created) {
+      console.log(user.get({
+        plain: true
+      }))
+      console.log(created)
+    })
   });
   // Get all examples
   // app.get("/api/examples", function(req, res) {

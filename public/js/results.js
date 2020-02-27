@@ -10,9 +10,7 @@ $(document).ready(function() {
   //   $("h1").css("color", "#222222");
   // }, 2000);
 });
-var eventName = ""
-var eventImg = ""
-var eventURL = ""
+
 $(".theFavorites").click(function() {
   var destination = decodeURIComponent(getUrlVars().destination);
   var start = decodeURIComponent(getUrlVars().start);
@@ -21,9 +19,9 @@ $(".theFavorites").click(function() {
   console.log();
   // var find = $(this).attr("find");
   console.log($(this).text())
-  eventName = $("#eventName").text();
-  eventImg = $("#eventImg").attr("src");
-  eventURL = $("#eventURL").attr("href");
+  var eventName = $("#eventName").closest("strong").text();
+  var eventImg = $("#eventImg").attr("src");
+  var eventURL = $("#eventURL").attr("href");
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,

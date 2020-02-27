@@ -148,7 +148,7 @@ module.exports = function(app) {
     };
 
     db.Favorites.create(object).then(function(data) {
-      res.json(data);
+      // res.json(data);
     });
 
     // db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle},defaults: {object}}).then(function(data) {

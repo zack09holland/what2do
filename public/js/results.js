@@ -10,18 +10,18 @@ $(document).ready(function() {
   //   $("h1").css("color", "#222222");
   // }, 2000);
 });
-var eventName = $("#eventName").text();
-var eventImg = $("#eventImg").attr("src");
-var eventURL = $("#eventURL").attr("href");
+
 $(".theFavorites").click(function() {
   var destination = decodeURIComponent(getUrlVars().destination);
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var radius = decodeURIComponent(getUrlVars().end);
   console.log();
-  eventName = $("#eventName").text();
-  eventImg = $("#eventImg").attr("src");
-  eventURL = $("#eventURL").attr("href");
+  // var find = $(this).attr("find");
+  // console.log(find);
+  var eventName = $("#eventName").text();
+  var eventImg = $("#eventImg").attr("src");
+  var eventURL = $("#eventURL").attr("href");
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,

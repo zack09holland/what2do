@@ -146,10 +146,13 @@ module.exports = function(app) {
       favoriteDestination: req.body.favoriteDestination,
       UserId: req.user.id
     };
-    // if(db.Favorites.findOne({ where: {tit}}))
-    db.Favorites.create(object).then(function(data) {
-      res.json(data);
-    });
+    if(db.Favorites.findOne({ where: {favoriteTitle: req.body.favoriteTitle}})) {
+      void(0)
+    }else{
+      db.Favorites.create(object).then(function(data) {
+        res.json(data);
+      });
+    }   
     // db.favorites.findorCreate({object}).spread(function(db, created) {
     //   console.log(db.get({
     //     plain: true

@@ -18,7 +18,7 @@ $(".theFavorites").click(function() {
   var radius = decodeURIComponent(getUrlVars().end);
   console.log();
   // var find = $(this).attr("find");
-  console.log($(this).attr("#eventName").text())
+  console.log($(this).text())
   var eventName = $("#eventName").text();
   var eventImg = $("#eventImg").attr("src");
   var eventURL = $("#eventURL").attr("href");

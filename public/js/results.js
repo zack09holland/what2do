@@ -21,7 +21,7 @@ $(".theFavorites").click(function() {
   console.log(find);
   var eventName = $("#eventName").text();
   var eventImg = $("#eventImg").attr("src");
-  var eventURL = $("#eventURL" ).attr("href");
+  var eventURL = $("#eventURL").attr("href");
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,

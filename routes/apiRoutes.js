@@ -151,7 +151,7 @@ module.exports = function(app) {
     //   res.json(data);
     // });
 
-    db.Favorites.findorCreate({object}).then(function(data) {
+    db.Favorites.findOrCreate({object}).then(function(data) {
       res.json(data)
       console.log(data)
     });

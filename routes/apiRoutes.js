@@ -147,15 +147,15 @@ module.exports = function(app) {
       UserId: req.user.id
     };
     // if(db.Favorites.findOne({ where: {tit}}))
-    // db.Favorites.create(object).then(function(data) {
-    //   res.json(data);
-    // });
-    db.favorites.findorCreate({object}).spread(function(db, created) {
-      console.log(db.get({
-        plain: true
-      }))
-      console.log(created)
-    })
+    db.Favorites.create(object).then(function(data) {
+      res.json(data);
+    });
+    // db.favorites.findorCreate({object}).spread(function(db, created) {
+    //   console.log(db.get({
+    //     plain: true
+    //   }))
+    //   console.log(created)
+    // })
   });
   // Get all examples
   // app.get("/api/examples", function(req, res) {

@@ -147,14 +147,14 @@ module.exports = function(app) {
       UserId: req.user.id
     };
 
-    // db.Favorites.create(object).then(function(data) {
-    //   res.json(data);
-    // });
-
-    db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle},defaults: {object}}).then(function(data) {
-      res.json(data)
-      console.log(data)
+    db.Favorites.create(object).then(function(data) {
+      res.json(data);
     });
+
+    // db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle},defaults: {object}}).then(function(data) {
+    //   res.json(data)
+    //   console.log(data)
+    // });
   });
   // Get all examples
   // app.get("/api/examples", function(req, res) {

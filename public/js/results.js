@@ -12,20 +12,23 @@ $(document).ready(function() {
 });
 
 $(".theFavorites").click(function() {
-  var destination = decodeURIComponent(getUrlVars().destination);
-  var start = decodeURIComponent(getUrlVars().start);
-  var end = decodeURIComponent(getUrlVars().end);
-  var radius = decodeURIComponent(getUrlVars().end);
-  
   var index = $(".theFavorites").index(this);
   console.log(index)
+  var start = decodeURIComponent(getUrlVars().start);
+  var end = decodeURIComponent(getUrlVars().end);
+  var destination = decodeURIComponent(getUrlVars().destination);
+  var eventDate = $("#eventDate"+index).text();
+  
+  var radius = decodeURIComponent(getUrlVars().end);
   var eventName = $("#eventName"+index).text();
   var eventImg = $("#eventImg"+index).attr("src");
   var eventURL = $("#eventURL"+index).attr("href");
-  console.log(eventImg)
-  console.log(eventURL)
+  // console.log(eventImg)
+  // console.log(eventURL)
+  
   var object = {
     favoriteDestination: destination,
+    favoriteEventDate: eventDate,
     favoriteStartDate: start,
     favoriteEndDate: end,
     favoriteRadius: radius,

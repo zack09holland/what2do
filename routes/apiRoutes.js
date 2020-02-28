@@ -134,7 +134,7 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/favorites", function(req, res) {
+  app.post("/api/favorites", function (req, res) {
     console.log(req.body);
     console.log(req.user);
     var object = {
@@ -142,16 +142,29 @@ module.exports = function(app) {
       favoriteUrl: req.body.favoriteUrl,
       favoriteImg: req.body.favoriteImg,
       favoriteStartDate: req.body.favoriteStartDate,
-      favoriteStartDate: req.body.favoriteEndDate,
+      favoriteEndDate: req.body.favoriteEndDate,
       favoriteDestination: req.body.favoriteDestination,
       UserId: req.user.id
     };
-    
+
     // db.Favorites.create(object).then(function(data) {
     //   res.json(data);
     // });
 
-    db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle, UserId:req.user.id}, defaults:{favoriteUrl:object.favoriteUrl} }).spread(function(data) {
+    db.Favorites.findOrCreate({
+      where: {
+        favoriteTitle: object.favoriteTitle,
+        UserId: req.user.id
+      },
+      defaults: {
+        favoriteUrl: object.favoriteUrl,
+        favoriteImg: object.favoriteImg,
+        favoriteUrl: object.favoriteUrl,
+        favoriteUrl: object.favoriteUrl,
+        favoriteUrl: object.favoriteUrl,
+        favoriteUrl: object.favoriteUrl,
+      }
+    }).spread(function (data) {
       res.json(data)
       console.log(data)
     });

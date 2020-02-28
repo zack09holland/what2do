@@ -20,8 +20,10 @@ $(".theFavorites").click(function() {
   var index = $(".theFavorites").index(this);
   console.log(index)
   var eventName = $("#eventName"+index).text();
-  var eventImg = $("#eventImg").attr("src");
-  var eventURL = $("#eventURL").attr("href");
+  var eventImg = $("#eventImg"+index).attr("src");
+  var eventURL = $("#eventURL"+index).attr("href");
+  console.log(eventImg)
+  console.log(eventURL)
   var object = {
     favoriteDestination: destination,
     favoriteStartDate: start,

@@ -48,7 +48,7 @@
                                     <input type="radio" name="options" id="favoritesBtn" autocomplete="off" checked>
                                     Favorites
                                 </label>
-                              
+
                                 {{!-- <label class="btn btn-primary active tabFont disabled" type="button"
                                     data-target="#resultsContent" aria-expanded="false" aria-controls="resultsContent"
                                     style="visibility: hidden">
@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-6 text-left">
                                     <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-                                    <btn class="btn btn-primary" id="Console"><span>Console...</span></btn>
+                                    {{!-- <btn class="btn btn-primary" id="Console"><span>Console...</span></btn> --}}
                                     <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
                                         Please
                                         try again.</h6>
@@ -149,71 +149,82 @@
                     </div>
 
                     <div class="row">
-                    {{!-- eventBriteAPI Cards --}}
+                        {{!-- eventBriteAPI Cards --}}
                         <div class="col-12">
                             <div class="collapse scrollable show" id="collapseOne" data-parent="#accordion">
                                 {{#if user}}
                                 {{#each eventBriteData.eventBriteAPI._embedded.events}}
-                                   <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 mt-3">
-                                                <div class="card shadow-lg">
-                                                    <div class="row m-0">
-                                                        <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" src={{{images.0.url}}}>
-                                                        </div>
-                                                        <div class="col-6 col-md-8">
-                                                            <div class="card-body">
-                                                                <p class="card-text card-line">
-                                                                    <strong id="eventName{{@index}}">{{name}}</strong></p>
-                                                                <p class="card-text card-line" id="eventAddress">
-                                                                    {{_embedded.venues.0.name}}, 
-                                                                        {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{dates.start.localTime}}</p>
-                                                            </div>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="card shadow-lg">
+                                                <div class="row m-0">
+                                                    <div class="col-6 col-md-4 m-auto"><img
+                                                            class="img-responsive m-auto" id="eventImg{{@index}}"
+                                                            src={{{images.0.url}}}>
+                                                    </div>
+                                                    <div class="col-6 col-md-8">
+                                                        <div class="card-body">
+                                                            <p class="card-text card-line">
+                                                                <strong id="eventName{{@index}}">{{name}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                <small id="eventAddress">{{_embedded.venues.0.name}},
+                                                                    {{_embedded.venues.0.address.line1}}
+                                                                    {{_embedded.venues.0.city.name}}</small></p>
+                                                            <p class="card-text card-line" id="eventDate{{@index}}">
+                                                                {{moment dates.start.localDate format="LL"}} @
+                                                                {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
-                                                                href={{{url}}} target="_blank">Get tickets here</a></span>
-                                                    
-                                                        <button class="float-right theFavorites" id="favoriteBtn{{@index}}" find="{{@index}}">
-                                                            <i class="fas fa-heart" aria-hidden="true"></i>
-                                                        </button>
-                                                        
-                                                    </div>
+                                                </div>
+                                                <div class="card-footer"><span id="eventURL{{@index}}"><a
+                                                            class="card-text card-line" href={{{url}}}
+                                                            target="_blank">Get tickets here</a></span>
+
+                                                    <button class="float-right theFavorites" id="favoriteBtn{{@index}}"
+                                                        find="{{@index}}">
+                                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                                    </button>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 {{/each}}
                                 {{else}}
                                 {{#each eventBriteData.eventBriteAPI._embedded.events}}
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-12 mt-3">
-                                                <div class="card shadow-lg">
-                                                    <div class="row m-0">
-                                                        <div class="col-6 col-md-4 m-auto"><img
-                                                                class="img-responsive m-auto" src={{{images.0.url}}}>
-                                                        </div>
-                                                        <div class="col-6 col-md-8">
-                                                            <div class="card-body">
-                                                                <p class="card-text card-line">
-                                                                    <strong id="eventName{{@index}}">{{name}}</strong></p>
-                                                                <p class="card-text card-line" >
-                                                                    <small id="eventAddress">{{_embedded.venues.0.name}}, 
-                                                                        {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</small></p>
-                                                                <p class="card-text card-line" id="eventDate">{{moment dates.start.localDate format="LL"}} @ {{dates.start.localTime}}</p>
-                                                            </div>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 mt-3">
+                                            <div class="card shadow-lg">
+                                                <div class="row m-0">
+                                                    <div class="col-6 col-md-4 m-auto"><img
+                                                            class="img-responsive m-auto" id="eventImg{{@index}}"
+                                                            src={{{images.0.url}}}>
+                                                    </div>
+                                                    <div class="col-6 col-md-8">
+                                                        <div class="card-body">
+                                                            <p class="card-text card-line">
+                                                                <strong id="eventName{{@index}}">{{name}}</strong></p>
+                                                            <p class="card-text card-line">
+                                                                <small id="eventAddress">{{_embedded.venues.0.name}},
+                                                                    {{_embedded.venues.0.address.line1}}
+                                                                    {{_embedded.venues.0.city.name}}</small></p>
+                                                            <p class="card-text card-line" id="eventDate{{@index}}">
+                                                                {{moment dates.start.localDate format="LL"}} @
+                                                                {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>
-                                                    <div class="card-footer"><span id="eventURL"><a class="card-text card-line"
-                                                                href={{{url}}} target="_blank">Get tickets here</a></span>
-                                                    </div>
+                                                </div>
+                                                <div class="card-footer"><span id="eventURL{{@index}}"><a
+                                                            class="card-text card-line" href={{{url}}}
+                                                            target="_blank">Get tickets here</a></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 {{/each}}
                                 {{/if}}
                             </div>
@@ -237,7 +248,7 @@
                                                                 <strong id="foodName{{@index}}">{{name}}</strong></p>
                                                             <p class="card-text card-line">
                                                                 Address: {{location.address1}} {{location.address2}},
-                                                                    {{location.city}}, {{location.state}}</p>
+                                                                {{location.city}}, {{location.state}}</p>
                                                             <p class="card-text card-line">
                                                                 Phone: {{display_phone}} </p>
                                                             <p class="card-text card-line">
@@ -257,7 +268,8 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right theFavorites" id="favoriteBtn{{@index}}"  find="{{@index}}">
+                                                    <button class="float-right theFavorites" id="favoriteBtn{{@index}}"
+                                                        find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>
@@ -282,7 +294,7 @@
                                                                 <strong>{{name}}</strong></p>
                                                             <p class="card-text card-line">
                                                                 Address: {{location.address1}} {{location.address2}},
-                                                                    {{location.city}}, {{location.state}}</p>
+                                                                {{location.city}}, {{location.state}}</p>
                                                             <p class="card-text card-line">
                                                                 Phone: {{display_phone}} </p>
                                                             <p class="card-text card-line">
@@ -302,7 +314,8 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             href={{{url}}} target="_blank">Results from
                                                             Yelp</a></span>
-                                                    <button class="float-right theFavorites" id="favoriteBtn" value="favoriteBtn{{@index}}">
+                                                    <button class="float-right theFavorites" id="favoriteBtn"
+                                                        value="favoriteBtn{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>

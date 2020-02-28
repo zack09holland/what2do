@@ -165,7 +165,7 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong id="eventName">{{name}}</strong></p>
+                                                                    <strong id="eventName{{@index}}">{{name}}</strong></p>
                                                                 <p class="card-text card-line" id="eventAddress">
                                                                     {{_embedded.venues.0.name}}, 
                                                                         {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</p>
@@ -199,7 +199,7 @@
                                                         <div class="col-6 col-md-8">
                                                             <div class="card-body">
                                                                 <p class="card-text card-line">
-                                                                    <strong id="eventName">{{name}}</strong></p>
+                                                                    <strong id="eventName{{@index}}">{{name}}</strong></p>
                                                                 <p class="card-text card-line" >
                                                                     <small id="eventAddress">{{_embedded.venues.0.name}}, 
                                                                         {{_embedded.venues.0.address.line1}} {{_embedded.venues.0.city.name}}</small></p>

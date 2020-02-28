@@ -18,11 +18,8 @@ $(".theFavorites").click(function() {
   var radius = decodeURIComponent(getUrlVars().end);
   
   var index = $(".theFavorites").index(this);
-  var eventIndex = $("#eventName").index();
-
   console.log(index)
-  console.log(eventIndex)
-  var eventName = $("#eventName"+eventIndex).text();
+  var eventName = $("#eventName"+index).text();
   var eventImg = $("#eventImg").attr("src");
   var eventURL = $("#eventURL").attr("href");
   var object = {

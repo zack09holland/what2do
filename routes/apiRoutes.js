@@ -151,7 +151,7 @@ module.exports = function(app) {
     //   res.json(data);
     // });
 
-    db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle, UserId:req.user.id} }).spread(function(data) {
+    db.Favorites.findOrCreate({where: {favoriteTitle : object.favoriteTitle, UserId:req.user.id}, defaults:{object} }).spread(function(data) {
       res.json(data)
       console.log(data)
     });

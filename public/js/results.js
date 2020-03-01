@@ -6,7 +6,7 @@ $(document).ready(function() {
   console.log(destination)
   if(destination == "undefined"){
     console.log(destination)
-    $("#locationAutocomplete").attr("value", "Enter a location");
+    $("#locationAutocomplete").attr("value", "");
   }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();

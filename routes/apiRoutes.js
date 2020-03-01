@@ -138,12 +138,14 @@ module.exports = function(app) {
     console.log(req.body);
     console.log(req.user);
     var object = {
+      favoriteType : req.body.favoriteType,
       favoriteTitle: req.body.favoriteTitle,
       favoriteUrl: req.body.favoriteUrl,
       favoriteImg: req.body.favoriteImg,
       favoriteStartDate: req.body.favoriteStartDate,
       favoriteEndDate: req.body.favoriteEndDate,
       favoriteEventDate: req.body.favoriteEventDate,
+      address : req.body.address,
       favoriteDestination: req.body.favoriteDestination,
       UserId: req.user.id
     };
@@ -158,6 +160,8 @@ module.exports = function(app) {
         UserId: req.user.id
       },
       defaults: {
+        favoriteType : object.favoriteType,
+        address : object.address,
         favoriteUrl: object.favoriteUrl,
         favoriteImg: object.favoriteImg,
         favoriteStartDate: object.favoriteStartDate,

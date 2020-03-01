@@ -30,6 +30,7 @@ $(".eventFavorites").click(function () {
   var eventURL = $("#eventURL" + index).attr("href");
 
   var object = {
+    favoriteType: "Event",
     favoriteDestination: destination,
     favoriteEventDate: eventDate,
     favoriteStartDate: start,
@@ -55,7 +56,6 @@ $(".foodFavorites").click(function () {
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
-  var radius = decodeURIComponent(getUrlVars().end);
 
   var restaurantName = $("#restaurantName" + index).text();
   var restaurantAddress = $("#restaurantAddress" + index).text();
@@ -63,10 +63,10 @@ $(".foodFavorites").click(function () {
   var imgURL = $("#imgURL" + index).attr("src");
 
   var object = {
+    favoriteType: "Restaurant",
     favoriteDestination: destination,
     favoriteStartDate: start,
     favoriteEndDate: end,
-    favoriteRadius: radius,
     favoriteImg: imgURL,
     favoriteUrl: yelpURL,
     favoriteTitle: restaurantName,

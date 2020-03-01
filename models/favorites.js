@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     favoriteType: DataTypes.STRING,
+    address: DataTypes.STRING,
     favoriteTitle: DataTypes.STRING,
     favoriteUrl: DataTypes.STRING,
     favoriteImg: DataTypes.STRING,

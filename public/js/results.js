@@ -1,10 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
   if (decodeURIComponent(getUrlVars().destination)) {
     var destination = decodeURIComponent(getUrlVars().destination);
     $("#locationAutocomplete").attr("value", destination);
   }
   console.log(destination)
-  if(destination == "undefined"){
+  if (destination == "undefined") {
     console.log(destination)
     $("#locationAutocomplete").attr("value", "");
   }
@@ -16,37 +16,18 @@ $(document).ready(function() {
   // }, 2000);
 });
 
-$(".theFavorites").click(function() {
-  var index = $(".theFavorites").index(this);
+$(".eventFavorites").click(function () {
+  var index = $(".eventFavorites").index(this);
   console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
   var radius = decodeURIComponent(getUrlVars().end);
-  
-  var eventName = $("#eventName"+index).text();
-  var eventDate = $("#eventDate"+index).text().trim();
-  var eventImg = $("#eventImg"+index).attr("src");
-  var eventURL = $("#eventURL"+index).attr("href");
 
-  var restaurantName = $("#restaurantName"+index).text();
-  var restaurantAddress = $("#restaurantAddress"+index).text();
-  var yelpURL = $("#yelpURL"+index).attr("href");
-
-  if($(this).parent("#collapseOne")){
-    console.log("This is an event")
-    
-  }else{
-    console.log("It is not an event")
-  }
-  
-  if($("#restaurantName"+index).parent("#collapseTwo")){
-    console.log("This is a restaurant")
-  }
-  console.log(eventName)
-  console.log(restaurantName)
-  
-  
+  var eventName = $("#eventName" + index).text();
+  var eventDate = $("#eventDate" + index).text().trim();
+  var eventImg = $("#eventImg" + index).attr("src");
+  var eventURL = $("#eventURL" + index).attr("href");
 
   var object = {
     favoriteDestination: destination,
@@ -59,7 +40,40 @@ $(".theFavorites").click(function() {
     favoriteTitle: eventName
   };
   console.log(object);
-  $.post("/api/favorites", object).then(function(data) {
+  $.post("/api/favorites", object).then(function (data) {
+    if (data) {
+      console.log("OMG the Server Returned Something:");
+      console.log(data);
+    }
+  });
+  // Create a new entry in the db with the contents of the obj
+  //...hard time figuring out how to pass the object values into this
+});
+$(".foodFavorites").click(function () {
+  var index = $(".foodFavorites").index(this);
+  console.log(index)
+  var start = decodeURIComponent(getUrlVars().start);
+  var end = decodeURIComponent(getUrlVars().end);
+  var destination = decodeURIComponent(getUrlVars().destination);
+  var radius = decodeURIComponent(getUrlVars().end);
+
+  var restaurantName = $("#restaurantName" + index).text();
+  var restaurantAddress = $("#restaurantAddress" + index).text();
+  var yelpURL = $("#yelpURL" + index).attr("href");
+  var imgURL = $("#imgURL" + index).attr("src");
+
+  var object = {
+    favoriteDestination: destination,
+    favoriteStartDate: start,
+    favoriteEndDate: end,
+    favoriteRadius: radius,
+    favoriteImg: imgURL,
+    favoriteUrl: yelpURL,
+    favoriteTitle: restaurantName,
+    address: restaurantAddress
+  };
+  console.log(object);
+  $.post("/api/favorites", object).then(function (data) {
     if (data) {
       console.log("OMG the Server Returned Something:");
       console.log(data);
@@ -71,7 +85,7 @@ $(".theFavorites").click(function() {
 
 function getUrlVars() {
   var vars = {};
-  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (
     m,
     key,
     value

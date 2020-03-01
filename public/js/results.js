@@ -22,7 +22,7 @@ $(".theFavorites").click(function() {
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
-  var eventDate = $("#eventDate"+index).trim().text();
+  var eventDate = $("#eventDate"+index).text().trim();
   
   var radius = decodeURIComponent(getUrlVars().end);
   var eventName = $("#eventName"+index).text();

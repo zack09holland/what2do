@@ -143,6 +143,7 @@ module.exports = function(app) {
       favoriteImg: req.body.favoriteImg,
       favoriteStartDate: req.body.favoriteStartDate,
       favoriteEndDate: req.body.favoriteEndDate,
+      favoriteEventDate: req.body.favoriteEventDate,
       favoriteDestination: req.body.favoriteDestination,
       UserId: req.user.id
     };
@@ -159,10 +160,10 @@ module.exports = function(app) {
       defaults: {
         favoriteUrl: object.favoriteUrl,
         favoriteImg: object.favoriteImg,
-        favoriteUrl: object.favoriteUrl,
-        favoriteUrl: object.favoriteUrl,
-        favoriteUrl: object.favoriteUrl,
-        favoriteUrl: object.favoriteUrl,
+        favoriteStartDate: object.favoriteStartDate,
+        favoriteEndDate: object.favoriteEndDate,
+        favoriteEventDate: object.favoriteEventDate,
+        favoriteDestination: object.favoriteDestination,
       }
     }).spread(function (data) {
       res.json(data)

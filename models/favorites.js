@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    eventDate: DataTypes.DATEONLY,
+    favoriteEventDate: DataTypes.DATEONLY,
     favoriteStartDate: DataTypes.DATEONLY,
     favoriteEndDate: DataTypes.DATEONLY,
     favoriteDestination: DataTypes.STRING,

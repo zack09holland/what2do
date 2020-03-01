@@ -15,17 +15,14 @@ $(document).ready(function() {
   //   $("h1").css("color", "#222222");
   // }, 2000);
 });
-console.log(destination)
-  if(destination == "undefined"){
-    console.log(destination)
-  }
+
 $(".theFavorites").click(function() {
   var index = $(".theFavorites").index(this);
   console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
-  var eventDate = $("#eventDate"+index).text();
+  var eventDate = $("#eventDate"+index).trim().text();
   
   var radius = decodeURIComponent(getUrlVars().end);
   var eventName = $("#eventName"+index).text();

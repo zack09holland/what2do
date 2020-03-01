@@ -6,7 +6,10 @@ $(document).ready(function() {
       console.log(destination)
     }
   }
-
+  console.log(destination)
+  if(destination == "undefined"){
+    console.log(destination)
+  }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
   // setTimeout(function() {
@@ -14,7 +17,10 @@ $(document).ready(function() {
   //   $("h1").css("color", "#222222");
   // }, 2000);
 });
-
+console.log(destination)
+  if(destination == "undefined"){
+    console.log(destination)
+  }
 $(".theFavorites").click(function() {
   var index = $(".theFavorites").index(this);
   console.log(index)

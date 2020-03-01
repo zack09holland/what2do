@@ -428,6 +428,7 @@ function renderZomatoGeocode(queryData) {
 }
 //      Location Auto Complete Code
 var input = document.getElementById('locationAutocomplete');
+console.log(input)
 var autocomplete = new google.maps.places.Autocomplete(input,{types: ['(cities)']});
 google.maps.event.addListener(autocomplete, 'place_changed', function(){
    var place = autocomplete.getPlace()

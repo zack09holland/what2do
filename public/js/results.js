@@ -2,6 +2,8 @@ $(document).ready(function() {
   if (decodeURIComponent(getUrlVars().destination)) {
     var destination = decodeURIComponent(getUrlVars().destination);
     $("#locationAutocomplete").attr("value", destination);
+    console.log($("#locationAutocomplete").attr("value", destination))
+    console.log(destination)
   }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();

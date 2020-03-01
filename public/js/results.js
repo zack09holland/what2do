@@ -33,19 +33,21 @@ $(".theFavorites").click(function() {
   var restaurantAddress = $("#restaurantAddress"+index).text();
   var yelpURL = $("#yelpURL"+index).attr("href");
 
-  if($("#eventName"+index).parent("#collapseOne")){
+  if($(this).parent("#collapseOne")){
     console.log("This is an event")
+    
+  }else{
+    console.log("It is not an event")
   }
   
   if($("#restaurantName"+index).parent("#collapseTwo")){
     console.log("This is a restaurant")
   }
-  
   console.log(eventName)
   console.log(restaurantName)
-  // console.log(eventImg)
-  // console.log(eventURL)
   
+  
+
   var object = {
     favoriteDestination: destination,
     favoriteEventDate: eventDate,

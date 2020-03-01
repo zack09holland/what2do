@@ -55,7 +55,8 @@ $(document).ready(function() {
           if (redirect === "home") {
             window.location.replace("/");
           } else {
-            window.location.replace("/" + redirect);
+            // window.location.replace("/" + redirect);
+            window.location.replace("/");
           }
         } else {
           window.location.replace("/");

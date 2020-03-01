@@ -240,17 +240,17 @@
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
                                                     <div class="col-6 col-md-4 m-auto"><img
-                                                            class="img-responsive m-auto" src={{{image_url}}}>
+                                                            class="img-responsive m-auto" id="imgURL{{@index}}" src={{{image_url}}}>
                                                     </div>
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong id="foodName{{@index}}">{{name}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                Address: {{location.address1}} {{location.address2}},
+                                                                <strong id="restaurantName{{@index}}">{{name}}</strong></p>
+                                                            <p class="card-text card-line" id="restaurantAddress{{@index}}">
+                                                                {{location.address1}} {{location.address2}},
                                                                 {{location.city}}, {{location.state}}</p>
-                                                            <p class="card-text card-line">
-                                                                Phone: {{display_phone}} </p>
+                                                            <p class="card-text card-line" id="phoneNum{{@index}}">
+                                                                {{display_phone}} </p>
                                                             <p class="card-text card-line">
                                                                 Price: {{price}} </p>
                                                             <p class="card-text card-line">
@@ -265,9 +265,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{url}}} target="_blank">Results from
-                                                            Yelp</a></span>
+                                                <div class="card-footer"><span><a class="card-text card-line" id="yelpURL{{@index}}"
+                                                            href={{{url}}} target="_blank">View restaurant on Yelp</a></span>
                                                     <button class="float-right theFavorites" id="favoriteBtn{{@index}}"
                                                         find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
@@ -293,10 +292,10 @@
                                                             <p class="card-text card-line">
                                                                 <strong>{{name}}</strong></p>
                                                             <p class="card-text card-line">
-                                                                Address: {{location.address1}} {{location.address2}},
+                                                                {{location.address1}} {{location.address2}},
                                                                 {{location.city}}, {{location.state}}</p>
                                                             <p class="card-text card-line">
-                                                                Phone: {{display_phone}} </p>
+                                                                {{display_phone}} </p>
                                                             <p class="card-text card-line">
                                                                 Price: {{price}} </p>
                                                             <p class="card-text card-line">
@@ -312,12 +311,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{url}}} target="_blank">Results from
-                                                            Yelp</a></span>
-                                                    <button class="float-right theFavorites" id="favoriteBtn"
-                                                        value="favoriteBtn{{@index}}">
-                                                        <i class="fas fa-heart" aria-hidden="true"></i>
-                                                    </button>
+                                                            href={{{url}}} target="_blank">View restaurant on Yelp</a></span>
                                                 </div>
                                             </div>
                                         </div>

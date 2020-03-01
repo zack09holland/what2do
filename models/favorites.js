@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
+    favoriteType: DataTypes.STRING,
     favoriteTitle: DataTypes.STRING,
     favoriteUrl: DataTypes.STRING,
     favoriteImg: DataTypes.STRING,

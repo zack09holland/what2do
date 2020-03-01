@@ -22,12 +22,19 @@ $(".theFavorites").click(function() {
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
-  var eventDate = $("#eventDate"+index).text().trim();
-  
   var radius = decodeURIComponent(getUrlVars().end);
+  
   var eventName = $("#eventName"+index).text();
+  var eventDate = $("#eventDate"+index).text().trim();
   var eventImg = $("#eventImg"+index).attr("src");
   var eventURL = $("#eventURL"+index).attr("href");
+
+  var restaurantName = $("#restaurantName"+index).text();
+  var restaurantAddress = $("#restaurantAddress"+index).text();
+  var yelpURL = $("#yelpURL"+index).attr("href");
+
+  console.log(eventName)
+  console.log(restaurantName)
   // console.log(eventImg)
   // console.log(eventURL)
   

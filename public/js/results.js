@@ -22,20 +22,21 @@ $(".eventFavorites").click(function () {
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
-  var radius = decodeURIComponent(getUrlVars().end);
+  
 
   var eventName = $("#eventName" + index).text();
   var eventDate = $("#eventDate" + index).text().trim();
   var eventImg = $("#eventImg" + index).attr("src");
   var eventURL = $("#eventURL" + index).attr("href");
+  var eventAddress = $("#eventAddress" + index).text().trim();
 
   var object = {
     favoriteType: "Event",
+    address: eventAddress,
     favoriteDestination: destination,
     favoriteEventDate: eventDate,
     favoriteStartDate: start,
     favoriteEndDate: end,
-    favoriteRadius: radius,
     favoriteImg: eventImg,
     favoriteUrl: eventURL,
     favoriteTitle: eventName
@@ -58,7 +59,7 @@ $(".foodFavorites").click(function () {
   var destination = decodeURIComponent(getUrlVars().destination);
 
   var restaurantName = $("#restaurantName" + index).text();
-  var restaurantAddress = $("#restaurantAddress" + index).text();
+  var restaurantAddress = $("#restaurantAddress" + index).text().trim();
   var yelpURL = $("#yelpURL" + index).attr("href");
   var imgURL = $("#imgURL" + index).attr("src");
 

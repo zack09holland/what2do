@@ -26,6 +26,7 @@ module.exports = function(app) {
 
   app.get("/login", function(req, res) {
     var returnUrl = req.headers.referer;
+    console.log(returnUrl)
     var options = {
       headers: {
         redirectUrl: returnUrl

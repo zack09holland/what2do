@@ -44,9 +44,6 @@ var where2Application = {
     }
     $("#end").attr("value", yyyy + "-" + mm + "-" + dd);
     $("#end").attr("max", yyyy + 1 + "-" + mm + "-" + dd);
-
-    console.log(startDate)
-    
   }
 };
 

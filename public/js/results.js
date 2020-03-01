@@ -2,12 +2,11 @@ $(document).ready(function() {
   if (decodeURIComponent(getUrlVars().destination)) {
     var destination = decodeURIComponent(getUrlVars().destination);
     $("#locationAutocomplete").attr("value", destination);
-    if(destination == "undefined"){
-      destination = "Enter a location"
+    if($("#locationAutocomplete").attr("value", destination) == "undefined"){
       console.log(destination)
     }
-    
   }
+
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();
   // setTimeout(function() {

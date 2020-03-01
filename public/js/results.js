@@ -2,7 +2,9 @@ $(document).ready(function() {
   if (decodeURIComponent(getUrlVars().destination)) {
     var destination = decodeURIComponent(getUrlVars().destination);
     $("#locationAutocomplete").attr("value", destination);
-    console.log($("#locationAutocomplete").attr("value", destination))
+    if(destination == "undefined"){
+      destination = "Enter a location"
+    }
     console.log(destination)
   }
   $("#favorites-container, #itineraries-container").hide();

@@ -4,8 +4,9 @@ $(document).ready(function() {
     $("#locationAutocomplete").attr("value", destination);
     if(destination == "undefined"){
       destination = "Enter a location"
+      console.log(destination)
     }
-    console.log(destination)
+    
   }
   $("#favorites-container, #itineraries-container").hide();
   // $("results-card").hide();

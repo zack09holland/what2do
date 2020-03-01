@@ -18,7 +18,6 @@ module.exports = function(sequelize, DataTypes) {
     favoriteStartDate: DataTypes.DATEONLY,
     favoriteEndDate: DataTypes.DATEONLY,
     favoriteDestination: DataTypes.STRING,
-    favoriteRadius: DataTypes.INTEGER
   });
 
   Favorites.associate = function(models) {

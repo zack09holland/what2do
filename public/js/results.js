@@ -33,7 +33,7 @@ $(".theFavorites").click(function() {
   
   var object = {
     favoriteDestination: destination,
-    favoriteEventDate: eventDate,
+    eventDate: eventDate,
     favoriteStartDate: start,
     favoriteEndDate: end,
     favoriteRadius: radius,

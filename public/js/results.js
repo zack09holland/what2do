@@ -33,6 +33,14 @@ $(".theFavorites").click(function() {
   var restaurantAddress = $("#restaurantAddress"+index).text();
   var yelpURL = $("#yelpURL"+index).attr("href");
 
+  if($("#eventName"+index).parent("#collapseOne")){
+    console.log("This is an event")
+  }
+  
+  if($("#restaurantName"+index).parent("#collapseTwo")){
+    console.log("This is a restaurant")
+  }
+  
   console.log(eventName)
   console.log(restaurantName)
   // console.log(eventImg)

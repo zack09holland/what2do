@@ -123,7 +123,6 @@ div.form-group {
   div.form-group {
     position: absolute;
     z-index: 1;
-    height: 960px;
     /* top: 100px; */
     /* change to whatever you want */
     max-width: 960px;

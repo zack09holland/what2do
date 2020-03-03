@@ -560,28 +560,6 @@ function renderZomatoGeocode(queryData) {
   }
 }
 
-// $(document).on("click", "#login", function() {
-//   ui.start("#firebaseui-auth-container", uiConfig);
-// });
-
-// $(document).on("click", "#signOut", function() {
-//   firebase
-//     .auth()
-//     .signOut()
-//     .then(
-//       function() {
-//         console.log("Travis Hates This Function");
-//       },
-//       function(error) {
-//         console.error("Sign Out Error", error);
-//       }
-//     );
-// });
-
-$(document).on("click", ".fa-heart", function() {
-  //console.log(this)
-});
-
 function displayFixes() {
   if (
     that.where2Application.searchResults.zomatoComplete &&
@@ -623,3 +601,5 @@ function ComeONMan() {
     setTimeout(displayFixes(), 1000);
   }
 }
+
+

@@ -88,6 +88,22 @@ div.form-group {
     transition: transform 2s;
     transition: transform 2s, -webkit-transform 2s;
   }
+
+  div.form-group {
+    position: absolute;
+    z-index: 1;
+    /* top: 100px; */
+    /* change to whatever you want */
+    max-width: 960px;
+    /* margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: auto; */
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
   
 }
 
@@ -101,6 +117,22 @@ div.form-group {
     transition: -webkit-transform 2s;
     transition: transform 2s;
     transition: transform 2s, -webkit-transform 2s;
+  }
+
+  div.form-group {
+    position: absolute;
+    z-index: 1;
+    /* top: 100px; */
+    /* change to whatever you want */
+    max-width: 960px;
+    /* margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: auto; */
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
 

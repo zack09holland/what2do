@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-6 text-left">
                                     <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-                                    {{!-- <btn class="btn btn-primary" id="Console"><span>Console...</span></btn> --}}
+                                    <btn class="btn btn-primary" id="Console"><span>Console...</span></btn>
                                     <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
                                         Please
                                         try again.</h6>
@@ -170,7 +170,7 @@
                                                             <p class="card-text card-line">
                                                                 <small id="eventAddress{{@index}}">{{_embedded.venues.0.name}}, {{_embedded.venues.0.address.line1}}, {{_embedded.venues.0.city.name}}</small></p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
-                                                                {{moment dates.start.localDate+dates.start.localTime format="LLL"}} @
+                                                                {{moment dates.start.localDate dates.start.localTime format="LLL"}} @
                                                                 {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>

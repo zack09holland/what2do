@@ -26,11 +26,17 @@
 
                     </div>
                     <div class="favorites-card card">
-                        <h5 class="card-header text-center shadow-md logoFont">Favorites<span
-                                style="font-size: 25px"></span>
-                            {{#each this}}
+                        <h5 class="card-header text-center shadow-md logoFont">Favorites</h5>
                             <div class="favorites">
+                                <script id="tweets-template" type="text/x-handlebars-template">
+                                            {{#each this}}
+                                                <li>
+                                                    <img src={{favoriteImg}} alt={{favoritesId}} />
+                                                </li>
+                                            {{/each}}
+                                </script>
                                 <div class="container-fluid">
+                                    {{#each this}}
                                     <div class="row">
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
@@ -41,7 +47,7 @@
                                                     <div class="col-6 col-md-8">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong>{{this.favoriteTitle}}</strong></p>
+                                                                <strong>{{favoriteTitle}}</strong></p>
                                                             <p class="card-text card-line">
                                                                 <small>{{this.address}}</small></p>
                                                             <p class="card-text card-line">{{this.favoriteDestination}}
@@ -52,9 +58,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{/each}}
                                 </div>
                             </div>
-                            {{/each}}
+                            
                     </div>
                 </div>
             </div>{{!-- End of Where2 Form --}}

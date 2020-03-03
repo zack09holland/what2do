@@ -180,7 +180,7 @@ module.exports = function(app) {
     db.Favorites.findAll({
       where: query
     }).then(function(dbFavs) {
-      res.render("favorites", dbFavs);
+      res.render("favorites", {data: dbFavs});
     });
   });
   // // Load example page and pass in an example by id

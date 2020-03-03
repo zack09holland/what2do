@@ -6,6 +6,8 @@ document.getElementById("goBack").addEventListener("click", function(event) {
 $(document).ready(function() {
   $.get("/api/favorites").then(function(data) {
     console.log(data);
+    console.log(this);
+    console.log(dbFavs);
   });
 });
 

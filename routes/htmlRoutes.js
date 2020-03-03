@@ -172,6 +172,16 @@ module.exports = function(app) {
   });
   app.get("/favorites", isAuthenticated, function(req, res) {
     res.render("favorites");
+    var query = {};
+    if (req.user.id) {
+      query.UserId = req.user.id;
+    }
+    console.log(query);
+    db.Favorites.findAll({
+      where: query
+    }).then(function(dbFavs) {
+      res.render("favorites", dbFavs);
+    });
   });
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function(req, res) {

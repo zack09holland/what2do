@@ -6,6 +6,7 @@ document.getElementById("goBack").addEventListener("click", function(event) {
 $(document).ready(function() {
   $.getJSON("/api/favorites").then(function(data) {
     console.log(data);
+    JSON.parse(data)
     console.log(this);
     
   });

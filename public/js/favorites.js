@@ -6,9 +6,15 @@ document.getElementById("goBack").addEventListener("click", function(event) {
 $(document).ready(function() {
   $.getJSON("/api/favorites").then(function(data) {
     console.log(data);
-    var results = JSON.parse(data)
-    console.log(results)
-    console.log(this);
+    console.log(data.results);
+  //   var dbFavs = $.map(data.results, function(tweet) {
+  //     return {
+  //         author: tweet.from_user,
+  //         tweet: tweet.text,
+  //         thumb: tweet.profile_image_url,
+          
+  //     };
+  // });
     
   });
 });

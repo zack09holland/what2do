@@ -1,3 +1,5 @@
+<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js" type="text/javascript"></script>
+
 document.getElementById("goBack").addEventListener("click", function(event) {
   event.preventDefault();
   window.history.back();

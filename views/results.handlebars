@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-6 text-left">
                                     <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-                                    <btn class="btn btn-primary" id="Console"><span>Console...</span></btn>
+                                    {{!-- <btn class="btn btn-primary" id="Console"><span>Console...</span></btn> --}}
                                     <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
                                         Please
                                         try again.</h6>
@@ -159,11 +159,11 @@
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
-                                                    <div class="col-6 col-md-4 col-sm-12 m-auto"><img
+                                                    <div class="col-12 col-md-6 m-auto"><img
                                                             class="img-responsive m-auto" id="eventImg{{@index}}"
-                                                            src={{{images.0.url}}}>
+                                                            src={{{images.2.url}}}>
                                                     </div>
-                                                    <div class="col-6 col-md-8 col-sm-12">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
                                                                 <strong id="eventName{{@index}}">{{name}}</strong></p>
@@ -197,11 +197,11 @@
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
-                                                    <div class="col-6 col-md-4 col-sm-12 m-auto"><img
+                                                    <div class="col-12 col-md-6 m-auto"><img
                                                             class="img-responsive m-auto" id="eventImg{{@index}}"
-                                                            src={{{images.0.url}}}>
+                                                            src={{{images.2.url}}}>
                                                     </div>
-                                                    <div class="col-6 col-md-8 col-sm-12">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
                                                                 <strong id="eventName{{@index}}">{{name}}</strong></p>
@@ -237,10 +237,10 @@
                                         <div class="col-12 mt-3">
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
-                                                    <div class="col-6 col-md-4 col-sm-12 m-auto"><img
+                                                    <div class="col-12 col-md-6 m-auto"><img
                                                             class="img-responsive m-auto" id="imgURL{{@index}}" src={{{image_url}}}>
                                                     </div>
-                                                    <div class="col-6 col-md-8 col-sm-12">
+                                                    <div class="ccol-12 col-md-6">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
                                                                 <strong id="restaurantName{{@index}}">{{name}}</strong></p>

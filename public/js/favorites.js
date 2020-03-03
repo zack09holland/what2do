@@ -1,5 +1,3 @@
-<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.js" type="text/javascript"></script>
-
 document.getElementById("goBack").addEventListener("click", function(event) {
   event.preventDefault();
   window.history.back();
@@ -8,11 +6,11 @@ document.getElementById("goBack").addEventListener("click", function(event) {
 $(document).ready(function() {
   
   $.getJSON("/api/favorites").then(function(data) {
-    var container = $('.favorites')
-    var template = $('#tweets-template').html()
+    // var container = $('.favorites')
+    // var template = $('#tweets-template').html()
 
-    var templateHandlebars = Handlebars.compile(template);
-                    container.append(templateHandlebars(data));
+    // var templateHandlebars = Handlebars.compile(template);
+    //                 container.append(templateHandlebars(data));
 
     console.log(data);
     console.log(data[0].favoriteTitle);

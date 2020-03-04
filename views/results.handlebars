@@ -207,10 +207,10 @@
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
                                                                 <strong id="eventName{{@index}}">{{name}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                <small id="eventAddress">{{_embedded.venues.0.name}},
-                                                                    {{_embedded.venues.0.address.line1}}
-                                                                    {{_embedded.venues.0.city.name}}</small></p>
+                                                            <p class="card-text card-line" id="eventAddress">
+                                                                {{_embedded.venues.0.name}},
+                                                                {{_embedded.venues.0.address.line1}}
+                                                                {{_embedded.venues.0.city.name}}</p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
                                                                 {{moment (concat dates.start.localDate dates.start.localTime) format="LLL"}}
                                                             </p>
@@ -271,9 +271,9 @@
                                                 <div class="card-footer"><span><a class="card-text card-line"
                                                             id="yelpURL{{@index}}" href={{{url}}} target="_blank">View
                                                             restaurant on Yelp</a></span>
-                                                    
-                                                    <button class="float-right foodFavorites" id="foodFavoriteBtn{{@index}}"
-                                                        find="{{@index}}">
+
+                                                    <button class="float-right foodFavorites"
+                                                        id="foodFavoriteBtn{{@index}}" find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
                                                 </div>

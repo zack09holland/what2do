@@ -76,33 +76,6 @@ module.exports = function(app) {
         req.query.radius
       ) {
         var searchParams = req.query;
-        // var zomatoPromise = new Promise(function(resolve, reject) {
-        //   zomatoAPI.queryZomatoCities(
-        //     searchParams.destination,
-        //     searchParams.lat,
-        //     searchParams.lng,
-        //     function(response) {
-        //       zomatoAPI.queryZomatoGeocode(
-        //         searchParams.lat,
-        //         searchParams.lng,
-        //         function(response) {
-        //           var results = {
-        //             zomatoAPIData: response.data.nearby_restaurants
-        //           };
-        //           resolve(results);
-        //         },
-        //         function(error) {
-        //           console.log(error);
-        //           reject(error);
-        //         }
-        //       );
-        //     },
-        //     function(error) {
-        //       console.log(error);
-        //       reject(error);
-        //     }
-        //   );
-        // });
 
         var yelpPromise = new Promise(function(resolve, reject) {
           console.log("yelpPromise");
@@ -161,13 +134,13 @@ module.exports = function(app) {
             });
           }
         });
-      } else {
-        if (req.user) {
-          res.render("results", { user: true });
-        } else {
-          res.render("results", { user: false });
-        }
-      }
+      // } else {
+      //   if (req.user) {
+      //     res.render("results", { user: true });
+      //   } else {
+      //     res.render("results", { user: false });
+      //   }
+      // }
     }
   });
   app.get("/favorites", isAuthenticated, function(req, res) {

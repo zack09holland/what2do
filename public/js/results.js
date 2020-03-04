@@ -73,6 +73,9 @@ $(".foodFavorites").click(function () {
       // console.log(data);
     }
   });
+  $.get("/api/favorites").then(function(data) {
+    console.log(data)
+  }
   
 });
 

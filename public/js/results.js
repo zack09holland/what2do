@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 $(".eventFavorites").click(function () {
   var index = $(".eventFavorites").index(this);
+  $("#eventFavoriteBtn"+index).children('i').addClass("faIconChange")
   // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
@@ -46,7 +47,7 @@ $(".eventFavorites").click(function () {
 });
 $(".foodFavorites").click(function () {
   var index = $(".foodFavorites").index(this);
-  $("#favoriteBtn"+index).children('i').addClass("faIconChange")
+  $("#foodFavoriteBtn"+index).children('i').addClass("faIconChange")
   // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);

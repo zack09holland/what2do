@@ -46,7 +46,7 @@ $(".eventFavorites").click(function () {
 });
 $(".foodFavorites").click(function () {
   var index = $(".foodFavorites").index(this);
-  $("#favoriteBtn"+index).addClass(faIconChange)
+  $("#favoriteBtn"+index).children('i').addClass("faIconChange")
   // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);

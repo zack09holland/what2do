@@ -12,7 +12,10 @@ $(document).ready(function() {
 
 $(".deleteFav").click(function () {
   var index = $(".deleteFav").index(this);
+  var favID = $(".deleteFav").attr("id")
   console.log(index)
+  console.log(favID)
+
   // $.delete("/api/favorites/:id", object).then(function (data) {
   //   if (data) {
   //     console.log("OMG the Server Returned Something:");

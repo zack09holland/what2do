@@ -174,6 +174,18 @@ module.exports = function(app) {
       console.log(data)
     });
   });
+  // DELETE route for deleting favs. We can get the id of the fav to be deleted from
+  // req.params.id
+  app.delete("/api/favorites/:id", function(req, res) {
+    // We just have to specify which fav we want to destroy with "where"
+    db.Favorites.destroy({
+      where: {
+        favoritesId: req.params.id
+      }
+    }).then(function(userFavs) {
+      res.json(userFavs);
+    });
+  });
   // Get all examples
   // app.get("/api/examples", function(req, res) {
   //   db.Example.findAll({}).then(function(dbExamples) {

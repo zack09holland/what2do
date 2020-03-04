@@ -53,6 +53,9 @@ div.results-form-group {
   max-height: 500px;
   overflow-y: auto;
 }
+.faIconChange{
+  color:#FF69B4;
+}
 /* ************************************************************* */
 /* Loading Page */
 #loader-wrapper {

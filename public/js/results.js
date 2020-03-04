@@ -46,6 +46,7 @@ $(".eventFavorites").click(function () {
 });
 $(".foodFavorites").click(function () {
   var index = $(".foodFavorites").index(this);
+  $("#favoriteBtn"+index).addClass(faIconChange)
   // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
@@ -66,6 +67,7 @@ $(".foodFavorites").click(function () {
     favoriteTitle: restaurantName,
     address: restaurantAddress
   };
+
   // console.log(object);
   $.post("/api/favorites", object).then(function (data) {
     if (data) {
@@ -73,9 +75,6 @@ $(".foodFavorites").click(function () {
       // console.log(data);
     }
   });
-  $.get("/api/favorites").then(function(data) {
-    console.log(data)
-  }
   
 });
 

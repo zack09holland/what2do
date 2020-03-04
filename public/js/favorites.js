@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 $(".deleteFav").click(function () {
   var index = $(".deleteFav").index(this);
-  var favID = $(".deleteFav"+index).attr("id")
+  var favID = $("#trashBtn"+index).attr("value")
   console.log(index)
   console.log(favID)
 

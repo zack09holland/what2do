@@ -25,7 +25,7 @@ Steps for Using the Site:
 - Express.js
 - Moment JS - Used for the Ticketmaster API to format Time properly for queries
 - Yelp API - Used for Restaurant Results
-~~- Zomato API - Used for Restaurant Results - Had plans to use thier other API's for Restaurant Results but ~~
+~~Zomato API - Used for Restaurant Results - Had plans to use thier other API's for Restaurant Results but ~~
 - Ticketmaster API - Used to collect Events for a location
 
 

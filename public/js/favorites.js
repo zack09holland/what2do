@@ -16,13 +16,14 @@ $(".deleteFav").click(function () {
   console.log(index)
   console.log(favID)
 
-  // $.delete("/api/favorites/:id", object).then(function (data) {
-  //   if (data) {
-  //     console.log("OMG the Server Returned Something:");
-  //     console.log(data);
-  //   }
-  // });
-});
+  $.ajax({
+    url: '/api/favorites/'+favID,
+    method: 'DELETE',
+  }).done(function () {
+    console.log('deleted');
+    window.location.reload(true);
+  });
+  });
 
 function getUrlVars() {
   var vars = {};

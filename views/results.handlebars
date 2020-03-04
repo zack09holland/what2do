@@ -170,7 +170,7 @@
                                                             <p class="card-text card-line">
                                                                 <small id="eventAddress{{@index}}">{{_embedded.venues.0.name}}, {{_embedded.venues.0.address.line1}}, {{_embedded.venues.0.city.name}}</small></p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
-                                                                {{moment dates.start.localDate dates.start.localTime format="LLL"}} @
+                                                                {{moment (concat dates.start.localDate " " dates.start.localTime) format="LLL"}} @
                                                                 {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>
@@ -210,7 +210,7 @@
                                                                     {{_embedded.venues.0.address.line1}}
                                                                     {{_embedded.venues.0.city.name}}</small></p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
-                                                                {{moment dates.start.localDate format="LL"}} @
+                                                                {{moment (concat dates.start.localDate " " dates.start.localTime) format="LLL"}} @
                                                                 {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>

@@ -49,7 +49,9 @@ $(".eventFavorites").click(function () {
 $(".foodFavorites").click(function () {
   var index = $(".foodFavorites").index(this);
   $("#foodFavoriteBtn"+index).children('i').addClass("faIconChange")
-  $.cookie("isButtonActive", "1");
+  localStorage['faIconClass'] = 'faIconChange';
+  previousWellClass = localStorage['faIconClass'];
+  if (previousWellClass) $('#foodFavoriteBtn').children('i').addClass("faIconChange"); 
   // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);

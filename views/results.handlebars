@@ -210,7 +210,7 @@
                                                                     {{_embedded.venues.0.address.line1}}
                                                                     {{_embedded.venues.0.city.name}}</small></p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
-                                                                {{concat dates.start.localDate dates.start.localTime}} @
+                                                                {{moment (concat dates.start.localDate dates.start.localTime) format="LLL"}} @
                                                                 {{dates.start.localTime}}</p>
                                                         </div>
                                                     </div>

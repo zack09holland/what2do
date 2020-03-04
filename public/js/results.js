@@ -3,22 +3,15 @@ $(document).ready(function () {
     var destination = decodeURIComponent(getUrlVars().destination);
     $("#locationAutocomplete").attr("value", destination);
   }
-  console.log(destination)
   if (destination == "undefined") {
-    console.log(destination)
     $("#locationAutocomplete").attr("value", "");
   }
   $("#favorites-container, #itineraries-container").hide();
-  // $("results-card").hide();
-  // setTimeout(function() {
-  //   $("body").addClass("loaded");
-  //   $("h1").css("color", "#222222");
-  // }, 2000);
 });
 
 $(".eventFavorites").click(function () {
   var index = $(".eventFavorites").index(this);
-  console.log(index)
+  // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
@@ -41,11 +34,11 @@ $(".eventFavorites").click(function () {
     favoriteUrl: eventURL,
     favoriteTitle: eventName
   };
-  console.log(object);
+  // console.log(object);
   $.post("/api/favorites", object).then(function (data) {
     if (data) {
-      console.log("OMG the Server Returned Something:");
-      console.log(data);
+      // console.log("OMG the Server Returned Something:");
+      // console.log(data);
     }
   });
   // Create a new entry in the db with the contents of the obj
@@ -53,7 +46,7 @@ $(".eventFavorites").click(function () {
 });
 $(".foodFavorites").click(function () {
   var index = $(".foodFavorites").index(this);
-  console.log(index)
+  // console.log(index)
   var start = decodeURIComponent(getUrlVars().start);
   var end = decodeURIComponent(getUrlVars().end);
   var destination = decodeURIComponent(getUrlVars().destination);
@@ -73,11 +66,11 @@ $(".foodFavorites").click(function () {
     favoriteTitle: restaurantName,
     address: restaurantAddress
   };
-  console.log(object);
+  // console.log(object);
   $.post("/api/favorites", object).then(function (data) {
     if (data) {
-      console.log("OMG the Server Returned Something:");
-      console.log(data);
+      // console.log("OMG the Server Returned Something:");
+      // console.log(data);
     }
   });
   // Create a new entry in the db with the contents of the obj

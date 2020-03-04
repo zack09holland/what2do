@@ -6,15 +6,15 @@ document.getElementById("goBack").addEventListener("click", function(event) {
 $(document).ready(function() {
   
   $.getJSON("/api/favorites").then(function(data) {
-    console.log(data);
+    // console.log(data);
   });
 });
 
 $(".deleteFav").click(function () {
   var index = $(".deleteFav").index(this);
   var favID = $("#trashBtn"+index).attr("value")
-  console.log(index)
-  console.log(favID)
+  // console.log(index)
+  // console.log(favID)
 
   $.ajax({
     url: '/api/favorites/'+favID,

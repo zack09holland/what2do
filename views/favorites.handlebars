@@ -40,10 +40,12 @@
                                                 <div class="col-12 col-md-8">
                                                     <div class="card-body">
                                                         <p class="card-text card-line">
-                                                            <strong>{{favoriteTitle}}</strong></p>
+                                                            <strong>{{favoriteTitle}} </strong>({{favoriteType}})</p>
                                                         <p class="card-text card-line">
-                                                            <small>{{this.address}}</small></p>
-                                                        <p class="card-text card-line">{{this.favoriteDestination}}
+                                                            {{this.address}}
+                                                        </p>
+                                                        <p class="card-text card-line">For trip during {{moment favoriteStartDate format="MMMM Do YYYY"}} 
+                                                            to {{moment favoriteEndDate format="MMMM Do YYYY"}}
                                                         </p>
                                                     </div>
 

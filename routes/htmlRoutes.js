@@ -176,7 +176,7 @@ module.exports = function(app) {
     if (req.user.id) {
       query.UserId = req.user.id;
     }
-    console.log(query);
+    // console.log(query);
     db.Favorites.findAll({
       where: query
     }).then(function(dbFavs) {

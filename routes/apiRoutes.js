@@ -126,7 +126,7 @@ module.exports = function(app) {
     if (req.user.id) {
       query.UserId = req.user.id;
     }
-    console.log(query);
+    // console.log(query);
     db.Favorites.findAll({
       where: query
     }).then(function(dbFavs) {
@@ -135,8 +135,8 @@ module.exports = function(app) {
   });
 
   app.post("/api/favorites", function (req, res) {
-    console.log(req.body);
-    console.log(req.user);
+    // console.log(req.body);
+    // console.log(req.user);
     var object = {
       favoriteType : req.body.favoriteType,
       favoriteTitle: req.body.favoriteTitle,
@@ -171,7 +171,7 @@ module.exports = function(app) {
       }
     }).spread(function (data) {
       res.json(data)
-      console.log(data)
+      // console.log(data)
     });
   });
   // DELETE route for deleting favs. We can get the id of the fav to be deleted from

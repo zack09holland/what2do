@@ -98,20 +98,14 @@ $("#Search").on("click", function() {
     that.where2Application.searchParams.start = $("#start")
       .val()
       .trim()+"T00:00:01Z";
-    console.log($("#start").val().trim())
     that.where2Application.searchParams.end = $("#end")
       .val()
       .trim()+"T00:00:01Z";
     that.where2Application.searchParams.radius = $("#radius")
       .val()
       .trim();
-    // that.where2Application.zomatoApis.queryZomatoCities();
-    // that.where2Application.eventbriteAPI.queryEventbrite();
-    // that.where2Application.yelpAPI.queryYelp();
-    // displayFixes();
-    // document.getElementById("filler").style.height = "200px";
     userSearch(that.where2Application.searchParams);
-    console.log(that.where2Application.searchParams.start)
+    // console.log(that.where2Application.searchParams.start)
     window.location.replace(
       "/results?destination=" +
         that.where2Application.searchParams.destination +
@@ -151,13 +145,13 @@ $("#Console").on("click", function() {
 });
 
 function userSearch(searchParams) {
-  console.log("We are About to Search");
-  console.log(searchParams);
+  // console.log("We are About to Search");
+  // console.log(searchParams);
   $.get("/api/search", searchParams)
     .then(function(data) {
       if (data) {
-        console.log("OMG the Server Returned Something:");
-        console.log(data);
+        // console.log("OMG the Server Returned Something:");
+        // console.log(data);
       }
       //window.location.replace("/results");
       // If there's an error, handle it by throwing up a bootstrap alert

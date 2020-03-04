@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-6 text-left">
                                     <btn class="btn btn-primary" id="Search"><span>Search...</span></btn>
-                                    <btn class="btn btn-primary" id="Console"><span>Console...</span></btn>
+                                    {{!-- <btn class="btn btn-primary" id="Console"><span>Console...</span></btn> --}}
                                     <h6 class="mt-3 d-none text-danger" id="form-error-msgs">There are no results.
                                         Please
                                         try again.</h6>
@@ -167,20 +167,22 @@
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
                                                                 <strong id="eventName{{@index}}">{{name}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                <small id="eventAddress{{@index}}">{{_embedded.venues.0.name}}, {{_embedded.venues.0.address.line1}}, {{_embedded.venues.0.city.name}}</small></p>
+                                                            <p class="card-text card-line" id="eventAddress{{@index}}">
+                                                                {{_embedded.venues.0.name}},
+                                                                {{_embedded.venues.0.address.line1}},
+                                                                {{_embedded.venues.0.city.name}}</p>
                                                             <p class="card-text card-line" id="eventDate{{@index}}">
                                                                 {{moment (concat dates.start.localDate dates.start.localTime) format="LLL"}}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer"><span ><a
-                                                            class="card-text card-line" id="eventURL{{@index}}" href={{{url}}}
-                                                            target="_blank">Get tickets here</a></span>
+                                                <div class="card-footer"><span><a class="card-text card-line"
+                                                            id="eventURL{{@index}}" href={{{url}}} target="_blank">Get
+                                                            tickets here</a></span>
 
-                                                    <button class="float-right eventFavorites" id="favoriteBtn{{@index}}"
-                                                        find="{{@index}}">
+                                                    <button class="float-right eventFavorites"
+                                                        id="favoriteBtn{{@index}}" find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                                     </button>
 
@@ -215,9 +217,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer"><span ><a
-                                                            class="card-text card-line" id="eventURL{{@index}}" href={{{url}}}
-                                                            target="_blank">Get tickets here</a></span>
+                                                <div class="card-footer"><span><a class="card-text card-line"
+                                                            id="eventURL{{@index}}" href={{{url}}} target="_blank">Get
+                                                            tickets here</a></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,13 +240,16 @@
                                             <div class="card shadow-lg">
                                                 <div class="row m-0">
                                                     <div class="col-12 col-md-6 m-auto"><img
-                                                            class="img-responsive m-auto" id="imgURL{{@index}}" src={{{image_url}}}>
+                                                            class="img-responsive m-auto" id="imgURL{{@index}}"
+                                                            src={{{image_url}}}>
                                                     </div>
                                                     <div class="ccol-12 col-md-6">
                                                         <div class="card-body">
                                                             <p class="card-text card-line">
-                                                                <strong id="restaurantName{{@index}}">{{name}}</strong></p>
-                                                            <p class="card-text card-line" id="restaurantAddress{{@index}}">
+                                                                <strong id="restaurantName{{@index}}">{{name}}</strong>
+                                                            </p>
+                                                            <p class="card-text card-line"
+                                                                id="restaurantAddress{{@index}}">
                                                                 {{location.address1}} {{location.address2}},
                                                                 {{location.city}}, {{location.state}}</p>
                                                             <p class="card-text card-line" id="phoneNum{{@index}}">
@@ -263,8 +268,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card-footer"><span><a class="card-text card-line" id="yelpURL{{@index}}"
-                                                            href={{{url}}} target="_blank">View restaurant on Yelp</a></span>
+                                                <div class="card-footer"><span><a class="card-text card-line"
+                                                            id="yelpURL{{@index}}" href={{{url}}} target="_blank">View
+                                                            restaurant on Yelp</a></span>
                                                     <button class="float-right foodFavorites" id="favoriteBtn{{@index}}"
                                                         find="{{@index}}">
                                                         <i class="fas fa-heart" aria-hidden="true"></i>
@@ -309,7 +315,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{url}}} target="_blank">View restaurant on Yelp</a></span>
+                                                            href={{{url}}} target="_blank">View restaurant on
+                                                            Yelp</a></span>
                                                 </div>
                                             </div>
                                         </div>

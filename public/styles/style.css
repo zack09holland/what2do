@@ -119,7 +119,9 @@ div.form-group {
     transition: transform 2s;
     transition: transform 2s, -webkit-transform 2s;
   }
-
+  strong{
+    font-size: large;
+  }
   div.form-group {
     position: absolute;
     z-index: 1;

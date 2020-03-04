@@ -1,8 +1,8 @@
 # What2Do
-What2Do is the second iteration of our Where2 Project(website name was left unchanged). This site is an aggregation based search engine for locating Restaurants and Events for an upcoming vacation. The original plan was to build an application that would allow clients to plan their trip in advance favoriting places they wanted to visit while out of town.
+What2Do is the second iteration of our Where2 Project. This site is an aggregation based search engine for locating Restaurants and Events for an upcoming vacation. Users can create an account which will allow them to save events and restaurants that they would like to visit during their trip. More features are to come including creating multiple itineraries for other trips later in the year!
 
 ## Website:
-[Where2](https://what2do-project.herokuapp.com/)
+[What2Do](https://what2do-project.herokuapp.com/)
 
 ### How-To:
 Steps for Using the Site:
@@ -12,49 +12,21 @@ Steps for Using the Site:
 4. Select a Search Radius (default is 10 Miles; Up to 100 Miles by 10 mile increments)
 5. Click Search...
 6. If a user would like to save events or restaurants to be viewed later, they can click the login button which will allow them to create an account
+7. Favorites are saved by the account created and can be deleted later
 
 ### Technologies Used:
 - Google Places - API \ Library - Used for Destination Resolution - Reduces chances of unresolved locations
 - Passport - Used to authenticate users
   - * When User is Authenticated - User Account created for Favorites in Realtime Database *
 - Bootstrap - Primary CSS - Modal, Accordian, Carousel, Grid, Button, Form Control
+- Handlebars - Used to populate pages from JSON objects from the API requests as well as from our database
+- Sequelize - Used to query, create and delete data from our database
+- Node.js
+- Express.js
 - Moment JS - Used for the Ticketmaster API to format Time properly for queries
 - Yelp API - Used for Restaurant Results
-- Zomato API - Used for Restaurant Results - Had plans to use thier other API's for Restaurant Results
+~~- Zomato API - Used for Restaurant Results - Had plans to use thier other API's for Restaurant Results but ~~
 - Ticketmaster API - Used to collect Events for a location
-
-### Contributions:
-- Craig Wilkey [GitHub Profile](https://github.com/devcwilkey)
-  - Project Planning (in the beginning): Once the idea was established; I helped to drive the list of work items we would need to get a framework started.  
-  - Initial Website Tempalte with Firebase and Javascript: Utilized my Default Template for creating our Site.
-  - Created the initial DEV Experience - Form Boxes for a client to Submit and the Javascript Object for storing these values - This enabled each person to work off the same base for their API investigations.
-  - Zomato API: Initially responsible for working with the Zomato API to determine if our planned input would provide an appropriate output.
-  - Enabled Firebase Authentication for user login to site.
-  - Enabled Firebase Database to enable user Favorites.
-    - *Scrapped* Favorites solution due to time and current state of bugs.
-  - Javascript as an Object; tried to use an Object for everything but it slowly got out of control
-  - Overhauled the Card Print feature that was per API to be a single Function for all Cards to be Printed with.
-  - Worked with Suzanne on implementing a fix for Zomato API where image URLs were blank
-  - Worked closely with Zach on issues as we were stuck with API or UI design problems.
-  - Lot's of Bug Fixes
-  
-- Zachary Holland  [GitHub Profile](https://github.com/zack09holland)
-  - Project Management during 2nd half; delegated tasks to other group members as we got to D-Day
-  - Wrote the API ajax calls for querying Yelp and Ticketmaster. 
-  - Developed the card accoridion content container and the results page
-  - Created the initial card generator for the API data
-  - Primary front end and UI design:
-   - Design implementations were taken from other sites such as Eventbrite and Yelp.
-   - Developed the smooth scrolling for the website when clicking the submit button
-   - Implemented UI features to simplify user experience; 
-      - Implemented features to make switching pages not lose content that was previously searched
-      - Created the loading screen while API calls where done
-      - Created an inner scroll inside the card content accordion to contain the results to a managable view
-   - Designed the image carousel with full scale background images
-   - Fixed a lot of bugs
-      - Data wasn't being generated to the cards properly
-      - Fixed the favoriting feature; data from cards weren't being properly stored in the database
-   
 
 
 

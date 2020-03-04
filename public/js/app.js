@@ -80,142 +80,7 @@ var where2Application = {
     eventbriteComplete: false,
     yelpResults: false,
     yelpComplete: false,
-    zomatoResults: false,
-    zomatoComplete: false,
     allResults: false
-  },
-  // Zomato API
-  zomatoApis: {
-    searchParams: {
-      //API uses
-      // q query by city name; lat query by latitude; lon query by longitude; count # of results to return; city_ids comma seperated city_id values
-      citiesAPIurl: "https://developers.zomato.com/api/v2.1/cities?",
-      //city_id using the city id from cities; lat query by latitude; lon query by longitude
-      collectionsAPIurl: "https://developers.zomato.com/api/v2.1/collections?",
-      //city_id using the city id from cities; lat query by latitude; lon query by longitude
-      cuisinesAPIurl: "https://developers.zomato.com/api/v2.1/cuisines?",
-      //city_id using the city id from cities; lat query by latitude; lon query by longitude
-      establishmentsAPIurl:
-        "https://developers.zomato.com/api/v2.1/establishments?",
-      //Get Foodie and Nightlife Index, list of popular cuisines and nearby restaurants
-      //lat query by latitude; lon query by longitude
-      geocodeAPIurl: "https://developers.zomato.com/api/v2.1/geocode?",
-      // query query by city name; lat query by latitude; lon query by longitude; count # of results to return; city_ids comma seperated city_id values
-      locationAPIurl: "https://developers.zomato.com/api/v2.1/locations?",
-      // using the location ID from above get information
-      //
-      locationDetailsAPIurl:
-        "https://developers.zomato.com/api/v2.1/location_details?",
-      count: 100,
-      countryId: "",
-      cityId: "",
-      entityId: "",
-      entityType: ""
-    },
-    queryZomatoCities: function() {
-      queryUrl =
-        this.searchParams.locationAPIurl +
-        "query=" +
-        that.where2Application.searchParams.destination +
-        "&lat=" +
-        that.where2Application.searchParams.lat +
-        "&lon=" +
-        that.where2Application.searchParams.lng +
-        "&count=" +
-        this.searchParams.count;
-      queryUrl = encodeURI(queryUrl);
-      $.ajax({
-        headers: {
-          "user-key": "03136f6b258dbdebd5478a174180a71f",
-          "Content-Type": "application/json"
-        },
-        url: queryUrl,
-        method: "get"
-      }).then(function(data) {
-        console.log(data);
-        if (data.location_suggestions.hasTotal > 0) {
-          that.where2Application.zomatoApis.searchParams.entityId =
-            data.location_suggestions[0].entity_id;
-          that.where2Application.zomatoApis.searchParams.entityType =
-            data.location_suggestions[0].entity_type;
-          that.where2Application.zomatoApis.searchParams.countryId =
-            data.location_suggestions[0].country_id;
-          that.where2Application.zomatoApis.searchParams.cityId =
-            data.location_suggestions[0].city_id;
-          that.where2Application.zomatoApis.queryZomatoCollections();
-          that.where2Application.zomatoApis.queryZomatoGeocode();
-          that.where2Application.zomatoApis.queryZomatoLocationsDetails();
-        } else {
-          that.where2Application.searchResults.zomatoComplete = true;
-        }
-      });
-    },
-    queryZomatoCollections: function() {
-      queryUrl =
-        this.searchParams.collectionsAPIurl +
-        "city_id=" +
-        this.searchParams.city_id;
-      queryUrl = encodeURI(queryUrl);
-      $.ajax({
-        headers: {
-          "user-key": "03136f6b258dbdebd5478a174180a71f",
-          "Content-Type": "application/json"
-        },
-        url: queryUrl,
-        method: "get"
-      }).then(function(data) {
-        console.log("Travis Hates This Function");
-      });
-    },
-    queryZomatoGeocode: function() {
-      queryUrl =
-        this.searchParams.geocodeAPIurl +
-        "lat=" +
-        that.where2Application.searchParams.lat +
-        "&lon=" +
-        that.where2Application.searchParams.lng;
-      queryUrl = encodeURI(queryUrl);
-      $.ajax({
-        headers: {
-          "user-key": "03136f6b258dbdebd5478a174180a71f",
-          "Content-Type": "application/json"
-        },
-        url: queryUrl,
-        method: "get"
-        // Success callback function
-      }).then(
-        function(data) {
-          that.where2Application.searchResults.zomatoResults = true;
-          that.where2Application.searchResults.zomatoComplete = true;
-          //removeErrorMsgIfResults();
-          renderZomatoGeocode(data);
-          // Error callback function
-        },
-        function() {
-          that.where2Application.searchResults.zomatoResults = false;
-          that.where2Application.searchResults.zomatoComplete = true;
-        }
-      );
-    },
-    queryZomatoLocationsDetails: function() {
-      queryUrl =
-        this.searchParams.locationDetailsAPIurl +
-        "entity_id=" +
-        this.searchParams.entity_id +
-        "&entity_type=" +
-        this.searchParams.entity_type;
-      queryUrl = encodeURI(queryUrl);
-      $.ajax({
-        headers: {
-          "user-key": "03136f6b258dbdebd5478a174180a71f",
-          "Content-Type": "application/json"
-        },
-        url: queryUrl,
-        method: "get"
-      }).then(function(data) {
-        console.log("Travis Hates This Function");
-      });
-    }
   },
   // Eventbrite API
   eventbriteAPI: {
@@ -448,8 +313,7 @@ function renderEvent(queryData) {
     //$('#event-results-card').hide();
     if (
       !that.where2Application.searchResults.eventbriteResults &&
-      !that.where2Application.searchResults.yelpResults &&
-      !that.where2Application.searchResults.zomatoResults
+      !that.where2Application.searchResults.yelpResults
     ) {
       //noResultsErrorMsg();
     }
@@ -531,75 +395,44 @@ function renderYelpData(queryData) {
     );
   }
 }
-function renderZomatoGeocode(queryData) {
-  $("#geocode-location-details").empty();
-  var zomatoRestaurants = queryData.nearby_restaurants;
-  for (var i = 0; i < zomatoRestaurants.length; i++) {
-    var name = zomatoRestaurants[i].restaurant.name;
-    var imageUrl = zomatoRestaurants[i].restaurant.featured_image;
-    if (!imageUrl) {
-      imageUrl = "assets/images/defaultFood.jpg";
-    }
-    var address = zomatoRestaurants[i].restaurant.location.address;
-    var cuisines = "Cuisines: " + zomatoRestaurants[i].restaurant.cuisines;
-    var rating =
-      "Rating: " + zomatoRestaurants[i].restaurant.user_rating.aggregate_rating;
-    var restaurantLink = zomatoRestaurants[i].restaurant.url;
-    that.where2Application.printResultCard(
-      "geocode-location-details",
-      imageUrl,
-      name,
-      address,
-      cuisines,
-      rating,
-      null,
-      null,
-      restaurantLink,
-      "Results from Zomato"
-    );
-  }
-}
+// function displayFixes() {
+//   if (
+//     that.where2Application.searchResults.yelpComplete &&
+//     that.where2Application.searchResults.eventbriteComplete
+//   ) {
+//     stop();
+//     if (
+//       (that.where2Application.searchResults.zomatoResults &&
+//         that.where2Application.searchResults.yelpResults) ||
+//       (that.where2Application.searchResults.zomatoResults ||
+//         that.where2Application.searchResults.yelpResults)
+//     ) {
+//       $("#restaurants-results-card").show();
+//       that.where2Application.searchResults.allResults = true;
+//     } else {
+//       $("#restaurants-results-card").hide();
+//     }
+//     if (that.where2Application.searchResults.eventbriteResults) {
+//       $("#event-results-card").show();
+//       that.where2Application.searchResults.allResults = true;
+//     } else {
+//       $("#event-results-card").hide();
+//     }
+//     if (that.where2Application.searchResults.allResults) {
+//       $("#contentDetails").show();
+//     }
+//   } else {
+//     setTimeout(start(), 1000);
+//   }
+// }
 
-function displayFixes() {
-  if (
-    that.where2Application.searchResults.zomatoComplete &&
-    that.where2Application.searchResults.yelpComplete &&
-    that.where2Application.searchResults.eventbriteComplete
-  ) {
-    stop();
-    if (
-      (that.where2Application.searchResults.zomatoResults &&
-        that.where2Application.searchResults.yelpResults) ||
-      (that.where2Application.searchResults.zomatoResults ||
-        that.where2Application.searchResults.yelpResults)
-    ) {
-      $("#restaurants-results-card").show();
-      that.where2Application.searchResults.allResults = true;
-    } else {
-      $("#restaurants-results-card").hide();
-    }
-    if (that.where2Application.searchResults.eventbriteResults) {
-      $("#event-results-card").show();
-      that.where2Application.searchResults.allResults = true;
-    } else {
-      $("#event-results-card").hide();
-    }
-    if (that.where2Application.searchResults.allResults) {
-      $("#contentDetails").show();
-    }
-  } else {
-    setTimeout(start(), 1000);
-  }
-}
-
-function ComeONMan() {
-  if (
-    !that.where2Application.searchResults.zomatoComplete &&
-    !that.where2Application.searchResults.yelpComplete &&
-    !that.where2Application.searchResults.eventbriteComplete
-  ) {
-    setTimeout(displayFixes(), 1000);
-  }
-}
+// function ComeONMan() {
+//   if (
+//     !that.where2Application.searchResults.yelpComplete &&
+//     !that.where2Application.searchResults.eventbriteComplete
+//   ) {
+//     setTimeout(displayFixes(), 1000);
+//   }
+// }
 
 

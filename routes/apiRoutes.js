@@ -1,6 +1,5 @@
 var db = require("../models");
 var passport = require("../config/passport");
-var zomatoAPI = require("../config/zomatoAPI");
 var yelpAPI = require("../config/yelpAPI");
 var eventBrite = require("../config/eventBrite");
 

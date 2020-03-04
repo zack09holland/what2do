@@ -5,6 +5,9 @@ var Handlebars = require("handlebars");
 var session = require("express-session");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
+Handlebars.registerHelper('concat', function(prefix, id) {
+  return (prefix + id);
+});
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 

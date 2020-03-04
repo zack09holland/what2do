@@ -134,13 +134,13 @@ module.exports = function(app) {
             });
           }
         });
-      // } else {
-      //   if (req.user) {
-      //     res.render("results", { user: true });
-      //   } else {
-      //     res.render("results", { user: false });
-      //   }
-      // }
+      } else {
+        if (req.user) {
+          res.render("results", { user: true });
+        } else {
+          res.render("results", { user: false });
+        }
+      }
     }
   });
   app.get("/favorites", isAuthenticated, function(req, res) {

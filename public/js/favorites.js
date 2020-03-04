@@ -11,7 +11,7 @@ $(document).ready(function() {
 });
 
 $(".deleteFav").click(function () {
-  var index = $(".eventFavorites").index(this);
+  var index = $(".deleteFav").index(this);
   console.log(index)
   // $.delete("/api/favorites/:id", object).then(function (data) {
   //   if (data) {

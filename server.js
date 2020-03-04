@@ -5,6 +5,8 @@ var Handlebars = require("handlebars");
 var session = require("express-session");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
+//Handlebars helper to concat values
+// -used primarily to combine two date values from the database
 Handlebars.registerHelper('concat', function(prefix, id) {
   return (prefix +" "+ id);
 });

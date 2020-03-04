@@ -73,8 +73,10 @@ $(".foodFavorites").click(function () {
       // console.log(data);
     }
   });
-  // Create a new entry in the db with the contents of the obj
-  //...hard time figuring out how to pass the object values into this
+  $.get("/api/favorites").then(function(data) {
+    console.log(data)
+  }
+  
 });
 
 function getUrlVars() {

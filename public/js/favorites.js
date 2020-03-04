@@ -10,6 +10,17 @@ $(document).ready(function() {
   });
 });
 
+$(".deleteFav").click(function () {
+  var index = $(".eventFavorites").index(this);
+  console.log(index)
+  // $.delete("/api/favorites/:id", object).then(function (data) {
+  //   if (data) {
+  //     console.log("OMG the Server Returned Something:");
+  //     console.log(data);
+  //   }
+  // });
+});
+
 function getUrlVars() {
   var vars = {};
   var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(

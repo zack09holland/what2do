@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   // When the form is submitted, we validate there's an email and password entered
   loginForm.on("submit", function(event) {
-    console.log(redirect);
+    // console.log(redirect);
     event.preventDefault();
     var userData = {
       email: emailInput.val().trim(),
@@ -41,13 +41,13 @@ $(document).ready(function() {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password, redirect) {
-    console.log(redirect);
+    // console.log(redirect);
     $.post("/api/login", {
       email: email,
       password: password
     })
       .then(function(res) {
-        console.log(redirect);
+        // console.log(redirect);
         var sessionCookie = "userID=" + res.id + "; userEmail=" + res.email;
         document.cookie = sessionCookie;
         //res.redirect(req.session.returnTo);

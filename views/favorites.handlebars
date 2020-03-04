@@ -27,42 +27,44 @@
                     </div>
                     <div class="favorites-card card">
                         <h5 class="card-header text-center shadow-md logoFont">Favorites</h5>
-                            <div class="favorites" id="#favoritesContainer">
-                                <div class="container-fluid">
-                                    {{#each data}}
-                                    <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <div class="card shadow-lg">
-                                                <div class="row m-0">
-                                                    <div class="col-12 col-md-6 m-auto">
-                                                        <img class="img-responsive m-auto" src={{favoriteImg}}>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div class="card-body">
-                                                            <p class="card-text card-line">
-                                                                <strong>{{favoriteTitle}}</strong></p>
-                                                            <p class="card-text card-line">
-                                                                <small>{{this.address}}</small></p>
-                                                            <p class="card-text card-line">{{this.favoriteDestination}}
-                                                            </p>
-                                                        </div>
-                                                        
-                                                    </div>
+                        <div class="favorites" id="#favoritesContainer">
+                            {{#each data}}
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12 mt-3">
+                                        <div class="card shadow-lg">
+                                            <div class="row m-0">
+                                                <div class="col-12 col-md-6 m-auto">
+                                                    <img class="img-responsive m-auto" src={{favoriteImg}}>
                                                 </div>
-                                                <div class="card-footer"><span><a class="card-text card-line"
-                                                            href={{{favoriteUrl}}} target="_blank">Find more information here</a></span>
-                                                    <button class="float-right btn-danger deleteFav" id="trashBtn{{@index}}" value={{favoritesId}}>
-                                                        <i class="fas fa-trash" aria-hidden="true"></i>
-                                                    </button>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="card-body">
+                                                        <p class="card-text card-line">
+                                                            <strong>{{favoriteTitle}}</strong></p>
+                                                        <p class="card-text card-line">
+                                                            <small>{{this.address}}</small></p>
+                                                        <p class="card-text card-line">{{this.favoriteDestination}}
+                                                        </p>
+                                                    </div>
 
                                                 </div>
                                             </div>
+                                            <div class="card-footer"><span><a class="card-text card-line"
+                                                        href={{{favoriteUrl}}} target="_blank">Find more information
+                                                        here</a></span>
+                                                <button class="float-right btn-danger deleteFav" id="trashBtn{{@index}}"
+                                                    value={{favoritesId}}>
+                                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                                </button>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    {{/each}}
                                 </div>
                             </div>
-                            
+                            {{/each}}
+                        </div>
+
                     </div>
                 </div>
             </div>{{!-- End of Where2 Form --}}
